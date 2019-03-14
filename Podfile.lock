@@ -1,0 +1,28 @@
+PODS:
+  - Hero (1.4.0)
+  - Kingfisher (4.10.1)
+  - Localize (2.1.0)
+  - SwiftLint (0.30.1)
+
+DEPENDENCIES:
+  - Hero
+  - Kingfisher
+  - Localize (~> 2.1.0)
+  - SwiftLint
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Hero
+    - Kingfisher
+    - Localize
+    - SwiftLint
+
+SPEC CHECKSUMS:
+  Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  Localize: f360a343abfac047be5b375c45be1059f5f625f3
+  SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
+
+PODFILE CHECKSUM: bcd8685483cd6466de67be90305752648308dd02
+
+COCOAPODS: 1.5.3

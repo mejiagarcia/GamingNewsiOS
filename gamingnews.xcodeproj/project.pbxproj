@@ -12,6 +12,7 @@
 		2CD07FC7223AB7DE00C024AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CD07FC5223AB7DE00C024AC /* Main.storyboard */; };
 		2CD07FC9223AB7E000C024AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CD07FC8223AB7E000C024AC /* Assets.xcassets */; };
 		2CD07FCC223AB7E000C024AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CD07FCA223AB7E000C024AC /* LaunchScreen.storyboard */; };
+		74B6FA920865AEF8100CF794 /* Pods_gamingnews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37B37970C255E529929A1F2 /* Pods_gamingnews.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		2CD07FC8223AB7E000C024AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CD07FCB223AB7E000C024AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CD07FCD223AB7E000C024AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F7818FFC41C0F0F80F39F0D /* Pods-gamingnews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gamingnews.release.xcconfig"; path = "Pods/Target Support Files/Pods-gamingnews/Pods-gamingnews.release.xcconfig"; sourceTree = "<group>"; };
+		A10E3A335BDA3E1DEE5D8E5C /* Pods-gamingnews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gamingnews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gamingnews/Pods-gamingnews.debug.xcconfig"; sourceTree = "<group>"; };
+		D37B37970C255E529929A1F2 /* Pods_gamingnews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gamingnews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74B6FA920865AEF8100CF794 /* Pods_gamingnews.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		176172E016C5AF68E0F1BC3D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A10E3A335BDA3E1DEE5D8E5C /* Pods-gamingnews.debug.xcconfig */,
+				7F7818FFC41C0F0F80F39F0D /* Pods-gamingnews.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		2CD07FB5223AB7DE00C024AC = {
 			isa = PBXGroup;
 			children = (
 				2CD07FC0223AB7DE00C024AC /* gamingnews */,
 				2CD07FBF223AB7DE00C024AC /* Products */,
+				176172E016C5AF68E0F1BC3D /* Pods */,
+				C00F5B65DDC870B276067A56 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +80,14 @@
 			path = gamingnews;
 			sourceTree = "<group>";
 		};
+		C00F5B65DDC870B276067A56 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D37B37970C255E529929A1F2 /* Pods_gamingnews.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2CD07FD0223AB7E000C024AC /* Build configuration list for PBXNativeTarget "gamingnews" */;
 			buildPhases = (
+				734C338CF47D9544D1D6376D /* [CP] Check Pods Manifest.lock */,
 				2CD07FBA223AB7DE00C024AC /* Sources */,
 				2CD07FBB223AB7DE00C024AC /* Frameworks */,
 				2CD07FBC223AB7DE00C024AC /* Resources */,
+				3D74CB18AE90CC89A944E2AB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +155,49 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3D74CB18AE90CC89A944E2AB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-gamingnews/Pods-gamingnews-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Localize/Localize.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Localize.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-gamingnews/Pods-gamingnews-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		734C338CF47D9544D1D6376D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-gamingnews-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2CD07FBA223AB7DE00C024AC /* Sources */ = {
@@ -280,6 +349,7 @@
 		};
 		2CD07FD1223AB7E000C024AC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A10E3A335BDA3E1DEE5D8E5C /* Pods-gamingnews.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +368,7 @@
 		};
 		2CD07FD2223AB7E000C024AC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F7818FFC41C0F0F80F39F0D /* Pods-gamingnews.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

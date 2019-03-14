@@ -34,4 +34,8 @@ DerivedData/
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 
+## Pods
+Pods
+/Pods
+
 # End of https://www.gitignore.io/api/xcode
