@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C497FB7223ABEC5008F76CF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C497FB5223ABEC5008F76CF /* MainViewController.swift */; };
+		2C497FB8223ABEC5008F76CF /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C497FB6223ABEC5008F76CF /* MainViewController.xib */; };
 		2CD07FC2223AB7DE00C024AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD07FC1223AB7DE00C024AC /* AppDelegate.swift */; };
-		2CD07FC4223AB7DE00C024AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD07FC3223AB7DE00C024AC /* ViewController.swift */; };
-		2CD07FC7223AB7DE00C024AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CD07FC5223AB7DE00C024AC /* Main.storyboard */; };
 		2CD07FC9223AB7E000C024AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CD07FC8223AB7E000C024AC /* Assets.xcassets */; };
 		2CD07FCC223AB7E000C024AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CD07FCA223AB7E000C024AC /* LaunchScreen.storyboard */; };
 		74B6FA920865AEF8100CF794 /* Pods_gamingnews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37B37970C255E529929A1F2 /* Pods_gamingnews.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C497FB5223ABEC5008F76CF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		2C497FB6223ABEC5008F76CF /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		2CD07FBE223AB7DE00C024AC /* gamingnews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gamingnews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CD07FC1223AB7DE00C024AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2CD07FC3223AB7DE00C024AC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2CD07FC6223AB7DE00C024AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2CD07FC8223AB7E000C024AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CD07FCB223AB7E000C024AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CD07FCD223AB7E000C024AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +49,51 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		2C497FB0223ABE67008F76CF /* App */ = {
+			isa = PBXGroup;
+			children = (
+				2C497FB4223ABEB5008F76CF /* Main */,
+			);
+			name = App;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		2C497FB1223ABE8C008F76CF /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				2C497FB3223ABEAE008F76CF /* UI */,
+				2C497FB2223ABE95008F76CF /* Config */,
+				2CD07FC8223AB7E000C024AC /* Assets.xcassets */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		2C497FB2223ABE95008F76CF /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				2CD07FC1223AB7DE00C024AC /* AppDelegate.swift */,
+				2CD07FCD223AB7E000C024AC /* Info.plist */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		2C497FB3223ABEAE008F76CF /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				2CD07FCA223AB7E000C024AC /* LaunchScreen.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		2C497FB4223ABEB5008F76CF /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				2C497FB5223ABEC5008F76CF /* MainViewController.swift */,
+				2C497FB6223ABEC5008F76CF /* MainViewController.xib */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		2CD07FB5223AB7DE00C024AC = {
 			isa = PBXGroup;
 			children = (
@@ -70,12 +115,8 @@
 		2CD07FC0223AB7DE00C024AC /* gamingnews */ = {
 			isa = PBXGroup;
 			children = (
-				2CD07FC1223AB7DE00C024AC /* AppDelegate.swift */,
-				2CD07FC3223AB7DE00C024AC /* ViewController.swift */,
-				2CD07FC5223AB7DE00C024AC /* Main.storyboard */,
-				2CD07FC8223AB7E000C024AC /* Assets.xcassets */,
-				2CD07FCA223AB7E000C024AC /* LaunchScreen.storyboard */,
-				2CD07FCD223AB7E000C024AC /* Info.plist */,
+				2C497FB1223ABE8C008F76CF /* Shared */,
+				2C497FB0223ABE67008F76CF /* App */,
 			);
 			path = gamingnews;
 			sourceTree = "<group>";
@@ -100,6 +141,7 @@
 				2CD07FBB223AB7DE00C024AC /* Frameworks */,
 				2CD07FBC223AB7DE00C024AC /* Resources */,
 				3D74CB18AE90CC89A944E2AB /* [CP] Embed Pods Frameworks */,
+				2C497FAF223ABE53008F76CF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -149,14 +191,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CD07FCC223AB7E000C024AC /* LaunchScreen.storyboard in Resources */,
+				2C497FB8223ABEC5008F76CF /* MainViewController.xib in Resources */,
 				2CD07FC9223AB7E000C024AC /* Assets.xcassets in Resources */,
-				2CD07FC7223AB7DE00C024AC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2C497FAF223ABE53008F76CF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 		3D74CB18AE90CC89A944E2AB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -204,22 +263,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CD07FC4223AB7DE00C024AC /* ViewController.swift in Sources */,
 				2CD07FC2223AB7DE00C024AC /* AppDelegate.swift in Sources */,
+				2C497FB7223ABEC5008F76CF /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2CD07FC5223AB7DE00C024AC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2CD07FC6223AB7DE00C024AC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2CD07FCA223AB7E000C024AC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -354,7 +405,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J75TA62D6V;
-				INFOPLIST_FILE = gamingnews/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/gamingnews/Shared/Config/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -362,7 +414,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mejiagarcia.gamingnews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -373,7 +425,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J75TA62D6V;
-				INFOPLIST_FILE = gamingnews/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/gamingnews/Shared/Config/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -381,7 +434,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mejiagarcia.gamingnews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
