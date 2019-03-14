@@ -24,6 +24,8 @@ class MainTabBarController: UITabBarController {
      Method to setup the UI.
      */
     private func setupUI() {
+        title = "tabs.home".localized
+        
         tabBar.isTranslucent = true
         UITabBar.appearance().tintColor = UIColor.GamingNews.red
         

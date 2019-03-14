@@ -5,7 +5,7 @@
         "genericMessage": "An unexpected error occurred, try again."
     },
     "tabs": {
-        "home": "Home",
+        "home": "All",
         "favorites": "Favorites",
         "settings": "Settings"
     }

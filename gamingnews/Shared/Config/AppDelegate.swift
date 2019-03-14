@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     **/
     private func setupInitialVC() {
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = MainTabBarController()
+        window?.rootViewController = MainNavigationController()
         window?.makeKeyAndVisible()
     }
     
