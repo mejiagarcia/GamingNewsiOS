@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Localize
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        setupLang()
         setupInitialVC()
         
         return true
@@ -26,7 +28,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     **/
     private func setupInitialVC() {
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = HomeViewController()
+        window?.rootViewController = MainTabBarController()
         window?.makeKeyAndVisible()
+    }
+    
+    /**
+     Method to setup the man language of the app
+     **/
+    private func setupLang() {
+        let localize = Localize.shared
+        localize.update(provider: .json)
+        localize.update(fileName: "lang")
+        localize.update(defaultLanguage: Constants.General.Lang.english)
     }
 }

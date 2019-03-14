@@ -3,6 +3,11 @@
     "errors": {
         "title": "Error",
         "genericMessage": "An unexpected error occurred, try again."
+    },
+    "tabs": {
+        "home": "Home",
+        "favorites": "Favorites",
+        "settings": "Settings"
     }
 }
 

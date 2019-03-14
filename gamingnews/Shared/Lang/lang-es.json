@@ -3,5 +3,10 @@
     "errors": {
         "title": "Error",
         "genericMessage": "Ocurrió un error inesperado, intenta nuevamente."
+    },
+    "tabs": {
+        "home": "Todos",
+        "favorites": "Favoritos",
+        "settings": "Configuración"
     }
 }
