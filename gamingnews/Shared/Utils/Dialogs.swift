@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Localize
 
 class Dialogs {
     

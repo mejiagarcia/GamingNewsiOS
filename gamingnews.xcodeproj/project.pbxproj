@@ -20,6 +20,8 @@
 		2C497FD8223AEAAA008F76CF /* Dialogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C497FC8223AEAAA008F76CF /* Dialogs.swift */; };
 		2C497FDA223AEAAA008F76CF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C497FCB223AEAAA008F76CF /* BaseViewController.swift */; };
 		2C497FDB223AEAAA008F76CF /* BaseViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C497FCC223AEAAA008F76CF /* BaseViewModelProtocol.swift */; };
+		2C497FE2223AEB8F008F76CF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C497FE0223AEB8F008F76CF /* HomeViewController.swift */; };
+		2C497FE3223AEB8F008F76CF /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C497FE1223AEB8F008F76CF /* HomeViewController.xib */; };
 		2CD07FC2223AB7DE00C024AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD07FC1223AB7DE00C024AC /* AppDelegate.swift */; };
 		2CD07FC9223AB7E000C024AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CD07FC8223AB7E000C024AC /* Assets.xcassets */; };
 		2CD07FCC223AB7E000C024AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CD07FCA223AB7E000C024AC /* LaunchScreen.storyboard */; };
@@ -40,6 +42,8 @@
 		2C497FC8223AEAAA008F76CF /* Dialogs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dialogs.swift; sourceTree = "<group>"; };
 		2C497FCB223AEAAA008F76CF /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2C497FCC223AEAAA008F76CF /* BaseViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModelProtocol.swift; sourceTree = "<group>"; };
+		2C497FE0223AEB8F008F76CF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2C497FE1223AEB8F008F76CF /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		2CD07FBE223AB7DE00C024AC /* gamingnews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gamingnews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CD07FC1223AB7DE00C024AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CD07FC8223AB7E000C024AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -143,6 +147,23 @@
 			path = Bases;
 			sourceTree = "<group>";
 		};
+		2C497FDE223AEB79008F76CF /* App */ = {
+			isa = PBXGroup;
+			children = (
+				2C497FDF223AEB7E008F76CF /* Home */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		2C497FDF223AEB7E008F76CF /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2C497FE0223AEB8F008F76CF /* HomeViewController.swift */,
+				2C497FE1223AEB8F008F76CF /* HomeViewController.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		2CD07FB5223AB7DE00C024AC = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +185,7 @@
 		2CD07FC0223AB7DE00C024AC /* gamingnews */ = {
 			isa = PBXGroup;
 			children = (
+				2C497FDE223AEB79008F76CF /* App */,
 				2C497FB1223ABE8C008F76CF /* Shared */,
 			);
 			path = gamingnews;
@@ -240,6 +262,7 @@
 			files = (
 				2CD07FCC223AB7E000C024AC /* LaunchScreen.storyboard in Resources */,
 				2CD07FC9223AB7E000C024AC /* Assets.xcassets in Resources */,
+				2C497FE3223AEB8F008F76CF /* HomeViewController.xib in Resources */,
 				2C497FCE223AEAAA008F76CF /* lang-en.json in Resources */,
 				2C497FCF223AEAAA008F76CF /* lang-es.json in Resources */,
 			);
@@ -323,6 +346,7 @@
 				2C497FD8223AEAAA008F76CF /* Dialogs.swift in Sources */,
 				2C497FD3223AEAAA008F76CF /* UICollectionViewCell+Extensions.swift in Sources */,
 				2C497FD7223AEAAA008F76CF /* Constants.swift in Sources */,
+				2C497FE2223AEB8F008F76CF /* HomeViewController.swift in Sources */,
 				2C497FDB223AEAAA008F76CF /* BaseViewModelProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

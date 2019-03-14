@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     **/
     private func setupInitialVC() {
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = MainViewController()
+        window?.rootViewController = HomeViewController()
         window?.makeKeyAndVisible()
     }
 }
