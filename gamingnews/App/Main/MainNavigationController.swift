@@ -26,8 +26,22 @@ class MainNavigationController: UINavigationController {
     private func setupUI() {
         if #available(iOS 11.0, *) {
             navigationBar.prefersLargeTitles = true
+            navigationBar.largeTitleTextAttributes = [
+                NSAttributedString.Key.foregroundColor: UIColor.white
+            ]
         }
         
+        navigationBar.isTranslucent = true
+        navigationBar.barTintColor = UIColor.GamingNews.red
+        navigationBar.tintColor = .white
+        navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.white
+        ]
+        
         viewControllers = [MainTabBarController()]
+        
+        if let statusBar = UIApplication.shared.value(forKey: "statusBar") as? UIView {
+            statusBar.setValue(UIColor.white, forKey: "foregroundColor")
+        }
     }
 }
