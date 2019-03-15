@@ -28,6 +28,8 @@ extension UITableView {
         register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.getReuseIdentifier())
         
         // Xib cells
-        registerCells([])
+        registerCells([
+            NewsTableViewCell.self
+        ])
     }
 }

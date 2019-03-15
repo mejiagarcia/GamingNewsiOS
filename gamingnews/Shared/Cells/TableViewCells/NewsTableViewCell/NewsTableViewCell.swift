@@ -45,7 +45,7 @@ class NewsTableViewCell: UITableViewCell, ConfigurableCellProtocol {
     
     // MARK: - Public Methods
     
-    func setupWith(dataSource: Any, indexPath: IndexPath?, delegate: Any?) {
+    func setupWith(dataSource: Any?, indexPath: IndexPath?, delegate: Any?) {
         guard let dataSource = dataSource as? NewsTableViewCellDataSource else {
             return
         }
@@ -53,6 +53,10 @@ class NewsTableViewCell: UITableViewCell, ConfigurableCellProtocol {
         titleLabel.text = dataSource.title
         titleLabel.font = dataSource.titleFont ?? titleLabel.font
         titleLabel.textColor = dataSource.titleColor ?? titleLabel.textColor
+        
+        if let imageURL = URL(string: dataSource.backgroundImageUrl ?? "") {
+            backgroundImageView.kf.setImage(with: imageURL)
+        }
     }
     
     // MARK: - Private Methods
@@ -61,8 +65,8 @@ class NewsTableViewCell: UITableViewCell, ConfigurableCellProtocol {
      Method to setup the UI.
      **/
     private func setupUI() {
+        cardView.layer.cornerRadius = 6
         cardView.clipsToBounds = true
-        cardView.layer.cornerRadius = 4
         
         titleLabel.text = nil
         

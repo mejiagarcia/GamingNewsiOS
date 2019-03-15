@@ -36,6 +36,9 @@
 		2CD07FCC223AB7E000C024AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CD07FCA223AB7E000C024AC /* LaunchScreen.storyboard */; };
 		2CF3F2A9223AEF570033AEA8 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF3F2A8223AEF570033AEA8 /* MainTabBarController.swift */; };
 		74B6FA920865AEF8100CF794 /* Pods_gamingnews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37B37970C255E529929A1F2 /* Pods_gamingnews.framework */; };
+		AC898ECF223B2AAC00702F59 /* NewsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC898ECE223B2AAC00702F59 /* NewsCellViewModel.swift */; };
+		AC898ED1223B2BFE00702F59 /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC898ED0223B2BFE00702F59 /* ConfigurableCell.swift */; };
+		AC898ED3223B312700702F59 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC898ED2223B312700702F59 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +74,9 @@
 		2CF3F2A8223AEF570033AEA8 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		7F7818FFC41C0F0F80F39F0D /* Pods-gamingnews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gamingnews.release.xcconfig"; path = "Pods/Target Support Files/Pods-gamingnews/Pods-gamingnews.release.xcconfig"; sourceTree = "<group>"; };
 		A10E3A335BDA3E1DEE5D8E5C /* Pods-gamingnews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gamingnews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gamingnews/Pods-gamingnews.debug.xcconfig"; sourceTree = "<group>"; };
+		AC898ECE223B2AAC00702F59 /* NewsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCellViewModel.swift; sourceTree = "<group>"; };
+		AC898ED0223B2BFE00702F59 /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
+		AC898ED2223B312700702F59 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		D37B37970C255E529929A1F2 /* Pods_gamingnews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gamingnews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -185,6 +191,7 @@
 			children = (
 				2C497FE0223AEB8F008F76CF /* HomeViewController.swift */,
 				2C497FE1223AEB8F008F76CF /* HomeViewController.xib */,
+				AC898ED2223B312700702F59 /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -212,6 +219,7 @@
 			children = (
 				2CCEBE79223AF78900B6DF2B /* TableViewCells */,
 				2CCEBE7F223AF90900B6DF2B /* ConfigurableCellProtocol.swift */,
+				AC898ED0223B2BFE00702F59 /* ConfigurableCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -229,6 +237,7 @@
 			children = (
 				2CCEBE7B223AF8C300B6DF2B /* NewsTableViewCell.swift */,
 				2CCEBE7C223AF8C300B6DF2B /* NewsTableViewCell.xib */,
+				AC898ECE223B2AAC00702F59 /* NewsCellViewModel.swift */,
 			);
 			path = NewsTableViewCell;
 			sourceTree = "<group>";
@@ -357,11 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-			);
-			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
@@ -421,16 +426,19 @@
 				2CD07FC2223AB7DE00C024AC /* AppDelegate.swift in Sources */,
 				2C497FD2223AEAAA008F76CF /* UIView+Extensions.swift in Sources */,
 				2C497FD4223AEAAA008F76CF /* UITableView+Extensions.swift in Sources */,
+				AC898ED3223B312700702F59 /* HomeViewModel.swift in Sources */,
 				2C497FD6223AEAAA008F76CF /* UICollectionView+Extensions.swift in Sources */,
 				2C497FDA223AEAAA008F76CF /* BaseViewController.swift in Sources */,
 				2C497FD5223AEAAA008F76CF /* UITableViewCell+Extensions.swift in Sources */,
 				2CCEBE72223AF1FB00B6DF2B /* SettingsViewController.swift in Sources */,
 				2C497FD0223AEAAA008F76CF /* Array+Extensions.swift in Sources */,
+				AC898ED1223B2BFE00702F59 /* ConfigurableCell.swift in Sources */,
 				2CCEBE80223AF90900B6DF2B /* ConfigurableCellProtocol.swift in Sources */,
 				2C497FD8223AEAAA008F76CF /* Dialogs.swift in Sources */,
 				2C497FD3223AEAAA008F76CF /* UICollectionViewCell+Extensions.swift in Sources */,
 				2CF3F2A9223AEF570033AEA8 /* MainTabBarController.swift in Sources */,
 				2CCEBE75223AF3E700B6DF2B /* UIColor+BrandColors.swift in Sources */,
+				AC898ECF223B2AAC00702F59 /* NewsCellViewModel.swift in Sources */,
 				2C497FD7223AEAAA008F76CF /* Constants.swift in Sources */,
 				2C497FE2223AEB8F008F76CF /* HomeViewController.swift in Sources */,
 				2CCEBE6E223AF1E700B6DF2B /* FavoritesViewController.swift in Sources */,

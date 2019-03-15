@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import UIKit
 
-protocol ConfigurableCellProtocol {
-    func setupWith(dataSource: Any?, indexPath: IndexPath?, delegate: Any?)
+struct ConfigurableCell {
+    let identifier: String
+    let viewModel: Any
 }
