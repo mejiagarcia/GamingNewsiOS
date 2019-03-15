@@ -27,11 +27,14 @@
                                 <color key="backgroundColor" white="0.70444542249999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r6A-HG-nCj">
-                                <rect key="frame" x="0.0" y="227" width="268" height="51"/>
+                                <rect key="frame" x="0.0" y="217" width="268" height="61"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Label LabelLabel Label LabelLabel Label Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1a-Ws-paC">
-                                        <rect key="frame" x="5" y="5" width="258" height="41"/>
+                                        <rect key="frame" x="10" y="10" width="248" height="41"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="tLe-ss-Eh0"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -39,10 +42,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="K1a-Ws-paC" firstAttribute="top" secondItem="r6A-HG-nCj" secondAttribute="top" constant="5" id="W6S-HB-ENL"/>
-                                    <constraint firstAttribute="bottom" secondItem="K1a-Ws-paC" secondAttribute="bottom" constant="5" id="p9o-3P-JRc"/>
-                                    <constraint firstAttribute="trailing" secondItem="K1a-Ws-paC" secondAttribute="trailing" constant="5" id="tVV-hu-mjb"/>
-                                    <constraint firstItem="K1a-Ws-paC" firstAttribute="leading" secondItem="r6A-HG-nCj" secondAttribute="leading" constant="5" id="xMs-la-Rhd"/>
+                                    <constraint firstItem="K1a-Ws-paC" firstAttribute="top" secondItem="r6A-HG-nCj" secondAttribute="top" constant="10" id="W6S-HB-ENL"/>
+                                    <constraint firstAttribute="bottom" secondItem="K1a-Ws-paC" secondAttribute="bottom" constant="10" id="p9o-3P-JRc"/>
+                                    <constraint firstAttribute="trailing" secondItem="K1a-Ws-paC" secondAttribute="trailing" constant="10" id="tVV-hu-mjb"/>
+                                    <constraint firstItem="K1a-Ws-paC" firstAttribute="leading" secondItem="r6A-HG-nCj" secondAttribute="leading" constant="10" id="xMs-la-Rhd"/>
                                 </constraints>
                             </view>
                         </subviews>

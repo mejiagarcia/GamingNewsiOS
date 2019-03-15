@@ -42,6 +42,10 @@
 		AC898EDA223B66AC00702F59 /* RSSUrls.json in Resources */ = {isa = PBXBuildFile; fileRef = AC898ED9223B66AC00702F59 /* RSSUrls.json */; };
 		AC898EDD223B66E300702F59 /* RSSUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC898EDC223B66E300702F59 /* RSSUrls.swift */; };
 		AC898EDF223B678E00702F59 /* RSSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC898EDE223B678E00702F59 /* RSSManager.swift */; };
+		AC898EE1223B6BAA00702F59 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC898EE0223B6BAA00702F59 /* APIManager.swift */; };
+		AC898EE3223B6BDE00702F59 /* APIManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC898EE2223B6BDE00702F59 /* APIManagerProtocol.swift */; };
+		AC898EE5223B6C0000702F59 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC898EE4223B6C0000702F59 /* Endpoint.swift */; };
+		AC898EE7223B715B00702F59 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC898EE6223B715B00702F59 /* News.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +87,10 @@
 		AC898ED9223B66AC00702F59 /* RSSUrls.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RSSUrls.json; sourceTree = "<group>"; };
 		AC898EDC223B66E300702F59 /* RSSUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSUrls.swift; sourceTree = "<group>"; };
 		AC898EDE223B678E00702F59 /* RSSManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSManager.swift; sourceTree = "<group>"; };
+		AC898EE0223B6BAA00702F59 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		AC898EE2223B6BDE00702F59 /* APIManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManagerProtocol.swift; sourceTree = "<group>"; };
+		AC898EE4223B6C0000702F59 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		AC898EE6223B715B00702F59 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		D37B37970C255E529929A1F2 /* Pods_gamingnews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gamingnews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -291,6 +299,9 @@
 			children = (
 				AC898ED9223B66AC00702F59 /* RSSUrls.json */,
 				AC898EDE223B678E00702F59 /* RSSManager.swift */,
+				AC898EE0223B6BAA00702F59 /* APIManager.swift */,
+				AC898EE2223B6BDE00702F59 /* APIManagerProtocol.swift */,
+				AC898EE4223B6C0000702F59 /* Endpoint.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -299,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				AC898EDC223B66E300702F59 /* RSSUrls.swift */,
+				AC898EE6223B715B00702F59 /* News.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -407,15 +419,21 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-gamingnews/Pods-gamingnews-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CodableAlamofire/CodableAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Localize/Localize.framework",
+				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Localize.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -457,14 +475,18 @@
 				2C497FDA223AEAAA008F76CF /* BaseViewController.swift in Sources */,
 				2C497FD5223AEAAA008F76CF /* UITableViewCell+Extensions.swift in Sources */,
 				2CCEBE72223AF1FB00B6DF2B /* SettingsViewController.swift in Sources */,
+				AC898EE3223B6BDE00702F59 /* APIManagerProtocol.swift in Sources */,
+				AC898EE1223B6BAA00702F59 /* APIManager.swift in Sources */,
 				2C497FD0223AEAAA008F76CF /* Array+Extensions.swift in Sources */,
 				AC898ED1223B2BFE00702F59 /* ConfigurableCell.swift in Sources */,
+				AC898EE5223B6C0000702F59 /* Endpoint.swift in Sources */,
 				2CCEBE80223AF90900B6DF2B /* ConfigurableCellProtocol.swift in Sources */,
 				2C497FD8223AEAAA008F76CF /* Dialogs.swift in Sources */,
 				2C497FD3223AEAAA008F76CF /* UICollectionViewCell+Extensions.swift in Sources */,
 				AC898EDF223B678E00702F59 /* RSSManager.swift in Sources */,
 				2CF3F2A9223AEF570033AEA8 /* MainTabBarController.swift in Sources */,
 				2CCEBE75223AF3E700B6DF2B /* UIColor+BrandColors.swift in Sources */,
+				AC898EE7223B715B00702F59 /* News.swift in Sources */,
 				AC898ECF223B2AAC00702F59 /* NewsCellViewModel.swift in Sources */,
 				2C497FD7223AEAAA008F76CF /* Constants.swift in Sources */,
 				2C497FE2223AEB8F008F76CF /* HomeViewController.swift in Sources */,

@@ -6,6 +6,9 @@ target 'gamingnews' do
   use_frameworks!
 
   # Pods for gamingnews
+  pod 'Alamofire'
+  pod 'CodableAlamofire'
+  pod 'SWXMLHash', '~> 4.7.0'
   pod 'SwiftLint'
   pod 'Hero'
   pod 'Kingfisher'

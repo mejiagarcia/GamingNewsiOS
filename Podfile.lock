@@ -1,28 +1,41 @@
 PODS:
+  - Alamofire (4.8.1)
+  - CodableAlamofire (1.1.0):
+    - Alamofire (~> 4.0)
   - Hero (1.4.0)
   - Kingfisher (4.10.1)
   - Localize (2.1.0)
   - SwiftLint (0.30.1)
+  - SWXMLHash (4.7.6)
 
 DEPENDENCIES:
+  - Alamofire
+  - CodableAlamofire
   - Hero
   - Kingfisher
   - Localize (~> 2.1.0)
   - SwiftLint
+  - SWXMLHash (~> 4.7.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - CodableAlamofire
     - Hero
     - Kingfisher
     - Localize
     - SwiftLint
+    - SWXMLHash
 
 SPEC CHECKSUMS:
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  CodableAlamofire: e2d2edcec7cf413f7862c30c8fa98eded27a83f9
   Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   Localize: f360a343abfac047be5b375c45be1059f5f625f3
   SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
+  SWXMLHash: f6e0933ce74f2626669dc544851bc9fc1941670d
 
-PODFILE CHECKSUM: bcd8685483cd6466de67be90305752648308dd02
+PODFILE CHECKSUM: 3d8650c1f46eb37df056af4dc722026cf400c865
 
 COCOAPODS: 1.5.3
