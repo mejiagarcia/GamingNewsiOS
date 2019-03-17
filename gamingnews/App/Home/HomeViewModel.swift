@@ -45,7 +45,7 @@ class HomeViewModel {
             }
             
             self.dataSource = result.map {
-                let viewModel = NewsCellViewModel(backgroundImageUrl: $0.imageUrl, title: $0.title)
+                let viewModel = NewsCellViewModel(backgroundImageUrl: $0.imageUrl, title: $0.title, websiteUrl: $0.link)
                 
                 return ConfigurableCell(identifier: NewsTableViewCell.getReuseIdentifier(), viewModel: viewModel)
             }

@@ -15,6 +15,7 @@ class APIManager: APIManagerProtocol {
     // MARK: - Properties
     let decoder = JSONDecoder()
     let encoder = JSONEncoder()
+    let rssDecoder = RSSNewsDecoder()
     
     init() {
         decoder.dateDecodingStrategy = .secondsSince1970
@@ -70,27 +71,22 @@ class APIManager: APIManagerProtocol {
                           encoding: JSONEncoding.default,
                           headers: APIManager.getRequestHeaders())
             .validate()
-            .response { dataResponse in
+            .response { [weak self] dataResponse in
                 guard let data = dataResponse.data else {
                     completionHandler(nil, dataResponse.error)
                     
                     return
                 }
                 
-                let keys = News.XMLKeys.self
-                let xml = SWXMLHash.parse(data)
-                let xmlItems = xml[keys.rss][keys.channel][keys.item].all
+                self?.rssDecoder.tryToDecodeWithAllStrategies(xml: SWXMLHash.parse(data))
                 
-                let result: [News] = xmlItems.map {
-                    return News(title: $0[keys.title].element?.text ?? "",
-                                description: $0[keys.description].element?.text ?? "",
-                                link: $0[keys.link].element?.text ?? "",
-                                pubDate: $0[keys.pubDate].element?.text ?? "")
-                }
+                let result = self?.rssDecoder.dataSource ?? []
                 
                 completionHandler(result, dataResponse.error)
             }
     }
+    
+    // MARK: - Static Methods
     
     /**
      Method to get a full-build endpoint ready to use.

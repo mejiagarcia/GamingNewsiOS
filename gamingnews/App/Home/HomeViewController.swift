@@ -85,5 +85,12 @@ extension HomeViewController: UITableViewDataSource {
 
 // MARK: - NewsTableViewCellDelegate
 extension HomeViewController: NewsTableViewCellDelegate {
-    func cellTapped(_ in: NewsTableViewCell, at: IndexPath?) {}
+    func cellTapped(_ in: NewsTableViewCell, at indexPath: IndexPath) {
+        guard let currentViewModel = viewModel.dataSource.safeContains(indexPath.row)?.viewModel as? NewsCellViewModel else {
+            return
+        }
+        
+        let detailVC = NewsDetailViewController(url: currentViewModel.websiteUrl ?? "", title: currentViewModel.title)
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }

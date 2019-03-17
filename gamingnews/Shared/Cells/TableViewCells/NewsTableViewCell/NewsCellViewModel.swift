@@ -13,15 +13,18 @@ struct NewsCellViewModel: NewsTableViewCellDataSource {
     let title: String
     let titleFont: UIFont?
     let titleColor: UIColor?
+    let websiteUrl: String?
     
     init(backgroundImageUrl: String?,
          title: String,
          titleFont: UIFont? = nil,
-         titleColor: UIColor? = nil) {
+         titleColor: UIColor? = nil,
+         websiteUrl: String? = nil) {
         
         self.backgroundImageUrl = backgroundImageUrl
         self.title = title
         self.titleFont = titleFont
         self.titleColor = titleColor
+        self.websiteUrl = websiteUrl
     }
 }

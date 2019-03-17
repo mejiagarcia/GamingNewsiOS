@@ -17,7 +17,7 @@ protocol NewsTableViewCellDataSource {
 }
 
 protocol NewsTableViewCellDelegate: class {
-    func cellTapped(_ in: NewsTableViewCell, at: IndexPath?)
+    func cellTapped(_ in: NewsTableViewCell, at indexPath: IndexPath)
 }
 
 class NewsTableViewCell: UITableViewCell, ConfigurableCellProtocol {
@@ -49,6 +49,9 @@ class NewsTableViewCell: UITableViewCell, ConfigurableCellProtocol {
         guard let dataSource = dataSource as? NewsTableViewCellDataSource else {
             return
         }
+        
+        self.indexPath = indexPath
+        self.delegate = delegate as? NewsTableViewCellDelegate
         
         titleLabel.text = dataSource.title
         titleLabel.font = dataSource.titleFont ?? titleLabel.font

@@ -8,7 +8,14 @@
 
 import Foundation
 
-struct News {
+protocol NewsItemProtocol {
+    var title: String { get }
+    var description: String { get }
+    var link: String { get }
+    var pubDate: String? { get }
+}
+
+struct News: NewsItemProtocol {
     let title: String
     let description: String
     let link: String
