@@ -8,6 +8,10 @@
         "home": "All",
         "favorites": "Favorites",
         "settings": "Settings"
+    },
+    "search": {
+        "results": "Results",
+        "placeholder": "Search"
     }
 }
 

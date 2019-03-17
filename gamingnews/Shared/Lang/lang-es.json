@@ -8,5 +8,9 @@
         "home": "Todos",
         "favorites": "Favoritos",
         "settings": "Configuración"
+    },
+    "search": {
+        "results": "Resultados",
+        "placeholder": "Buscar"
     }
 }

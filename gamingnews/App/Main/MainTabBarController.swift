@@ -54,5 +54,27 @@ class MainTabBarController: UITabBarController {
         ]
         
         selectedIndex = 0
+        
+        //setupNavbarIcons()
+    }
+    
+    /**
+     Method to the icons.
+     **/
+    private func setupNavbarIcons() {
+        let leftButton = UIButton(type: .roundedRect)
+        leftButton.addTarget(self, action: #selector(toggleSearch), for: .touchUpInside)
+        leftButton.tintColor = .white
+        leftButton.setImage(UIImage(named: "ic_search"), for: .normal)
+        leftButton.frame = CGRect(x: 0, y: 0, width: 22, height: 15)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: leftButton)
+    }
+    
+    /**
+     Method to toggle the searchbar.
+     **/
+    @objc private func toggleSearch() {
+        NotificationCenter.default.post(name: Notification.Name(Constants.NotificationCenter.toggleSearch), object: nil)
     }
 }

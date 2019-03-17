@@ -33,4 +33,8 @@ struct Constants {
         static let contentTypeName = "Content-Type"
         static let contentType = "application/json; charset=utf-8"
     }
+    
+    struct NotificationCenter {
+        static let toggleSearch = "toggleSearch"
+    }
 }
