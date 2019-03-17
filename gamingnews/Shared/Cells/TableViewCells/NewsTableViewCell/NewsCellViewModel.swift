@@ -14,17 +14,20 @@ struct NewsCellViewModel: NewsTableViewCellDataSource {
     let titleFont: UIFont?
     let titleColor: UIColor?
     let websiteUrl: String?
+    let createdAt: Date
     
     init(backgroundImageUrl: String?,
          title: String,
          titleFont: UIFont? = nil,
          titleColor: UIColor? = nil,
-         websiteUrl: String? = nil) {
+         websiteUrl: String? = nil,
+         createdAt: Date) {
         
         self.backgroundImageUrl = backgroundImageUrl
         self.title = title
         self.titleFont = titleFont
         self.titleColor = titleColor
         self.websiteUrl = websiteUrl
+        self.createdAt = createdAt
     }
 }

@@ -24,14 +24,18 @@ class HomeViewModel {
     /**
      Method to fetch the data from the server.
      */
-    func fetchData() {
+    func fetchData(_ index: Int = 0) {
         delegate?.performLoading(isLoadig: true)
         
-        guard let allUrl = RSSManager.shared.urls.filter({ $0.language == RSSUrlsLang.spanish }).first?.all.first else {
+        guard let currentUrl = RSSManager.shared.urls.filter({ $0.language == RSSUrlsLang.spanish }).first?.all.safeContains(index) else {
+            sortDataSourceByDate()
+            delegate?.performLoading(isLoadig: false)
+            delegate?.requestLoaded()
+            
             return
         }
         
-        apiManager.getNewsFromRSS(with: allUrl) { [weak self] (result: [News]?, error) in
+        apiManager.getNewsFromRSS(with: currentUrl) { [weak self] (result: [News]?, error) in
             guard let self = self else {
                 return
             }
@@ -44,14 +48,24 @@ class HomeViewModel {
                 return
             }
             
-            self.dataSource = result.map {
-                let viewModel = NewsCellViewModel(backgroundImageUrl: $0.imageUrl, title: $0.title, websiteUrl: $0.link)
+            result.forEach {
+                let viewModel = NewsCellViewModel(backgroundImageUrl: $0.imageUrl, title: $0.title, websiteUrl: $0.link, createdAt: $0.createdAt)
                 
-                return ConfigurableCell(identifier: NewsTableViewCell.getReuseIdentifier(), viewModel: viewModel)
+                self.dataSource.append(ConfigurableCell(identifier: NewsTableViewCell.getReuseIdentifier(), viewModel: viewModel))
             }
             
-            self.delegate?.performLoading(isLoadig: false)
-            self.delegate?.requestLoaded()
+            self.fetchData(index + 1)
         }
+    }
+    
+    // MARK: - Private Methods
+    
+    /**
+     Method sort the given dataSource by date.
+     */
+    private func sortDataSourceByDate() {
+        dataSource = dataSource.sorted(by: { (item1, item2) -> Bool in
+            return (item1.viewModel as? NewsCellViewModel)?.createdAt ?? Date() > (item2.viewModel as? NewsCellViewModel)?.createdAt ?? Date()
+        })
     }
 }

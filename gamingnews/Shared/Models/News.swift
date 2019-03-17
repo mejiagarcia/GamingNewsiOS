@@ -21,6 +21,16 @@ struct News: NewsItemProtocol {
     let link: String
     let pubDate: String?
     
+    var createdAt: Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
+        
+        let finalDate = dateFormatter.date(from: pubDate ?? "")
+        
+        return finalDate ?? Date()
+    }
+    
     var fullDescription: String {
         return description.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
     }

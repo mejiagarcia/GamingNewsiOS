@@ -53,8 +53,14 @@ class RSSNewsDecoder {
         var result = [News]()
         
         xmlItems.forEach {
-            let model = News(title: $0[keys.title].element?.text ?? "",
-                             description: $0[keys.description].element?.text ?? "",
+            guard
+                let title = $0[keys.title].element?.text,
+                let desc = $0[keys.description].element?.text else {
+                    return
+            }
+            
+            let model = News(title: title,
+                             description: desc,
                              link: $0[keys.link].element?.text ?? "",
                              pubDate: $0[keys.pubDate].element?.text ?? "")
             
