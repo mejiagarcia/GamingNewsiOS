@@ -58,6 +58,7 @@ class HomeViewController: BaseViewController {
         searchbar.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 47)
         searchbar.delegate = self
         
+        tableView.keyboardDismissMode = .interactive
         tableView.tableHeaderView = searchbar
         tableView.dataSource = self
         tableView.delegate = self
