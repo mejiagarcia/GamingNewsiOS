@@ -29,7 +29,8 @@ extension UITableView {
         
         // Xib cells
         registerCells([
-            NewsTableViewCell.self
+            NewsTableViewCell.self,
+            FiltersContainerTableViewCell.self
         ])
     }
 }

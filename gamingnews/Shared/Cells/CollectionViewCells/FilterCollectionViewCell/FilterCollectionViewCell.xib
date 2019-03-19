@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="FilterCollectionViewCell" customModule="gamingnews" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="262" height="70"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="262" height="70"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NbU-np-AWz">
+                        <rect key="frame" x="0.0" y="0.0" width="262" height="70"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96C-5d-Dr8">
+                                <rect key="frame" x="40" y="10" width="212" height="50"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_ps4" translatesAutoresizingMaskIntoConstraints="NO" id="JjL-Wr-s1H">
+                                <rect key="frame" x="10" y="25" width="20" height="20"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="b9h-Vu-17V"/>
+                                    <constraint firstAttribute="width" constant="20" id="eKZ-hz-kao"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95294117649999999" green="0.0039215686269999999" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="96C-5d-Dr8" firstAttribute="top" secondItem="NbU-np-AWz" secondAttribute="top" constant="10" id="3A2-2N-yUS"/>
+                            <constraint firstAttribute="bottom" secondItem="96C-5d-Dr8" secondAttribute="bottom" constant="10" id="O7o-0p-WwN"/>
+                            <constraint firstItem="96C-5d-Dr8" firstAttribute="leading" secondItem="JjL-Wr-s1H" secondAttribute="trailing" constant="10" id="Olb-ei-xhd"/>
+                            <constraint firstItem="JjL-Wr-s1H" firstAttribute="leading" secondItem="NbU-np-AWz" secondAttribute="leading" constant="10" id="ifL-Mg-v4a"/>
+                            <constraint firstItem="JjL-Wr-s1H" firstAttribute="centerY" secondItem="NbU-np-AWz" secondAttribute="centerY" id="nQJ-aJ-w54"/>
+                            <constraint firstAttribute="trailing" secondItem="96C-5d-Dr8" secondAttribute="trailing" constant="10" id="vqz-GU-KfK"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="NbU-np-AWz" secondAttribute="trailing" id="0l1-75-6PU"/>
+                <constraint firstItem="NbU-np-AWz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="1TI-nE-lDw"/>
+                <constraint firstItem="NbU-np-AWz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="34b-Z3-JFH"/>
+                <constraint firstAttribute="bottom" secondItem="NbU-np-AWz" secondAttribute="bottom" id="7gO-kz-VNA"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="262" height="70"/>
+            <connections>
+                <outlet property="cardView" destination="NbU-np-AWz" id="b55-zp-jgX"/>
+                <outlet property="iconImageView" destination="JjL-Wr-s1H" id="oNe-7N-0OQ"/>
+                <outlet property="nameLabel" destination="96C-5d-Dr8" id="5BP-62-VG6"/>
+            </connections>
+            <point key="canvasLocation" x="222.40000000000001" y="57.571214392803604"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ic_ps4" width="384" height="384"/>
+    </resources>
+</document>

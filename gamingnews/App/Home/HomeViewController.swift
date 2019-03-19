@@ -38,7 +38,7 @@ class HomeViewController: BaseViewController {
         
         dismissKeyboard()
         
-        guard viewModel.dataSource.isEmpty else {
+        guard viewModel.dataSource.count > 0 else {
             return
         }
         
@@ -126,10 +126,20 @@ extension HomeViewController: UISearchBarDelegate {
 // MARK: - UITableViewDelegate
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.bounds.width - 10
+        let currentCellIdentifier = viewModel.dataSource.safeContains(indexPath.row)?.identifier
+        
+        if currentCellIdentifier == NewsTableViewCell.getReuseIdentifier() {
+            return tableView.bounds.width - 10
+        }
+        
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard section == 1 else {
+            return nil
+        }
+        
         return "\(viewModel.dataSource.count) \("search.results".localized)"
     }
 }

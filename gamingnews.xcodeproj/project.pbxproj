@@ -22,6 +22,11 @@
 		2C497FDB223AEAAA008F76CF /* BaseViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C497FCC223AEAAA008F76CF /* BaseViewModelProtocol.swift */; };
 		2C497FE2223AEB8F008F76CF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C497FE0223AEB8F008F76CF /* HomeViewController.swift */; };
 		2C497FE3223AEB8F008F76CF /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C497FE1223AEB8F008F76CF /* HomeViewController.xib */; };
+		2C67C517224148DD005AA143 /* FiltersContainerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C67C515224148DD005AA143 /* FiltersContainerTableViewCell.swift */; };
+		2C67C518224148DD005AA143 /* FiltersContainerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C67C516224148DD005AA143 /* FiltersContainerTableViewCell.xib */; };
+		2C67C51D22414C36005AA143 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C67C51B22414C36005AA143 /* FilterCollectionViewCell.swift */; };
+		2C67C51E22414C36005AA143 /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C67C51C22414C36005AA143 /* FilterCollectionViewCell.xib */; };
+		2C67C52022414EA5005AA143 /* FilterCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C67C51F22414EA5005AA143 /* FilterCellViewModel.swift */; };
 		2CCEBE6E223AF1E700B6DF2B /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCEBE6C223AF1E700B6DF2B /* FavoritesViewController.swift */; };
 		2CCEBE6F223AF1E700B6DF2B /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CCEBE6D223AF1E700B6DF2B /* FavoritesViewController.xib */; };
 		2CCEBE72223AF1FB00B6DF2B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCEBE70223AF1FB00B6DF2B /* SettingsViewController.swift */; };
@@ -67,6 +72,11 @@
 		2C497FCC223AEAAA008F76CF /* BaseViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModelProtocol.swift; sourceTree = "<group>"; };
 		2C497FE0223AEB8F008F76CF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2C497FE1223AEB8F008F76CF /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		2C67C515224148DD005AA143 /* FiltersContainerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersContainerTableViewCell.swift; sourceTree = "<group>"; };
+		2C67C516224148DD005AA143 /* FiltersContainerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FiltersContainerTableViewCell.xib; sourceTree = "<group>"; };
+		2C67C51B22414C36005AA143 /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
+		2C67C51C22414C36005AA143 /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
+		2C67C51F22414EA5005AA143 /* FilterCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCellViewModel.swift; sourceTree = "<group>"; };
 		2CCEBE6C223AF1E700B6DF2B /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		2CCEBE6D223AF1E700B6DF2B /* FavoritesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesViewController.xib; sourceTree = "<group>"; };
 		2CCEBE70223AF1FB00B6DF2B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +229,33 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		2C67C514224148B7005AA143 /* FiltersContainerTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				2C67C515224148DD005AA143 /* FiltersContainerTableViewCell.swift */,
+				2C67C516224148DD005AA143 /* FiltersContainerTableViewCell.xib */,
+			);
+			path = FiltersContainerTableViewCell;
+			sourceTree = "<group>";
+		};
+		2C67C51922414C13005AA143 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				2C67C51A22414C1A005AA143 /* FilterCollectionViewCell */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		2C67C51A22414C1A005AA143 /* FilterCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				2C67C51B22414C36005AA143 /* FilterCollectionViewCell.swift */,
+				2C67C51C22414C36005AA143 /* FilterCollectionViewCell.xib */,
+				2C67C51F22414EA5005AA143 /* FilterCellViewModel.swift */,
+			);
+			path = FilterCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		2CCEBE6A223AF1C700B6DF2B /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,6 +277,7 @@
 		2CCEBE78223AF78200B6DF2B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				2C67C51922414C13005AA143 /* CollectionViewCells */,
 				2CCEBE79223AF78900B6DF2B /* TableViewCells */,
 				2CCEBE7F223AF90900B6DF2B /* ConfigurableCellProtocol.swift */,
 				AC898ED0223B2BFE00702F59 /* ConfigurableCell.swift */,
@@ -250,6 +288,7 @@
 		2CCEBE79223AF78900B6DF2B /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				2C67C514224148B7005AA143 /* FiltersContainerTableViewCell */,
 				2CCEBE7A223AF8B400B6DF2B /* NewsTableViewCell */,
 			);
 			path = TableViewCells;
@@ -404,12 +443,14 @@
 				2CD07FCC223AB7E000C024AC /* LaunchScreen.storyboard in Resources */,
 				2CD07FC9223AB7E000C024AC /* Assets.xcassets in Resources */,
 				AC898EDA223B66AC00702F59 /* RSSUrls.json in Resources */,
+				2C67C518224148DD005AA143 /* FiltersContainerTableViewCell.xib in Resources */,
 				2C497FE3223AEB8F008F76CF /* HomeViewController.xib in Resources */,
 				2C497FCE223AEAAA008F76CF /* lang-en.json in Resources */,
 				2CCEBE6F223AF1E700B6DF2B /* FavoritesViewController.xib in Resources */,
 				AC898EEC223B7CCD00702F59 /* NewsDetailViewController.xib in Resources */,
 				2CCEBE73223AF1FB00B6DF2B /* SettingsViewController.xib in Resources */,
 				2CCEBE7E223AF8C300B6DF2B /* NewsTableViewCell.xib in Resources */,
+				2C67C51E22414C36005AA143 /* FilterCollectionViewCell.xib in Resources */,
 				2C497FCF223AEAAA008F76CF /* lang-es.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,7 +528,9 @@
 				2C497FD1223AEAAA008F76CF /* UIImageView+Extensions.swift in Sources */,
 				2CD07FC2223AB7DE00C024AC /* AppDelegate.swift in Sources */,
 				2C497FD2223AEAAA008F76CF /* UIView+Extensions.swift in Sources */,
+				2C67C51D22414C36005AA143 /* FilterCollectionViewCell.swift in Sources */,
 				2C497FD4223AEAAA008F76CF /* UITableView+Extensions.swift in Sources */,
+				2C67C517224148DD005AA143 /* FiltersContainerTableViewCell.swift in Sources */,
 				AC898ED3223B312700702F59 /* HomeViewModel.swift in Sources */,
 				2C497FD6223AEAAA008F76CF /* UICollectionView+Extensions.swift in Sources */,
 				2C497FDA223AEAAA008F76CF /* BaseViewController.swift in Sources */,
@@ -507,6 +550,7 @@
 				AC898EE7223B715B00702F59 /* News.swift in Sources */,
 				AC21D126223EB07700A10AB8 /* RSSNewsDecoder.swift in Sources */,
 				AC898ECF223B2AAC00702F59 /* NewsCellViewModel.swift in Sources */,
+				2C67C52022414EA5005AA143 /* FilterCellViewModel.swift in Sources */,
 				2C497FD7223AEAAA008F76CF /* Constants.swift in Sources */,
 				AC898EEB223B7CCD00702F59 /* NewsDetailViewController.swift in Sources */,
 				2C497FE2223AEB8F008F76CF /* HomeViewController.swift in Sources */,
@@ -656,7 +700,10 @@
 				DEVELOPMENT_TEAM = J75TA62D6V;
 				INFOPLIST_FILE = "$(SRCROOT)/gamingnews/Shared/Config/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mejiagarcia.gamingnews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -673,7 +720,10 @@
 				DEVELOPMENT_TEAM = J75TA62D6V;
 				INFOPLIST_FILE = "$(SRCROOT)/gamingnews/Shared/Config/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mejiagarcia.gamingnews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

@@ -4,8 +4,17 @@
         "title": "Error",
         "genericMessage": "Ocurrió un error inesperado, intenta nuevamente."
     },
+    "home": {
+        "filters": "Categorías",
+        "list": {
+            "ps4": "PS4",
+            "xbox": "Xbox One",
+            "nintendo": "Nintendo",
+            "desktop": "Desktop"
+        }
+    },
     "tabs": {
-        "home": "Todos",
+        "home": "Todas las Noticias",
         "favorites": "Favoritos",
         "settings": "Configuración"
     },
