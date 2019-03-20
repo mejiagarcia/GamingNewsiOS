@@ -38,7 +38,7 @@ class HomeViewController: BaseViewController {
         
         dismissKeyboard()
         
-        guard viewModel.dataSource.count > 0 else {
+        guard !viewModel.isDataLoaded else {
             return
         }
         

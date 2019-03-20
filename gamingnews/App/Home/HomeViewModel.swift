@@ -15,6 +15,7 @@ class HomeViewModel {
     private(set) var dataSource = [ConfigurableCell]()
     private var originalDataSource = [ConfigurableCell]()
     weak var delegate: BaseViewModelProtocol?
+    private(set) var isDataLoaded = false
     
     // MARK: - Life Cycle
     init(apiManager: APIManagerProtocol = APIManager()) {
@@ -57,6 +58,8 @@ class HomeViewModel {
             sortDataSourceByDate()
             delegate?.performLoading(isLoadig: false)
             delegate?.requestLoaded()
+            
+            isDataLoaded = true
             
             return
         }

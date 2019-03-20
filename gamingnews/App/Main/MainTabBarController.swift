@@ -43,8 +43,8 @@ class MainTabBarController: UITabBarController {
         
         // SettingsViewController
         let settingsViewController = SettingsViewController()
-        settingsViewController.tabBarItem = UITabBarItem(title: "tabs.settings".localized,
-                                                         image: UIImage(named: "ic_settings"),
+        settingsViewController.tabBarItem = UITabBarItem(title: "tabs.menu".localized,
+                                                         image: UIImage(named: "ic_menu"),
                                                          tag: 2)
         
         viewControllers = [
@@ -55,7 +55,7 @@ class MainTabBarController: UITabBarController {
         
         selectedIndex = 0
         
-        //setupNavbarIcons()
+        setupNavbarIcons()
     }
     
     /**
@@ -65,7 +65,7 @@ class MainTabBarController: UITabBarController {
         let leftButton = UIButton(type: .roundedRect)
         leftButton.addTarget(self, action: #selector(toggleSearch), for: .touchUpInside)
         leftButton.tintColor = .white
-        leftButton.setImage(UIImage(named: "ic_search"), for: .normal)
+        leftButton.setImage(UIImage(named: "ic_info"), for: .normal)
         leftButton.frame = CGRect(x: 0, y: 0, width: 22, height: 15)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: leftButton)

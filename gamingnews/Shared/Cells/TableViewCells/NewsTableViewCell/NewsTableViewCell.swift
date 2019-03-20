@@ -68,7 +68,7 @@ class NewsTableViewCell: UITableViewCell, ConfigurableCellProtocol {
      Method to setup the UI.
      **/
     private func setupUI() {
-        cardView.layer.cornerRadius = 6
+        cardView.layer.cornerRadius = 12
         cardView.clipsToBounds = true
         
         titleLabel.text = nil
