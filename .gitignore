@@ -38,4 +38,6 @@ DerivedData/
 Pods
 /Pods
 
+GoogleService-Info.plist
+
 # End of https://www.gitignore.io/api/xcode
