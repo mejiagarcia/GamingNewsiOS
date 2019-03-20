@@ -5,9 +5,6 @@ PODS:
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - Fabric (1.9.0)
-  - Firebase/AdMob (5.19.0):
-    - Firebase/Core
-    - Google-Mobile-Ads-SDK (~> 7.41)
   - Firebase/Core (5.19.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.8.0)
@@ -41,8 +38,6 @@ PODS:
     - GoogleUtilities/Reachability (~> 5.3)
     - GoogleUtilities/UserDefaults (~> 5.3)
     - Protobuf (~> 3.1)
-  - Google-Mobile-Ads-SDK (7.42.0):
-    - GoogleAppMeasurement (~> 5.7)
   - GoogleAppMeasurement (5.8.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
@@ -84,7 +79,6 @@ DEPENDENCIES:
   - CodableAlamofire
   - Crashlytics (~> 3.12.0)
   - Fabric (~> 1.9.0)
-  - Firebase/AdMob
   - Firebase/Core
   - Firebase/Messaging
   - Hero
@@ -105,7 +99,6 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseInstanceID
     - FirebaseMessaging
-    - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleUtilities
     - Hero
@@ -127,7 +120,6 @@ SPEC CHECKSUMS:
   FirebaseCore: 22a79a961c3951ef2f77b67bfbc99e454247b319
   FirebaseInstanceID: cf488df2f4b79782f0e430b04a0e17c0aa7979b2
   FirebaseMessaging: 2d53d08d752fbe63ce0820428d70be5ab87c11fb
-  Google-Mobile-Ads-SDK: c7bec408202526ec4e9ccd025c00f9f30e9f8807
   GoogleAppMeasurement: 1624046ab1bcc5e170061a56ef5679000b079c8e
   GoogleUtilities: 6481e6318c5fcabaaa8513ef8120f329055d7c10
   Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
@@ -138,6 +130,6 @@ SPEC CHECKSUMS:
   SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
   SWXMLHash: f6e0933ce74f2626669dc544851bc9fc1941670d
 
-PODFILE CHECKSUM: 42617f4fcc2ad2e77cfc67eb7afc858855ebdd0c
+PODFILE CHECKSUM: be654122142aa4e580a299113ebabb99f1c2f83d
 
 COCOAPODS: 1.5.3

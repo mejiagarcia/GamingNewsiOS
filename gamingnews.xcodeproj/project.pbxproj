@@ -79,6 +79,7 @@
 		2C67C51C22414C36005AA143 /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
 		2C67C51F22414EA5005AA143 /* FilterCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCellViewModel.swift; sourceTree = "<group>"; };
 		2CBABFF12242D09100C5438B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2CBABFF32242DF4600C5438B /* gamingnews.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gamingnews.entitlements; sourceTree = "<group>"; };
 		2CCEBE6C223AF1E700B6DF2B /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		2CCEBE6D223AF1E700B6DF2B /* FavoritesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesViewController.xib; sourceTree = "<group>"; };
 		2CCEBE70223AF1FB00B6DF2B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -328,6 +329,7 @@
 		2CD07FC0223AB7DE00C024AC /* gamingnews */ = {
 			isa = PBXGroup;
 			children = (
+				2CBABFF32242DF4600C5438B /* gamingnews.entitlements */,
 				2C497FDE223AEB79008F76CF /* App */,
 				2C497FB1223ABE8C008F76CF /* Shared */,
 			);
@@ -417,6 +419,11 @@
 				TargetAttributes = {
 					2CD07FBD223AB7DE00C024AC = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -706,6 +713,7 @@
 			baseConfigurationReference = A10E3A335BDA3E1DEE5D8E5C /* Pods-gamingnews.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = gamingnews/gamingnews.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J75TA62D6V;
 				INFOPLIST_FILE = "$(SRCROOT)/gamingnews/Shared/Config/Info.plist";
@@ -726,6 +734,7 @@
 			baseConfigurationReference = 7F7818FFC41C0F0F80F39F0D /* Pods-gamingnews.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = gamingnews/gamingnews.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J75TA62D6V;
 				INFOPLIST_FILE = "$(SRCROOT)/gamingnews/Shared/Config/Info.plist";
