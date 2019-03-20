@@ -27,6 +27,7 @@
 		2C67C51D22414C36005AA143 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C67C51B22414C36005AA143 /* FilterCollectionViewCell.swift */; };
 		2C67C51E22414C36005AA143 /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C67C51C22414C36005AA143 /* FilterCollectionViewCell.xib */; };
 		2C67C52022414EA5005AA143 /* FilterCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C67C51F22414EA5005AA143 /* FilterCellViewModel.swift */; };
+		2CBABFF22242D09100C5438B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2CBABFF12242D09100C5438B /* GoogleService-Info.plist */; };
 		2CCEBE6E223AF1E700B6DF2B /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCEBE6C223AF1E700B6DF2B /* FavoritesViewController.swift */; };
 		2CCEBE6F223AF1E700B6DF2B /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CCEBE6D223AF1E700B6DF2B /* FavoritesViewController.xib */; };
 		2CCEBE72223AF1FB00B6DF2B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCEBE70223AF1FB00B6DF2B /* SettingsViewController.swift */; };
@@ -77,6 +78,7 @@
 		2C67C51B22414C36005AA143 /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C67C51C22414C36005AA143 /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
 		2C67C51F22414EA5005AA143 /* FilterCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCellViewModel.swift; sourceTree = "<group>"; };
+		2CBABFF12242D09100C5438B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2CCEBE6C223AF1E700B6DF2B /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		2CCEBE6D223AF1E700B6DF2B /* FavoritesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesViewController.xib; sourceTree = "<group>"; };
 		2CCEBE70223AF1FB00B6DF2B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 		2C497FB2223ABE95008F76CF /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				2CBABFF12242D09100C5438B /* GoogleService-Info.plist */,
 				2CD07FC1223AB7DE00C024AC /* AppDelegate.swift */,
 				2CD07FCD223AB7E000C024AC /* Info.plist */,
 			);
@@ -440,6 +443,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CBABFF22242D09100C5438B /* GoogleService-Info.plist in Resources */,
 				2CD07FCC223AB7E000C024AC /* LaunchScreen.storyboard in Resources */,
 				2CD07FC9223AB7E000C024AC /* Assets.xcassets in Resources */,
 				AC898EDA223B66AC00702F59 /* RSSUrls.json in Resources */,
@@ -480,19 +484,25 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-gamingnews/Pods-gamingnews-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CodableAlamofire/CodableAlamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Localize/Localize.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableAlamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Localize.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

@@ -8,6 +8,7 @@
 
 import UIKit
 import Localize
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         setupLang()
+        setupFirebase()
         setupInitialVC()
         
         return true
@@ -40,5 +42,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         localize.update(provider: .json)
         localize.update(fileName: "lang")
         localize.update(defaultLanguage: Constants.General.Lang.english)
+    }
+    
+    /**
+     Method to setup Firebase.
+     **/
+    private func setupFirebase() {
+        FirebaseApp.configure()
     }
 }
