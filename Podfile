@@ -18,6 +18,7 @@ target 'gamingnews' do
   pod 'Fabric', '~> 1.9.0'
   pod 'Crashlytics', '~> 3.12.0'
   pod 'Disk', '~> 0.5.0'
+  pod 'lottie-ios'
   
   target 'gamingnewsTests' do
       inherit! :search_paths

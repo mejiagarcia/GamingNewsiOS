@@ -66,6 +66,7 @@ PODS:
   - Hero (1.4.0)
   - Kingfisher (4.10.1)
   - Localize (2.1.0)
+  - lottie-ios (3.0.3)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -86,6 +87,7 @@ DEPENDENCIES:
   - Hero
   - Kingfisher
   - Localize (~> 2.1.0)
+  - lottie-ios
   - SwiftLint
   - SWXMLHash (~> 4.7.0)
 
@@ -107,6 +109,7 @@ SPEC REPOS:
     - Hero
     - Kingfisher
     - Localize
+    - lottie-ios
     - nanopb
     - Protobuf
     - SwiftLint
@@ -129,11 +132,12 @@ SPEC CHECKSUMS:
   Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   Localize: f360a343abfac047be5b375c45be1059f5f625f3
+  lottie-ios: 06e0b54aab85ba128e332687d7f4ac4861a7a7ae
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
   SWXMLHash: f6e0933ce74f2626669dc544851bc9fc1941670d
 
-PODFILE CHECKSUM: b80b8b42f9707e0e3717c2ca7ab7a26c90173910
+PODFILE CHECKSUM: cb61865a478534657ea692f87741f17a253b1b2c
 
 COCOAPODS: 1.5.3

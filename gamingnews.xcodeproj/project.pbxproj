@@ -57,6 +57,8 @@
 		AC898EE7223B715B00702F59 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC898EE6223B715B00702F59 /* News.swift */; };
 		AC898EEB223B7CCD00702F59 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC898EE9223B7CCD00702F59 /* NewsDetailViewController.swift */; };
 		AC898EEC223B7CCD00702F59 /* NewsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC898EEA223B7CCD00702F59 /* NewsDetailViewController.xib */; };
+		ACCB54492256641B0076A9AC /* detail-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = ACCB54482256641B0076A9AC /* detail-animation.json */; };
+		ACCB544B225664330076A9AC /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCB544A225664330076A9AC /* Animations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +130,8 @@
 		AC898EE6223B715B00702F59 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		AC898EE9223B7CCD00702F59 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		AC898EEA223B7CCD00702F59 /* NewsDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsDetailViewController.xib; sourceTree = "<group>"; };
+		ACCB54482256641B0076A9AC /* detail-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "detail-animation.json"; sourceTree = "<group>"; };
+		ACCB544A225664330076A9AC /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		D37B37970C255E529929A1F2 /* Pods_gamingnews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gamingnews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -165,6 +169,7 @@
 		2C497FB1223ABE8C008F76CF /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				ACCB5447225664120076A9AC /* Animations */,
 				AC51CBAD225652A2000E516B /* Managers */,
 				AC898EDB223B66D900702F59 /* Models */,
 				AC898ED4223B666700702F59 /* API */,
@@ -423,6 +428,15 @@
 			path = NewsDetail;
 			sourceTree = "<group>";
 		};
+		ACCB5447225664120076A9AC /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				ACCB54482256641B0076A9AC /* detail-animation.json */,
+				ACCB544A225664330076A9AC /* Animations.swift */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 		C00F5B65DDC870B276067A56 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -528,6 +542,7 @@
 				2CD07FC9223AB7E000C024AC /* Assets.xcassets in Resources */,
 				AC898EDA223B66AC00702F59 /* RSSUrls.json in Resources */,
 				2C67C518224148DD005AA143 /* FiltersContainerTableViewCell.xib in Resources */,
+				ACCB54492256641B0076A9AC /* detail-animation.json in Resources */,
 				2C497FE3223AEB8F008F76CF /* HomeViewController.xib in Resources */,
 				2C497FCE223AEAAA008F76CF /* lang-en.json in Resources */,
 				2CCEBE6F223AF1E700B6DF2B /* FavoritesViewController.xib in Resources */,
@@ -598,6 +613,7 @@
 				"${BUILT_PRODUCTS_DIR}/Localize/Localize.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -611,6 +627,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Localize.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -667,6 +684,7 @@
 				2C497FD2223AEAAA008F76CF /* UIView+Extensions.swift in Sources */,
 				2C67C51D22414C36005AA143 /* FilterCollectionViewCell.swift in Sources */,
 				2C497FD4223AEAAA008F76CF /* UITableView+Extensions.swift in Sources */,
+				ACCB544B225664330076A9AC /* Animations.swift in Sources */,
 				2C67C517224148DD005AA143 /* FiltersContainerTableViewCell.swift in Sources */,
 				AC898ED3223B312700702F59 /* HomeViewModel.swift in Sources */,
 				2C497FD6223AEAAA008F76CF /* UICollectionView+Extensions.swift in Sources */,
@@ -854,7 +872,10 @@
 				DEVELOPMENT_TEAM = J75TA62D6V;
 				INFOPLIST_FILE = "$(SRCROOT)/gamingnews/Shared/Config/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mejiagarcia.gamingnews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -872,7 +893,10 @@
 				DEVELOPMENT_TEAM = J75TA62D6V;
 				INFOPLIST_FILE = "$(SRCROOT)/gamingnews/Shared/Config/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mejiagarcia.gamingnews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -888,11 +912,18 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J75TA62D6V;
 				INFOPLIST_FILE = gamingnewsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.carlosmejia.gamingnewsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				"SYSTEM_HEADER_SEARCH_PATHS[arch=*]" = "$(inherited) ${PODS_ROOT}/Firebase/Core/Sources";
+				"SYSTEM_HEADER_SEARCH_PATHS[arch=*]" = (
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+				);
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/gamingnews.app/gamingnews";
 			};
@@ -906,11 +937,18 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J75TA62D6V;
 				INFOPLIST_FILE = gamingnewsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.carlosmejia.gamingnewsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				"SYSTEM_HEADER_SEARCH_PATHS[arch=*]" = "$(inherited) ${PODS_ROOT}/Firebase/Core/Sources";
+				"SYSTEM_HEADER_SEARCH_PATHS[arch=*]" = (
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+				);
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/gamingnews.app/gamingnews";
 			};
