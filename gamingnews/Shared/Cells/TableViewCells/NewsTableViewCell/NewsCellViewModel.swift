@@ -11,6 +11,7 @@ import UIKit
 struct NewsCellViewModel: NewsTableViewCellDataSource {
     let backgroundImageUrl: String?
     let title: String
+    let desc: String?
     let titleFont: UIFont?
     let titleColor: UIColor?
     let websiteUrl: String?
@@ -18,6 +19,7 @@ struct NewsCellViewModel: NewsTableViewCellDataSource {
     
     init(backgroundImageUrl: String?,
          title: String,
+         desc: String? = nil,
          titleFont: UIFont? = nil,
          titleColor: UIColor? = nil,
          websiteUrl: String? = nil,
@@ -25,6 +27,7 @@ struct NewsCellViewModel: NewsTableViewCellDataSource {
         
         self.backgroundImageUrl = backgroundImageUrl
         self.title = title
+        self.desc = desc
         self.titleFont = titleFont
         self.titleColor = titleColor
         self.websiteUrl = websiteUrl

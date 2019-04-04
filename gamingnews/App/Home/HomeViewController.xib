@@ -12,7 +12,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="gamingnews" customModuleProvider="target">
             <connections>
-                <outlet property="activityIndicator" destination="9cM-7M-e4x" id="Z2V-4l-XEQ"/>
                 <outlet property="tableView" destination="t7F-zo-jK9" id="4qV-EA-955"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -26,19 +25,13 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="9cM-7M-e4x">
-                    <rect key="frame" x="177.66666666666666" y="144" width="20" height="20"/>
-                    <color key="color" red="0.95294117649999999" green="0.003683094867" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="9cM-7M-e4x" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="3Y7-5n-JjN"/>
                 <constraint firstAttribute="trailing" secondItem="t7F-zo-jK9" secondAttribute="trailing" id="3w8-Jo-mde"/>
                 <constraint firstItem="t7F-zo-jK9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="EiU-ZZ-faa"/>
                 <constraint firstItem="t7F-zo-jK9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="P1x-Rn-OLu"/>
                 <constraint firstAttribute="bottom" secondItem="t7F-zo-jK9" secondAttribute="bottom" id="QRh-sa-Vya"/>
-                <constraint firstItem="9cM-7M-e4x" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="wDV-f8-bXJ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="140" y="154.43349753694582"/>

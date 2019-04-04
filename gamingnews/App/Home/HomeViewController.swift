@@ -11,7 +11,6 @@ import UIKit
 class HomeViewController: BaseViewController {
     // MARK: - UI References
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var searchbar: UISearchBar = {
         let searchbar = UISearchBar()
@@ -171,7 +170,11 @@ extension HomeViewController: NewsTableViewCellDelegate {
             return
         }
         
-        let configViewModel = NewsDetailViewModel(webUrl: currentViewModel.websiteUrl ?? "", customTitle: currentViewModel.title)
+        let configViewModel = NewsDetailViewModel(title: currentViewModel.title,
+                                                  description: currentViewModel.desc ?? "",
+                                                  link: currentViewModel.websiteUrl ?? "",
+                                                  pubDate: nil)
+        
         let detailVC = NewsDetailViewController(viewModel: configViewModel)
         
         navigationController?.pushViewController(detailVC, animated: true)

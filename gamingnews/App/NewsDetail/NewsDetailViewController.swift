@@ -46,7 +46,7 @@ class NewsDetailViewController: BaseViewController {
      Method to setup the UI.
      */
     private func setupUI() {
-        title = viewModel.customTitle
+        title = viewModel.currentItem.title
         webview.delegate = self
         
         startLoadingAnimation()
@@ -76,7 +76,7 @@ class NewsDetailViewController: BaseViewController {
      Method to load the URL requested in the current WebView.
      */
     private func loadUrl() {
-        guard let url = URL(string: viewModel.webUrl) else {
+        guard let url = URL(string: viewModel.currentItem.link) else {
             return
         }
         

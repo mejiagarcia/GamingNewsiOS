@@ -11,17 +11,11 @@ import Foundation
 struct NewsDetailViewModel {
     // MARK: - Properties
     private var favoritesManagaer = FavoritesManager.shared
-    private var currentItem: News {
-        return News(title: "", description: "", link: customTitle, pubDate: nil)
-    }
-    
-    private(set) var webUrl: String
-    private(set) var customTitle: String
+    private(set) var currentItem: News
     
     // MARK: - Life Cycle
-    init(webUrl: String, customTitle: String) {
-        self.webUrl = webUrl
-        self.customTitle = customTitle
+    init(title: String, description: String, link: String, pubDate: String?) {
+        currentItem = News(title: title, description: description, link: link, pubDate: pubDate)
     }
     
     // MARK: - Public Methods

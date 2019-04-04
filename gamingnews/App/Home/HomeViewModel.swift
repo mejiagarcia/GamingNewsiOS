@@ -78,7 +78,12 @@ class HomeViewModel {
             }
             
             result.forEach {
-                let viewModel = NewsCellViewModel(backgroundImageUrl: $0.imageUrl, title: $0.title, websiteUrl: $0.link, createdAt: $0.createdAt)
+                let viewModel = NewsCellViewModel(backgroundImageUrl: $0.imageUrl,
+                                                  title: $0.title,
+                                                  desc: $0.description,
+                                                  websiteUrl: $0.link,
+                                                  createdAt: $0.createdAt)
+                
                 let configurableCell = ConfigurableCell(identifier: NewsTableViewCell.getReuseIdentifier(), viewModel: viewModel)
                 
                 self.originalDataSource.append(configurableCell)
