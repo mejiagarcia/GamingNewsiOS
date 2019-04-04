@@ -17,6 +17,8 @@ extension UICollectionView {
     }
     
     func registerAllCells() {
-        registerCells([])
+        registerCells([
+            FilterCollectionViewCell.self
+        ])
     }
 }

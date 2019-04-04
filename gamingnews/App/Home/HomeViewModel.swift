@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class HomeViewModel {
     // MARK: - Properties
@@ -14,10 +15,13 @@ class HomeViewModel {
     private(set) var dataSource = [ConfigurableCell]()
     private var originalDataSource = [ConfigurableCell]()
     weak var delegate: BaseViewModelProtocol?
+    private(set) var isDataLoaded = false
     
     // MARK: - Life Cycle
     init(apiManager: APIManagerProtocol = APIManager()) {
         self.apiManager = apiManager
+        
+        prepareViewModels()
     }
     
     // MARK: - Public Methods
@@ -55,6 +59,8 @@ class HomeViewModel {
             delegate?.performLoading(isLoadig: false)
             delegate?.requestLoaded()
             
+            isDataLoaded = true
+            
             return
         }
         
@@ -84,6 +90,26 @@ class HomeViewModel {
     }
     
     // MARK: - Private Methods
+    
+    /**
+     Method to add the initial required viewModels.
+     */
+    private func prepareViewModels() {
+        let filtersContainerViewModel = FiltersContainerCellViewModel(title: "home.filters".localized, dataSource: getFiltersViewModels())
+        let configurableCell = ConfigurableCell(identifier: FiltersContainerTableViewCell.getReuseIdentifier(), viewModel: filtersContainerViewModel)
+        
+        originalDataSource.append(configurableCell)
+        dataSource.append(configurableCell)
+    }
+    
+    private func getFiltersViewModels() -> [FilterCollectionViewCellDataSource] {
+        return [
+            FilterCellViewModel(title: "home.list.ps4".localized, iconImage: UIImage(named: "ic_ps4")),
+            FilterCellViewModel(title: "home.list.xbox".localized, iconImage: UIImage(named: "ic_xbox")),
+            FilterCellViewModel(title: "home.list.nintendo".localized, iconImage: UIImage(named: "")),
+            FilterCellViewModel(title: "home.list.desktop".localized, iconImage: UIImage(named: "ic_desktop"))
+        ]
+    }
     
     /**
      Method sort the given dataSource by date.

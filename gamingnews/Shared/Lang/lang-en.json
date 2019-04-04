@@ -4,10 +4,19 @@
         "title": "Error",
         "genericMessage": "An unexpected error occurred, try again."
     },
+    "home": {
+        "filters": "Categories",
+        "list": {
+            "ps4": "PS4",
+            "xbox": "Xbox One",
+            "nintendo": "Nintendo",
+            "desktop": "Desktop"
+        }
+    },
     "tabs": {
-        "home": "All",
+        "home": "All News",
         "favorites": "Favorites",
-        "settings": "Settings"
+        "menu": "Menu"
     },
     "search": {
         "results": "Results",
