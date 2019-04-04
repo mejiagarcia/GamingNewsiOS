@@ -43,4 +43,12 @@ extension NewsDetailViewController: UIWebViewDelegate {
         self.webview.stringByEvaluatingJavaScript(from: "document.getElementsByClassName('touch-header')[0].remove()")
         self.webview.stringByEvaluatingJavaScript(from: "document.getElementsByClassName('footer')[0].remove()")
     }
+    
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
+        if navigationType == .linkClicked {
+            return false
+        }
+        
+        return true
+    }
 }
