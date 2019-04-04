@@ -15,7 +15,7 @@ protocol NewsItemProtocol {
     var pubDate: String? { get }
 }
 
-struct News: NewsItemProtocol {
+struct News: NewsItemProtocol, Codable {
     let title: String
     let description: String
     let link: String

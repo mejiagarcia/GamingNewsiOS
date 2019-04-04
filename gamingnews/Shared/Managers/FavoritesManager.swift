@@ -13,6 +13,7 @@ protocol FavoritesManagerProtocol {
     func getAll() -> [News]
     func save(_ item: News)
     func delete(_ item: News)
+    func deleteAll()
 }
 
 class FavoritesManager: FavoritesManagerProtocol {
@@ -57,5 +58,12 @@ class FavoritesManager: FavoritesManagerProtocol {
         
         try? Disk.remove(containerName, from: .applicationSupport)
         try? Disk.save(currentSavedItems, to: .applicationSupport, as: containerName)
+    }
+    
+    /**
+     Method to delete all the favorites stored.
+     */
+    func deleteAll() {
+        try? Disk.remove(containerName, from: .applicationSupport)
     }
 }
