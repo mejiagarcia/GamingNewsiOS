@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="FavoriteCollectionViewCell" customModule="gamingnews" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="220" height="256"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="220" height="256"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ssP-98-t52">
+                        <rect key="frame" x="10" y="10" width="200" height="205.5"/>
+                        <color key="backgroundColor" red="0.95294117647058818" green="0.0039215686274509803" blue="0.086274509803921567" alpha="0.052734375" colorSpace="custom" customColorSpace="sRGB"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Omf-Sh-uHI">
+                        <rect key="frame" x="10" y="225.5" width="200" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Omf-Sh-uHI" firstAttribute="top" secondItem="ssP-98-t52" secondAttribute="bottom" constant="10" id="4dv-aP-T9X"/>
+                <constraint firstItem="ssP-98-t52" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="IEJ-BW-lME"/>
+                <constraint firstAttribute="trailing" secondItem="ssP-98-t52" secondAttribute="trailing" constant="10" id="N8s-xm-PxJ"/>
+                <constraint firstAttribute="trailing" secondItem="Omf-Sh-uHI" secondAttribute="trailing" constant="10" id="PUe-pz-18q"/>
+                <constraint firstAttribute="bottom" secondItem="Omf-Sh-uHI" secondAttribute="bottom" constant="10" id="bB8-cr-I8k"/>
+                <constraint firstItem="ssP-98-t52" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="fcL-qP-aEV"/>
+                <constraint firstItem="Omf-Sh-uHI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="wFj-yF-BZO"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="220" height="256"/>
+            <connections>
+                <outlet property="mainImageView" destination="ssP-98-t52" id="1wt-bG-WM3"/>
+                <outlet property="mainTitleLabel" destination="Omf-Sh-uHI" id="7ke-JB-ra7"/>
+            </connections>
+            <point key="canvasLocation" x="352" y="230.28485757121442"/>
+        </collectionViewCell>
+    </objects>
+</document>

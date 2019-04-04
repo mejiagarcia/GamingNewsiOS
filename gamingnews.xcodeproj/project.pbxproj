@@ -60,6 +60,9 @@
 		ACCB54492256641B0076A9AC /* detail-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = ACCB54482256641B0076A9AC /* detail-animation.json */; };
 		ACCB544B225664330076A9AC /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCB544A225664330076A9AC /* Animations.swift */; };
 		ACCB544D22566BFC0076A9AC /* NewsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCB544C22566BFC0076A9AC /* NewsDetailViewModel.swift */; };
+		ACCB5456225671E10076A9AC /* FavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCB5454225671E10076A9AC /* FavoriteCollectionViewCell.swift */; };
+		ACCB5457225671E10076A9AC /* FavoriteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACCB5455225671E10076A9AC /* FavoriteCollectionViewCell.xib */; };
+		ACCB54592256737C0076A9AC /* FavoriteCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCB54582256737C0076A9AC /* FavoriteCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +137,9 @@
 		ACCB54482256641B0076A9AC /* detail-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "detail-animation.json"; sourceTree = "<group>"; };
 		ACCB544A225664330076A9AC /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		ACCB544C22566BFC0076A9AC /* NewsDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewModel.swift; sourceTree = "<group>"; };
+		ACCB5454225671E10076A9AC /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACCB5455225671E10076A9AC /* FavoriteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACCB54582256737C0076A9AC /* FavoriteCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCellViewModel.swift; sourceTree = "<group>"; };
 		D37B37970C255E529929A1F2 /* Pods_gamingnews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gamingnews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -281,6 +287,7 @@
 		2C67C51922414C13005AA143 /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				ACCB5453225671CB0076A9AC /* FavoriteCollectionViewCell */,
 				2C67C51A22414C1A005AA143 /* FilterCollectionViewCell */,
 			);
 			path = CollectionViewCells;
@@ -440,6 +447,16 @@
 			path = Animations;
 			sourceTree = "<group>";
 		};
+		ACCB5453225671CB0076A9AC /* FavoriteCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				ACCB5454225671E10076A9AC /* FavoriteCollectionViewCell.swift */,
+				ACCB5455225671E10076A9AC /* FavoriteCollectionViewCell.xib */,
+				ACCB54582256737C0076A9AC /* FavoriteCellViewModel.swift */,
+			);
+			path = FavoriteCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		C00F5B65DDC870B276067A56 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -544,6 +561,7 @@
 				2CD07FCC223AB7E000C024AC /* LaunchScreen.storyboard in Resources */,
 				2CD07FC9223AB7E000C024AC /* Assets.xcassets in Resources */,
 				AC898EDA223B66AC00702F59 /* RSSUrls.json in Resources */,
+				ACCB5457225671E10076A9AC /* FavoriteCollectionViewCell.xib in Resources */,
 				2C67C518224148DD005AA143 /* FiltersContainerTableViewCell.xib in Resources */,
 				ACCB54492256641B0076A9AC /* detail-animation.json in Resources */,
 				2C497FE3223AEB8F008F76CF /* HomeViewController.xib in Resources */,
@@ -694,6 +712,7 @@
 				2C497FDA223AEAAA008F76CF /* BaseViewController.swift in Sources */,
 				2C497FD5223AEAAA008F76CF /* UITableViewCell+Extensions.swift in Sources */,
 				ACCB544D22566BFC0076A9AC /* NewsDetailViewModel.swift in Sources */,
+				ACCB5456225671E10076A9AC /* FavoriteCollectionViewCell.swift in Sources */,
 				2CCEBE72223AF1FB00B6DF2B /* SettingsViewController.swift in Sources */,
 				AC898EE1223B6BAA00702F59 /* APIManager.swift in Sources */,
 				2C497FD0223AEAAA008F76CF /* Array+Extensions.swift in Sources */,
@@ -704,6 +723,7 @@
 				2C497FD3223AEAAA008F76CF /* UICollectionViewCell+Extensions.swift in Sources */,
 				AC898EDF223B678E00702F59 /* RSSManager.swift in Sources */,
 				2CF3F2A9223AEF570033AEA8 /* MainTabBarController.swift in Sources */,
+				ACCB54592256737C0076A9AC /* FavoriteCellViewModel.swift in Sources */,
 				2CCEBE75223AF3E700B6DF2B /* UIColor+BrandColors.swift in Sources */,
 				AC898EE7223B715B00702F59 /* News.swift in Sources */,
 				AC21D126223EB07700A10AB8 /* RSSNewsDecoder.swift in Sources */,
