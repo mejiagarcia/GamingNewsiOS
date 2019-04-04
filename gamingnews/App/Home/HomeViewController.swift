@@ -83,7 +83,7 @@ class HomeViewController: BaseViewController {
     // MARK: - Override Methods
     override func performLoading(isLoadig: Bool) {
         DispatchQueue.main.async { [weak self] in
-            isLoadig ? self?.activityIndicator.startAnimating() : self?.activityIndicator.stopAnimating()
+            isLoadig ? self?.startLoadingAnimation() : self?.stopLoadingAnimation()
         }
     }
     
