@@ -14,15 +14,14 @@ class NewsDetailViewController: BaseViewController {
     @IBOutlet weak var webview: UIWebView!
     
     // MARK: - Properties
-    private var webUrl: String?
-    private var customTitle: String?
+    private var viewModel: NewsDetailViewModel!
+    private var favoriteButton: UIButton!
     
     // MARK: - Life Cycle
-    convenience init(url: String, title: String) {
+    convenience init(viewModel: NewsDetailViewModel) {
         self.init()
         
-        customTitle = title
-        webUrl = url
+        self.viewModel = viewModel
     }
     
     override func viewDidLoad() {
@@ -31,24 +30,53 @@ class NewsDetailViewController: BaseViewController {
         setupUI()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if viewModel == nil {
+            safeDismiss()
+            
+            return
+        }
+    }
+    
     // MARK: - Private Methods
     
     /**
      Method to setup the UI.
      */
     private func setupUI() {
-        title = customTitle
+        title = viewModel.customTitle
         webview.delegate = self
         
         startLoadingAnimation()
+        setupFavoriteIcon()
         loadUrl()
     }
+    
+    /**
+     Method to the icons.
+     **/
+    private func setupFavoriteIcon() {
+        favoriteButton = UIButton(type: .roundedRect)
+        favoriteButton.addTarget(self, action: #selector(performFavoriteAction), for: .touchUpInside)
+        favoriteButton.tintColor = viewModel.isCurrentFavoriteSaved() ? .yellow : .white
+        favoriteButton.setImage(UIImage(named: "ic_star_on"), for: .normal)
+        favoriteButton.frame = CGRect(x: 0, y: 0, width: 22, height: 15)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: favoriteButton)
+    }
    
+    @objc private func performFavoriteAction() {
+        viewModel.toggleFavorite()
+        favoriteButton.tintColor = viewModel.isCurrentFavoriteSaved() ? .yellow : .white
+    }
+    
     /**
      Method to load the URL requested in the current WebView.
      */
     private func loadUrl() {
-        guard let url = URL(string: webUrl ?? "") else {
+        guard let url = URL(string: viewModel.webUrl) else {
             return
         }
         

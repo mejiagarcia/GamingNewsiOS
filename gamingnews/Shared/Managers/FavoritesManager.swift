@@ -11,6 +11,7 @@ import Disk
 
 protocol FavoritesManagerProtocol {
     func getAll() -> [News]
+    func isFavoriteSaved(_ item: News) -> Bool
     func save(_ item: News)
     func delete(_ item: News)
     func deleteAll()
@@ -28,7 +29,7 @@ class FavoritesManager: FavoritesManagerProtocol {
     
     /**
      Method to fetch the favorite list.
-     - returns: jeje
+     - returns: Array of saved news.
      */
     func getAll() -> [News] {
         if let retrievedData = try? Disk.retrieve(containerName, from: .applicationSupport, as: [News].self) {
@@ -39,10 +40,24 @@ class FavoritesManager: FavoritesManagerProtocol {
     }
     
     /**
+     Method to check if the required favorite is already saved.
+     - returns: `true` if the favorite is saved, false if not.
+     */
+    func isFavoriteSaved(_ item: News) -> Bool {
+        return getAll().filter { $0.link == item.link }.first != nil
+    }
+    
+    /**
      Method to save a favorite.
      - parameter item: NewsItemProtocol to save.
      */
     func save(_ item: News) {
+        guard getAll().filter({ $0.link == item.link }).isEmpty else {
+            print("Item already saved!!")
+            
+            return
+        }
+        
         var currentSavedItems = getAll()
         currentSavedItems.append(item)
         

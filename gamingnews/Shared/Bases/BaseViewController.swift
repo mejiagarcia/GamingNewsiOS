@@ -55,6 +55,19 @@ class BaseViewController: UIViewController, BaseViewModelProtocol {
         animationView?.removeFromSuperview()
     }
     
+    /**
+     Method to perform a dismiss/pop.
+     */
+    func safeDismiss(animated: Bool = true, completion: (() -> Void)? = nil) {
+        guard let navbarController = navigationController else {
+            dismiss(animated: animated, completion: completion)
+            
+            return
+        }
+        
+        navbarController.popViewController(animated: true)
+    }
+    
     // MARK: - BaseViewModelProtocol
     func performLoading(isLoadig: Bool) {}
     

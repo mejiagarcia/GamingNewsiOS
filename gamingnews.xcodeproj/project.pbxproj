@@ -59,6 +59,7 @@
 		AC898EEC223B7CCD00702F59 /* NewsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC898EEA223B7CCD00702F59 /* NewsDetailViewController.xib */; };
 		ACCB54492256641B0076A9AC /* detail-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = ACCB54482256641B0076A9AC /* detail-animation.json */; };
 		ACCB544B225664330076A9AC /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCB544A225664330076A9AC /* Animations.swift */; };
+		ACCB544D22566BFC0076A9AC /* NewsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCB544C22566BFC0076A9AC /* NewsDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +133,7 @@
 		AC898EEA223B7CCD00702F59 /* NewsDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsDetailViewController.xib; sourceTree = "<group>"; };
 		ACCB54482256641B0076A9AC /* detail-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "detail-animation.json"; sourceTree = "<group>"; };
 		ACCB544A225664330076A9AC /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
+		ACCB544C22566BFC0076A9AC /* NewsDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewModel.swift; sourceTree = "<group>"; };
 		D37B37970C255E529929A1F2 /* Pods_gamingnews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gamingnews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -423,6 +425,7 @@
 			isa = PBXGroup;
 			children = (
 				AC898EE9223B7CCD00702F59 /* NewsDetailViewController.swift */,
+				ACCB544C22566BFC0076A9AC /* NewsDetailViewModel.swift */,
 				AC898EEA223B7CCD00702F59 /* NewsDetailViewController.xib */,
 			);
 			path = NewsDetail;
@@ -690,6 +693,7 @@
 				2C497FD6223AEAAA008F76CF /* UICollectionView+Extensions.swift in Sources */,
 				2C497FDA223AEAAA008F76CF /* BaseViewController.swift in Sources */,
 				2C497FD5223AEAAA008F76CF /* UITableViewCell+Extensions.swift in Sources */,
+				ACCB544D22566BFC0076A9AC /* NewsDetailViewModel.swift in Sources */,
 				2CCEBE72223AF1FB00B6DF2B /* SettingsViewController.swift in Sources */,
 				AC898EE1223B6BAA00702F59 /* APIManager.swift in Sources */,
 				2C497FD0223AEAAA008F76CF /* Array+Extensions.swift in Sources */,

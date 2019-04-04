@@ -171,7 +171,9 @@ extension HomeViewController: NewsTableViewCellDelegate {
             return
         }
         
-        let detailVC = NewsDetailViewController(url: currentViewModel.websiteUrl ?? "", title: currentViewModel.title)
+        let configViewModel = NewsDetailViewModel(webUrl: currentViewModel.websiteUrl ?? "", customTitle: currentViewModel.title)
+        let detailVC = NewsDetailViewController(viewModel: configViewModel)
+        
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
