@@ -42,6 +42,7 @@
 		2CD07FCC223AB7E000C024AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CD07FCA223AB7E000C024AC /* LaunchScreen.storyboard */; };
 		2CF3F2A9223AEF570033AEA8 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF3F2A8223AEF570033AEA8 /* MainTabBarController.swift */; };
 		74B6FA920865AEF8100CF794 /* Pods_gamingnews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37B37970C255E529929A1F2 /* Pods_gamingnews.framework */; };
+		AAD6E7E8DDAC3D9158917488 /* Pods_gamingnewsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B2B6E37DCC71445E2DC8D3 /* Pods_gamingnewsTests.framework */; };
 		AC21D126223EB07700A10AB8 /* RSSNewsDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC21D125223EB07700A10AB8 /* RSSNewsDecoder.swift */; };
 		AC51CBAF225652C2000E516B /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC51CBAE225652C2000E516B /* FavoritesManager.swift */; };
 		AC51CBBF22565A8C000E516B /* FavoritesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC51CBBE22565A8C000E516B /* FavoritesTests.swift */; };
@@ -69,6 +70,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D6C71A238A2F55D3B79B083 /* Pods-gamingnewsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gamingnewsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-gamingnewsTests/Pods-gamingnewsTests.release.xcconfig"; sourceTree = "<group>"; };
+		137E7776AF5EAB3DDC2C5BD5 /* Pods-gamingnewsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gamingnewsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gamingnewsTests/Pods-gamingnewsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2C497FBC223AEAAA008F76CF /* lang-en.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "lang-en.json"; sourceTree = "<group>"; };
 		2C497FBD223AEAAA008F76CF /* lang-es.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "lang-es.json"; sourceTree = "<group>"; };
 		2C497FBF223AEAAA008F76CF /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
@@ -107,6 +110,7 @@
 		2CD07FCD223AB7E000C024AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CF3F2A8223AEF570033AEA8 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		7F7818FFC41C0F0F80F39F0D /* Pods-gamingnews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gamingnews.release.xcconfig"; path = "Pods/Target Support Files/Pods-gamingnews/Pods-gamingnews.release.xcconfig"; sourceTree = "<group>"; };
+		94B2B6E37DCC71445E2DC8D3 /* Pods_gamingnewsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gamingnewsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A10E3A335BDA3E1DEE5D8E5C /* Pods-gamingnews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gamingnews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gamingnews/Pods-gamingnews.debug.xcconfig"; sourceTree = "<group>"; };
 		AC21D125223EB07700A10AB8 /* RSSNewsDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSNewsDecoder.swift; sourceTree = "<group>"; };
 		AC51CBAE225652C2000E516B /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAD6E7E8DDAC3D9158917488 /* Pods_gamingnewsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +156,8 @@
 			children = (
 				A10E3A335BDA3E1DEE5D8E5C /* Pods-gamingnews.debug.xcconfig */,
 				7F7818FFC41C0F0F80F39F0D /* Pods-gamingnews.release.xcconfig */,
+				137E7776AF5EAB3DDC2C5BD5 /* Pods-gamingnewsTests.debug.xcconfig */,
+				0D6C71A238A2F55D3B79B083 /* Pods-gamingnewsTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -420,6 +427,7 @@
 			isa = PBXGroup;
 			children = (
 				D37B37970C255E529929A1F2 /* Pods_gamingnews.framework */,
+				94B2B6E37DCC71445E2DC8D3 /* Pods_gamingnewsTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -451,9 +459,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AC51CBBD22565A74000E516B /* Build configuration list for PBXNativeTarget "gamingnewsTests" */;
 			buildPhases = (
+				D3D4181B6D69A1A4CE6ECF1D /* [CP] Check Pods Manifest.lock */,
 				AC51CBB022565A74000E516B /* Sources */,
 				AC51CBB122565A74000E516B /* Frameworks */,
 				AC51CBB222565A74000E516B /* Resources */,
+				051C777C7A74D5FD1DCB3C5C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -539,6 +549,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		051C777C7A74D5FD1DCB3C5C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-gamingnewsTests/Pods-gamingnewsTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-gamingnewsTests/Pods-gamingnewsTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2C497FAF223ABE53008F76CF /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -600,6 +630,24 @@
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-gamingnews-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D3D4181B6D69A1A4CE6ECF1D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-gamingnewsTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -806,10 +854,7 @@
 				DEVELOPMENT_TEAM = J75TA62D6V;
 				INFOPLIST_FILE = "$(SRCROOT)/gamingnews/Shared/Config/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mejiagarcia.gamingnews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -827,10 +872,7 @@
 				DEVELOPMENT_TEAM = J75TA62D6V;
 				INFOPLIST_FILE = "$(SRCROOT)/gamingnews/Shared/Config/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mejiagarcia.gamingnews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -840,19 +882,17 @@
 		};
 		AC51CBBB22565A74000E516B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 137E7776AF5EAB3DDC2C5BD5 /* Pods-gamingnewsTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J75TA62D6V;
 				INFOPLIST_FILE = gamingnewsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carlosmejia.gamingnewsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
+				"SYSTEM_HEADER_SEARCH_PATHS[arch=*]" = "$(inherited) ${PODS_ROOT}/Firebase/Core/Sources";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/gamingnews.app/gamingnews";
 			};
@@ -860,19 +900,17 @@
 		};
 		AC51CBBC22565A74000E516B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D6C71A238A2F55D3B79B083 /* Pods-gamingnewsTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J75TA62D6V;
 				INFOPLIST_FILE = gamingnewsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carlosmejia.gamingnewsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
+				"SYSTEM_HEADER_SEARCH_PATHS[arch=*]" = "$(inherited) ${PODS_ROOT}/Firebase/Core/Sources";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/gamingnews.app/gamingnews";
 			};

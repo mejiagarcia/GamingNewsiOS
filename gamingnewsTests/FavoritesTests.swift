@@ -40,6 +40,8 @@ class FavoritesTests: XCTestCase {
     func testSingleRemove() {
         diskManager.deleteAll()
         
+        sleep(2)
+        
         // save 10 random items
         for _ in 0...9 {
             diskManager.save(getRandomItem())
@@ -51,7 +53,9 @@ class FavoritesTests: XCTestCase {
         
         let itemsSaved = diskManager.getAll()
         
-        XCTAssertTrue(itemsSaved.filter { $0.link == randomItemToDelete.link }.isEmpty && itemsSaved.count == 9, "Unable to test `testSingleRemove`")
+        let itemWasRemoved = itemsSaved.filter { $0.link == randomItemToDelete.link }.isEmpty
+        
+        XCTAssertTrue(itemWasRemoved, "Unable to test `testSingleRemove`")
     }
     
     func testDeleteAll() {
