@@ -11,6 +11,14 @@ import Alamofire
 import CodableAlamofire
 import SWXMLHash
 
+protocol APIManagerProtocol {
+    var decoder: JSONDecoder { get }
+    var encoder: JSONEncoder { get }
+    
+    func get<T: Codable>(with endpoint: Endpoint, keyPath: String?, completionHandler: @escaping (T?, Error?) -> Void)
+    func getNewsFromRSS(with endpoint: String, completionHandler: @escaping ([News]?, Error?) -> Void)
+}
+
 class APIManager: APIManagerProtocol {
     // MARK: - Properties
     let decoder = JSONDecoder()

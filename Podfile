@@ -13,4 +13,5 @@ target 'gamingnews' do
   pod 'Hero'
   pod 'Kingfisher'
   pod 'Localize' , '~> 2.1.0'
+  pod 'Disk', '~> 0.5.0'
 end
