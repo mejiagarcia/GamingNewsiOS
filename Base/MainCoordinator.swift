@@ -180,6 +180,7 @@ extension MainCoordinator {
 			return navigation
 		}
 
+		window.tintColor = UIColor(named: "AccentColor")
 		window.rootViewController = tabs
 		window.makeKeyAndVisible()
 
