@@ -8,6 +8,7 @@ Xcode:
 
 General:
 
+- Keep README.md current whenever a feature is added, changed, or removed. Update the iOS/Android feature comparison and pending status in the same change, distinguishing implemented code from externally configured or unverified integrations.
 - Always ask the user before doing any UI validation, like using a preview, like using the simulator or even a real device.
 - Always ask the user before creating or running any unit test. You are allowed to update affected unit tests, but not allowed to build or running them without explicit approval from the user.
 - You are not allowed to spend tokens building the app. The normal flow is to do all the requested changes and later ask the user if the build is permitted. This is a global rule and should never be skipped unless explicit authorization.
