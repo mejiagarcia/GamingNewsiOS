@@ -3,7 +3,8 @@ version: 2.1
 jobs:
   build:
     macos:
-      xcode: 27.0.0
+      xcode: "27.0"
+    resource_class: m4pro.medium
     steps:
       - checkout
       - run:
