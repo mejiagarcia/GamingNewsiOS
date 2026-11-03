@@ -12,6 +12,11 @@ General:
 - Always ask the user before doing any UI validation, like using a preview, like using the simulator or even a real device.
 - Always ask the user before creating or running any unit test. You are allowed to update affected unit tests, but not allowed to build or running them without explicit approval from the user.
 - You are not allowed to spend tokens building the app. The normal flow is to do all the requested changes and later ask the user if the build is permitted. This is a global rule and should never be skipped unless explicit authorization.
+- Prefer deterministic unit tests for every testable parser, pure function, model, and business-logic branch.
+- Avoid XCTest expectations and timing-based synchronization such as `Task.yield`, `Task.sleep`, arbitrary sleeps, polling, or timeout loops. For asynchronous behavior, await the async operation directly or await the relevant `Task.value` and assert on its returned value.
+- Keep async tests deterministic by using immediate, controlled test doubles instead of live network, clock, or system-service dependencies.
+- Do not modify production code to accommodate tests except to expose an existing `Task` through a read-only property when observing its `value` is necessary. Do not add production behavior or other test-only seams.
+- Organize tests across focused, human-readable files by domain (for example parsers, models, business logic, and state management), and remove generated placeholder tests when replacing them.
 - You are allowed to run the app on simulators or real devices if asked by the user.
 
 Coding:
