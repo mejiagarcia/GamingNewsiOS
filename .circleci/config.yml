@@ -1,0 +1,22 @@
+version: 2.1
+
+jobs:
+  build:
+    macos:
+      xcode: 27.0.0
+    steps:
+      - checkout
+      - run:
+          name: Build iOS app
+          command: >-
+            xcodebuild
+            -project GamingNews-26.xcodeproj
+            -scheme GamingNews
+            -destination 'generic/platform=iOS Simulator'
+            CODE_SIGNING_ALLOWED=NO
+            build
+
+workflows:
+  build:
+    jobs:
+      - build
