@@ -12,6 +12,7 @@
     ],
   },
   "files": [
+    { "path": "GoogleService-Info.plist", "target-membership": [ "GamingNews/resources" ] },
     { "kind": "folder", "path": "Base", "target-membership": [ "GamingNews" ] },
     { "kind": "folder", "path": "Components", "target-membership": [ "GamingNews" ] },
     { "kind": "folder", "path": "Networking", "target-membership": [ "GamingNews" ] },

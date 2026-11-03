@@ -26,6 +26,9 @@ DerivedData/
 *.perspectivev3
 !default.perspectivev3
 
+# Google Services (e.g. APIs or Firebase)
+google-services.json
+
 ### Xcode Patch ###
 !*.xcodeproj/xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
