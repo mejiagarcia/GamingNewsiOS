@@ -28,6 +28,7 @@ struct SourceListView: View {
 			) { Text(verbatim: source.name) }
 		}
 		.disabled(!state.storageAvailable || state.isUpdating)
+		.onAppear { AnalyticsService.screen("source_list") }
 		.navigationTitle(Text(title))
 		.alert(
 			"error.title",

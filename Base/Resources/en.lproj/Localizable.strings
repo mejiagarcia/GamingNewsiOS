@@ -43,3 +43,9 @@
 "error.preferences" = "Your settings could not be saved. Try again.";
 "common.ok" = "OK";
 "error.sources" = "The source catalog could not be loaded.";
+"settings.notifications" = "Notifications";
+"notifications.enable" = "Tap to enable notifications";
+"notifications.denied" = "Notifications are off. Open Settings to enable them.";
+"notifications.enabled" = "Notifications are on. Tap to manage.";
+"notifications.manage" = "Tap to manage notifications";
+"error.notifications" = "Notifications could not be enabled. Please try again.";

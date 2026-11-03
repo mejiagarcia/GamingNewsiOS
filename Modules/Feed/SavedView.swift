@@ -49,11 +49,17 @@ struct SavedView: View {
 				}
 			}
 		}
+		.onAppear { AnalyticsService.screen("saved") }
 		.navigationTitle(Text("tab.saved"))
 		.searchable(
 			text: $query,
 			prompt: Text("search.prompt")
 		)
+		.onSubmit(of: .search) {
+			if !query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+				AnalyticsService.log(.searchSubmitted)
+			}
+		}
 		.toolbar {
 			ToolbarItem(placement: .topBarTrailing) {
 				Button(

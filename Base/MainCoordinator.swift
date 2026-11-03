@@ -41,10 +41,12 @@ extension MainCoordinator {
 
 	func copy(_ article: Article) {
 		UIPasteboard.general.url = article.url
+		AnalyticsService.log(.articleCopied)
 		HapticFeedback.success()
 	}
 
 	func open(_ article: Article) {
+		AnalyticsService.log(.articleOpened)
 		presentingController?.present(
 			SFSafariViewController(url: article.url),
 			animated: true
@@ -52,10 +54,13 @@ extension MainCoordinator {
 	}
 
 	func openExternally(_ article: Article) {
+		AnalyticsService.log(.articleOpenedExternally)
 		UIApplication.shared.open(article.url)
 	}
 
 	func share(_ article: Article) {
+		AnalyticsService.log(.articleShareOpened)
+
 		let controller = UIActivityViewController(
 			activityItems: [article.url],
 			applicationActivities: nil
@@ -81,6 +86,7 @@ extension MainCoordinator {
 		let screen = SettingsView(
 			state: state,
 			navigation: navigation,
+			notifications: PushNotificationService.shared,
 			onAppearanceChange: { [weak self] in self?.applyAppearance() }
 		)
 

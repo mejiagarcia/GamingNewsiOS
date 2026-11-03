@@ -33,7 +33,12 @@ struct FeedView: View {
 					ScrollView(.horizontal) {
 						HStack {
 							ForEach(NewsCategory.allCases) { category in
-								Button(category.title) { model.category = category }
+								Button(category.title) {
+									if model.category != category {
+										model.category = category
+										AnalyticsService.log(.categoryChanged)
+									}
+								}
 									.buttonStyle(.bordered)
 									.tint(model.category == category ? .accentColor : .secondary)
 									.accessibilityAddTraits(model.category == category ? .isSelected : [])
@@ -116,6 +121,7 @@ struct FeedView: View {
 				}
 			}
 		}
+		.onAppear { AnalyticsService.screen(model.kind == .news ? "news" : "reviews") }
 		.navigationTitle(model.kind == .news ? Text("tab.news") : Text("tab.reviews"))
 		.searchable(
 			text: $model.query,
@@ -129,7 +135,13 @@ struct FeedView: View {
 				) { navigation.showSettings() }
 			}
 		}
+		.onSubmit(of: .search) {
+			if !model.query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+				AnalyticsService.log(.searchSubmitted)
+			}
+		}
 		.refreshable {
+			AnalyticsService.log(.feedRefreshed)
 			await model.load(
 				request,
 				force: true

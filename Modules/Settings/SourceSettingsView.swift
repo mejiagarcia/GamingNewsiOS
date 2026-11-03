@@ -54,6 +54,7 @@ struct SourceSettingsView: View {
 			}
 		}
 		.disabled(!state.storageAvailable || state.isUpdating)
+		.onAppear { AnalyticsService.screen("source_settings") }
 		.navigationTitle(Text("settings.sources"))
 		.alert(
 			"error.title",

@@ -43,3 +43,9 @@
 "error.preferences" = "No se pudieron guardar los ajustes. Inténtalo de nuevo.";
 "common.ok" = "Aceptar";
 "error.sources" = "No se pudo cargar el catálogo de fuentes.";
+"settings.notifications" = "Notificaciones";
+"notifications.enable" = "Toca para activar las notificaciones";
+"notifications.denied" = "Las notificaciones están desactivadas. Abre Ajustes para activarlas.";
+"notifications.enabled" = "Las notificaciones están activadas. Toca para gestionarlas.";
+"notifications.manage" = "Toca para gestionar las notificaciones";
+"error.notifications" = "No se pudieron activar las notificaciones. Inténtalo de nuevo.";

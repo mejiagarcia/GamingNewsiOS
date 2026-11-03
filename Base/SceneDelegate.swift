@@ -15,6 +15,12 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 extension SceneDelegate {
 
+	func sceneDidBecomeActive(_ scene: UIScene) {
+		Task {
+			await PushNotificationService.shared.refresh()
+		}
+	}
+
 	func scene(
 		_ scene: UIScene,
 		willConnectTo session: UISceneSession,

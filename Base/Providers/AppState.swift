@@ -83,12 +83,15 @@ extension AppState {
 
 		defer { isUpdating = false }
 
+		let wasSaved = isSaved(article)
+
 		do {
 			savedArticles = try await savedRepository.setSaved(
 				article,
-				saved: !isSaved(article)
+				saved: !wasSaved
 			)
 			savedIDs = Set(savedArticles.map(\.id))
+			AnalyticsService.log(wasSaved ? .articleRemoved : .articleSaved)
 			HapticFeedback.success()
 		} catch {
 			errorMessage = String(localized: "error.save")
@@ -108,6 +111,7 @@ extension AppState {
 		do {
 			try await preferencesRepository.save(value)
 			preferences = value
+			AnalyticsService.log(.settingsChanged)
 			HapticFeedback.success()
 		} catch {
 			errorMessage = String(localized: "error.preferences")

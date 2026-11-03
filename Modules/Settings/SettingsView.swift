@@ -1,4 +1,5 @@
 import SwiftUI
+import UserNotifications
 
 // MARK: - Settings
 
@@ -8,6 +9,7 @@ struct SettingsView: View {
 
 	let state: AppState
 	let navigation: any AppNavigationProtocol
+	let notifications: PushNotificationService
 	let onAppearanceChange: () -> Void
 
 	// MARK: - View
@@ -30,6 +32,25 @@ struct SettingsView: View {
 					)
 				}
 			}
+			.disabled(!state.storageAvailable || state.isUpdating)
+			Section("settings.notifications") {
+				Button {
+					Task {
+						do {
+							try await notifications.requestOrOpenSettings()
+						} catch {
+							state.errorMessage = String(localized: "error.notifications")
+							HapticFeedback.error()
+						}
+					}
+				} label: {
+					VStack(alignment: .leading) {
+						Text("settings.notifications")
+						Text(notificationStatus).font(.caption).foregroundStyle(.secondary)
+					}
+				}
+				.disabled(notifications.isUpdating)
+			}
 			Section("settings.display") {
 				Picker(
 					"settings.appearance",
@@ -42,8 +63,10 @@ struct SettingsView: View {
 					isOn: binding(\.showImages)
 				)
 			}
+			.disabled(!state.storageAvailable || state.isUpdating)
 		}
-		.disabled(!state.storageAvailable || state.isUpdating)
+		.onAppear { AnalyticsService.screen("settings") }
+		.task { await notifications.refresh() }
 		.navigationTitle(Text("settings.title"))
 		.alert(
 			"error.title",
@@ -65,6 +88,15 @@ struct SettingsView: View {
 // MARK: - Private Methods
 
 extension SettingsView {
+
+	private var notificationStatus: LocalizedStringKey {
+		switch notifications.authorizationStatus {
+			case .notDetermined: "notifications.enable"
+			case .denied: "notifications.denied"
+			case .authorized, .provisional, .ephemeral: "notifications.enabled"
+			@unknown default: "notifications.manage"
+		}
+	}
 
 	private func binding<Value: Equatable>(_ keyPath: WritableKeyPath<AppPreferences, Value>)
 		-> Binding<Value>
