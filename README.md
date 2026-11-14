@@ -18,13 +18,15 @@ A native iPhone app for keeping up with video game news and reviews. It is the i
 | Light/dark appearance and image settings | ✅ | ✅ |
 | Firebase Analytics | ✅ | ✅ |
 | Firebase Cloud Messaging | ⚙️ | ⚙️ |
-| Mute unwanted headlines | — | ✅ |
+| Mute unwanted headlines | ✅ | ✅ |
 | Upcoming game releases | — | ✅ |
 | Follow games and receive release reminders | — | ✅ |
 | Daily news reminder | — | ✅ |
 | Extracted reader mode | — | ✅ |
 
 ✅ Implemented in the source · ⚙️ Integration present; availability depends on configuration · — Not yet available on iOS
+
+Headline muting on iOS supports case-sensitive or case-insensitive contains, whole-word, and exact-phrase rules; global or news-category scopes; and an opt-in to apply global rules to Reviews. Rules are saved on-device. Matching articles can be revealed temporarily from the feed.
 
 The Android notification-topic controls are currently hidden. On iOS, notification permission is requested from Settings. Release reminders and the daily reminder are separate features and are not yet available on iOS.
 

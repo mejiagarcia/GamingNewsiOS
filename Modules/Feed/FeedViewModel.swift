@@ -28,9 +28,12 @@ final class FeedViewModel {
 	var failed = false
 	var isLoading = false
 	var loaded = false
+	var mutedCount = 0
+	var mutedArticleIDs: Set<String> = []
 	var noSources = false
 	var partialFailure = false
 	var query = ""
+	var revealsMutedHeadlines = false
 	var stale = false
 
 	// MARK: - Life Cycle
@@ -48,20 +51,31 @@ final class FeedViewModel {
 
 extension FeedViewModel {
 
+	func toggleRevealedMutedHeadlines() async {
+		revealsMutedHeadlines.toggle()
+		await applySearch()
+	}
+
 	func applySearch() async {
 		let id = UUID()
 		filterID = id
 
-		let result = await filter.filter(
+		let result = await filter.filterFeed(
 			snapshot?.articles ?? [],
-			query: query
+			query: query,
+			rules: previousRequest?.mutedHeadlineRules ?? [],
+			context: previousRequest?.context ?? FeedContext(kind: kind, language: .en, category: category),
+			applyGlobalRulesToReviews: previousRequest?.applyGlobalMuteRulesToReviews ?? false,
+			revealMuted: revealsMutedHeadlines
 		)
 
 		guard id == filterID else {
 			return
 		}
 
-		articles = result
+		articles = result.articles
+		mutedArticleIDs = result.mutedArticleIDs
+		mutedCount = result.mutedArticleIDs.count
 	}
 
 	func load(
@@ -76,6 +90,9 @@ extension FeedViewModel {
 			filterID = UUID()
 			snapshot = nil
 			articles = []
+			mutedCount = 0
+			mutedArticleIDs = []
+			revealsMutedHeadlines = false
 			loaded = false
 			failed = false
 			partialFailure = false

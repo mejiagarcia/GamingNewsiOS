@@ -20,7 +20,9 @@ struct FeedView: View {
 				language: state.preferences.language.resolved,
 				category: model.category
 			),
-			disabled: state.preferences.disabledSourceIDs
+			disabled: state.preferences.disabledSourceIDs,
+			mutedHeadlineRules: state.preferences.mutedHeadlineRules,
+			applyGlobalMuteRulesToReviews: state.preferences.applyGlobalMuteRulesToReviews
 		)
 	}
 
@@ -96,18 +98,48 @@ struct FeedView: View {
 						}
 					}
 				}
+			} else if model.loaded && model.articles.isEmpty && model.mutedCount > 0 {
+				ContentUnavailableView {
+					Label("mute.allMuted.title", systemImage: "speaker.slash")
+				} description: {
+					Text("mute.allMuted.message")
+				} actions: {
+					Button("mute.showHidden") {
+						Task { await model.toggleRevealedMutedHeadlines() }
+					}
+					Button("mute.manage") { navigation.showMutedHeadlines() }
+				}
 			} else if model.loaded && model.articles.isEmpty {
 				ContentUnavailableView(
 					model.query.isEmpty ? "feed.empty" : "search.empty",
 					systemImage: "newspaper"
 				)
 			} else {
+				if model.mutedCount > 0 {
+					Section {
+						HStack {
+							Text(verbatim: String.localizedStringWithFormat(
+								String(localized: model.mutedCount == 1 ? "mute.hiddenCount.one" : "mute.hiddenCount.other"),
+								model.mutedCount
+							))
+								.font(.subheadline)
+							Spacer()
+							Button(model.revealsMutedHeadlines ? "mute.hideAgain" : "mute.showHidden") {
+								Task { await model.toggleRevealedMutedHeadlines() }
+							}
+							.buttonStyle(.borderless)
+							Button("mute.manage") { navigation.showMutedHeadlines() }
+								.buttonStyle(.borderless)
+						}
+					}
+				}
 				ForEach(model.articles) { article in
 					ArticleRow(
 						article: article,
 						isSaved: state.isSaved(article),
 						showImages: state.preferences.showImages,
 						isUpdating: state.isUpdating,
+						isMuted: model.mutedArticleIDs.contains(article.id),
 						onAction: { action in
 							ArticleActionHandler(
 								state: state,

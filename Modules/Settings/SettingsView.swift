@@ -31,6 +31,11 @@ struct SettingsView: View {
 						systemImage: "line.3.horizontal.decrease.circle"
 					)
 				}
+				Button {
+					navigation.showMutedHeadlines()
+				} label: {
+					Label("settings.mutedHeadlines", systemImage: "speaker.slash")
+				}
 			}
 			.disabled(!state.storageAvailable || state.isUpdating)
 			Section("settings.notifications") {

@@ -51,4 +51,8 @@ extension NavigationProxy {
 	func showSources() {
 		coordinator?.showSources()
 	}
+
+	func showMutedHeadlines() {
+		coordinator?.showMutedHeadlines()
+	}
 }

@@ -16,6 +16,7 @@ struct ArticleRow: View {
 	let isSaved: Bool
 	let showImages: Bool
 	let isUpdating: Bool
+	var isMuted = false
 	let onAction: (Action) -> Void
 
 	// MARK: - View
@@ -37,6 +38,13 @@ struct ArticleRow: View {
 					) {
 						Text(verbatim: article.title).font(.headline).foregroundStyle(.primary)
 							.multilineTextAlignment(.leading)
+						if isMuted {
+							Text("mute.badge")
+								.font(.caption2)
+								.padding(.horizontal, DesignSystem.Spacing.compact)
+								.padding(.vertical, DesignSystem.Spacing.compact)
+								.background(.tertiary, in: Capsule())
+						}
 						Text(verbatim: article.publisher).font(.subheadline).foregroundStyle(.secondary)
 						if let date = article.publishedAt {
 							Text(

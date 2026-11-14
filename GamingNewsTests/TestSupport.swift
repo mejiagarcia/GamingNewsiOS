@@ -18,7 +18,9 @@ enum TestFixtures {
 	static var feedRequest: FeedRequest {
 		FeedRequest(
 			context: FeedContext(kind: .news, language: .en, category: .all),
-			disabled: []
+			disabled: [],
+			mutedHeadlineRules: [],
+			applyGlobalMuteRulesToReviews: false
 		)
 	}
 

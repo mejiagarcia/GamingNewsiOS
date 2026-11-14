@@ -13,4 +13,5 @@ protocol AppNavigationProtocol: AnyObject {
 		title: LocalizedStringKey
 	)
 	func showSources()
+	func showMutedHeadlines()
 }

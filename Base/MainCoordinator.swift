@@ -124,6 +124,13 @@ extension MainCoordinator {
 		)
 	}
 
+	func showMutedHeadlines() {
+		selectedNavigation?.pushViewController(
+			UIHostingController(rootView: MutedHeadlinesView(state: state)),
+			animated: true
+		)
+	}
+
 	func start() {
 		let news = FeedViewModel(
 			kind: .news,
