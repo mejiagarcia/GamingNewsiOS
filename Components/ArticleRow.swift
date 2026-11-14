@@ -5,6 +5,7 @@ struct ArticleRow: View {
 	enum Action: Sendable {
 		case copy
 		case open
+		case openReader
 		case openExternally
 		case share
 		case toggleSaved
@@ -19,6 +20,9 @@ struct ArticleRow: View {
 	var isMuted = false
 	let onAction: (Action) -> Void
 
+	@Environment(\.dynamicTypeSize)
+	private var dynamicTypeSize
+
 	// MARK: - View
 
 	var body: some View {
@@ -27,25 +31,36 @@ struct ArticleRow: View {
 			spacing: DesignSystem.Spacing.regular
 		) {
 			Button { onAction(.open) } label: {
-				HStack(
-					alignment: .top,
-					spacing: DesignSystem.Spacing.regular
-				) {
-					if showImages, let url = article.imageURL { ArticleThumbnail(url: url) }
+				let layout = dynamicTypeSize.isAccessibilitySize
+					? AnyLayout(VStackLayout(alignment: .leading, spacing: DesignSystem.Spacing.regular))
+					: AnyLayout(HStackLayout(alignment: .top, spacing: DesignSystem.Spacing.regular))
+
+				layout {
+					if showImages, let url = article.imageURL {
+						ArticleThumbnail(url: url)
+					}
 					VStack(
 						alignment: .leading,
 						spacing: DesignSystem.Spacing.compact
 					) {
-						Text(verbatim: article.title).font(.headline).foregroundStyle(.primary)
+						Text(verbatim: article.publisher)
+							.font(DesignSystem.Typography.display(.subheadline))
+							.textCase(.uppercase)
+							.foregroundStyle(Color.accentColor)
 							.multilineTextAlignment(.leading)
+						Text(verbatim: article.title)
+							.font(DesignSystem.Typography.display(.title2))
+							.foregroundStyle(.primary)
+							.multilineTextAlignment(.leading)
+							.fixedSize(horizontal: false, vertical: true)
 						if isMuted {
 							Text("mute.badge")
 								.font(.caption2)
 								.padding(.horizontal, DesignSystem.Spacing.compact)
 								.padding(.vertical, DesignSystem.Spacing.compact)
-								.background(.tertiary, in: Capsule())
+								.foregroundStyle(DesignSystem.Palette.ink)
+								.background(DesignSystem.Palette.gold, in: Capsule())
 						}
-						Text(verbatim: article.publisher).font(.subheadline).foregroundStyle(.secondary)
 						if let date = article.publishedAt {
 							Text(
 								date,
@@ -58,6 +73,7 @@ struct ArticleRow: View {
 						alignment: .leading
 					)
 				}
+				.contentShape(Rectangle())
 			}
 			.buttonStyle(.plain)
 			.accessibilityHint(Text("article.open.hint"))
@@ -87,19 +103,26 @@ struct ArticleRow: View {
 						systemImage: "safari"
 					)
 				}
+				Button { onAction(.openReader) } label: {
+					Label(
+						"article.reader",
+						systemImage: "doc.text"
+					)
+				}
 			} label: {
 				Image(systemName: isSaved ? "bookmark.fill" : "ellipsis")
 					.frame(
 						width: DesignSystem.Size.minimumTapTarget,
 						height: DesignSystem.Size.minimumTapTarget
 					)
-					.contentShape(Rectangle())
+					.foregroundStyle(isSaved ? DesignSystem.Palette.ink : DesignSystem.Palette.onBanner)
+					.background(
+						isSaved ? DesignSystem.Palette.gold : DesignSystem.Palette.ink,
+						in: Circle()
+					)
+					.contentShape(Circle())
 			}
 			.accessibilityLabel(Text("article.actions"))
 		}
-		.padding(
-			.vertical,
-			DesignSystem.Spacing.compact
-		)
 	}
 }

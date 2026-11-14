@@ -2,6 +2,10 @@
 
 A native iPhone app for keeping up with video game news and reviews. It is the iOS counterpart to [Gaming News for Android](https://github.com/eagskunst/GamingNews).
 
+## iOS design
+
+News, Reviews, Releases, and Saved use condensed mastheads, warm paper surfaces, and outlined cards with offset shadows. Red filter tiles turn gold when selected. Reader Mode and Settings use the same light and dark palette. The visual refresh is implemented in source and awaits on-device verification.
+
 ## Feature comparison
 
 | Feature | iOS | Android |
@@ -22,11 +26,13 @@ A native iPhone app for keeping up with video game news and reviews. It is the i
 | Upcoming game releases | ✅ | ✅ |
 | Follow games and receive release reminders | — | ✅ |
 | Daily news reminder | — | ✅ |
-| Extracted reader mode | — | ✅ |
+| Extracted reader mode with headings, paragraphs, images, captions, lists, and quotes | ✅ | ✅ |
 
 ✅ Implemented in the source · ⚙️ Integration present; availability depends on configuration · — Not yet available on iOS
 
 Headline muting on iOS supports case-sensitive or case-insensitive contains, whole-word, and exact-phrase rules; global or news-category scopes; and an opt-in to apply global rules to Reviews. Rules are saved on-device. Matching articles can be revealed temporarily from the feed.
+
+Reader Mode is available from an article’s actions menu. It fetches and extracts readable page content on-device, respects the Show Images preference, and provides retry, browser fallback, share, and copy-link actions. Extraction uses SwiftSoup and a main-content heuristic; publisher pages that block requests or use unusual markup may not produce readable content.
 
 The iOS Releases tab loads and caches IGDB release records, with platform filters, game-name search, pagination, and exact or approximate dates. The feature has been built and verified with IGDB credentials configured in the target build settings. Each local build must provide `GAMING_NEWS_IGDB_CLIENT_ID` and `GAMING_NEWS_IGDB_CLIENT_SECRET`; they are read from the generated app Info.plist and are not committed. Following games for release reminders and the daily news reminder are separate features and are not yet available on iOS.
 

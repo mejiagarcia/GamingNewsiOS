@@ -27,6 +27,7 @@
 "article.share" = "Share";
 "article.copy" = "Copy link";
 "article.external" = "Open in browser";
+"article.reader" = "Open in Reader Mode";
 "feed.stale" = "Some sources could not refresh. Showing earlier articles.";
 "feed.partial" = "Some sources could not be loaded.";
 "feed.retry" = "Try again";
@@ -94,3 +95,11 @@
 "releases.loadFailed" = "Check your connection and try again.";
 "releases.refresh" = "Refresh upcoming releases";
 "releases.dateUnknown" = "Release date unavailable";
+"reader.title" = "Reader Mode";
+"reader.loading" = "Loading article…";
+"reader.failed" = "Couldn’t extract this article";
+"reader.failed.description" = "This page may block reader access or use unsupported formatting. You can retry or open it in your browser.";
+"reader.retry" = "Try again";
+"reader.openBrowser" = "Open in browser";
+"reader.imageHidden" = "Image hidden by your image settings";
+"reader.actions" = "Reader actions";

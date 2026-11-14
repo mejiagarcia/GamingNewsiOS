@@ -14,6 +14,8 @@ struct ArticleActionHandler {
 				navigation.copy(article)
 			case .open:
 				navigation.open(article)
+			case .openReader:
+				navigation.openReader(article)
 			case .openExternally:
 				navigation.openExternally(article)
 			case .share:

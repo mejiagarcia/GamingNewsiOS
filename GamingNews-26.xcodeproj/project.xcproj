@@ -18,6 +18,12 @@
       "version": {
         "up-to-next-major-version": "13.1.1",
       },
+    }, {
+      "kind": "remote",
+      "repository": "https://github.com/scinfu/SwiftSoup.git",
+      "version": {
+        "up-to-next-major-version": "2.7.6",
+      },
     },
   ],
   "files": [
@@ -50,6 +56,10 @@
       ],
       "package-product-members": [
         {
+          "package": "SwiftSoup",
+          "product-name": "SwiftSoup",
+          "build-phase": { "build-phase": "frameworks" },
+        }, {
           "package": "firebase-ios-sdk",
           "product-name": "FirebaseAnalytics",
           "build-phase": { "build-phase": "frameworks" },

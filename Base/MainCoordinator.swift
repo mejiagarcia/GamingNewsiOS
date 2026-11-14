@@ -53,6 +53,20 @@ extension MainCoordinator {
 		)
 	}
 
+	func openReader(_ article: Article) {
+		AnalyticsService.log(.articleOpened)
+		let screen = ReaderView(
+			article: article,
+			showImages: state.preferences.showImages,
+			navigation: navigation,
+			onOpenInBrowser: { [weak self] in self?.open(article) }
+		)
+		selectedNavigation?.pushViewController(
+			UIHostingController(rootView: screen),
+			animated: true
+		)
+	}
+
 	func openExternally(_ article: Article) {
 		AnalyticsService.log(.articleOpenedExternally)
 		UIApplication.shared.open(article.url)
@@ -190,6 +204,7 @@ extension MainCoordinator {
 
 		tabs.viewControllers = controllers.map { controller, title, image in
 			let navigation = UINavigationController(rootViewController: controller)
+			styleNavigationBar(navigation.navigationBar)
 			navigation.tabBarItem = UITabBarItem(
 				title: title,
 				image: UIImage(systemName: image),
@@ -199,6 +214,7 @@ extension MainCoordinator {
 			return navigation
 		}
 
+		styleTabBar(tabs.tabBar)
 		window.tintColor = UIColor(named: "AccentColor")
 		window.rootViewController = tabs
 		window.makeKeyAndVisible()
@@ -220,5 +236,42 @@ extension MainCoordinator {
 			case .light: window.overrideUserInterfaceStyle = .light
 			case .dark: window.overrideUserInterfaceStyle = .dark
 		}
+	}
+
+	private func styleNavigationBar(_ bar: UINavigationBar) {
+		let appearance = UINavigationBarAppearance()
+		appearance.configureWithOpaqueBackground()
+		appearance.backgroundColor = UIColor(named: "EditorialCanvas")
+		appearance.shadowColor = UIColor(named: "EditorialOutline")
+
+		bar.standardAppearance = appearance
+		bar.scrollEdgeAppearance = appearance
+		bar.compactAppearance = appearance
+	}
+
+	private func styleTabBar(_ bar: UITabBar) {
+		let appearance = UITabBarAppearance()
+		appearance.configureWithOpaqueBackground()
+		appearance.backgroundColor = UIColor(named: "EditorialInk")
+		appearance.shadowColor = UIColor(named: "EditorialOutline")
+
+		let normalColor = UIColor(named: "EditorialOnBanner") ?? .label
+		let selectedColor = UIColor(named: "EditorialGold") ?? normalColor
+		let layouts = [
+			appearance.stackedLayoutAppearance,
+			appearance.inlineLayoutAppearance,
+			appearance.compactInlineLayoutAppearance,
+		]
+
+		for layout in layouts {
+			layout.normal.iconColor = normalColor
+			layout.normal.titleTextAttributes = [.foregroundColor: normalColor]
+			layout.selected.iconColor = selectedColor
+			layout.selected.titleTextAttributes = [.foregroundColor: selectedColor]
+		}
+
+		bar.standardAppearance = appearance
+		bar.scrollEdgeAppearance = appearance
+		bar.tintColor = UIColor(named: "EditorialGold")
 	}
 }
