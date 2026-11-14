@@ -1,5 +1,23 @@
 import SwiftUI
 
+enum EditorialButtonHierarchy: Equatable, Sendable {
+	case primary
+	case secondary
+	case tertiary
+	case destructive
+	case selected
+	case unselected
+
+	var haptic: ButtonHapticLevel {
+		switch self {
+			case .primary: .firm
+			case .secondary: .light
+			case .tertiary, .selected, .unselected: .selection
+			case .destructive: .warning
+		}
+	}
+}
+
 // Shared surfaces and typography for the app's editorial layout.
 private struct EditorialCardModifier: ViewModifier {
 	func body(content: Content) -> some View {
@@ -22,55 +40,99 @@ private struct EditorialCardModifier: ViewModifier {
 	}
 }
 
-struct EditorialFilterStyle: ButtonStyle {
-	let isSelected: Bool
+struct EditorialButtonStyle: ButtonStyle {
+	let hierarchy: EditorialButtonHierarchy
 
-	func makeBody(configuration: Configuration) -> some View {
-		let shape = RoundedRectangle(cornerRadius: DesignSystem.Radius.small)
-
-		configuration.label
-			.font(DesignSystem.Typography.display(.subheadline))
-			.textCase(.uppercase)
-			.foregroundStyle(isSelected ? DesignSystem.Palette.ink : DesignSystem.Palette.onBanner)
-			.padding(.horizontal, DesignSystem.Spacing.regular)
-			.padding(.vertical, DesignSystem.Spacing.compact)
-			.frame(minHeight: DesignSystem.Size.minimumTapTarget)
-			.background(
-				isSelected ? DesignSystem.Palette.gold : DesignSystem.Palette.banner,
-				in: shape
-			)
-			.overlay {
-				shape.strokeBorder(
-					isSelected ? DesignSystem.Palette.ink : DesignSystem.Palette.onBanner,
-					lineWidth: DesignSystem.Size.outline
-				)
-			}
-			.offset(y: configuration.isPressed ? DesignSystem.Size.outline : .zero)
-	}
-}
-
-struct EditorialActionStyle: ButtonStyle {
 	@Environment(\.isEnabled)
 	private var isEnabled
 
 	func makeBody(configuration: Configuration) -> some View {
+		let isFilter = hierarchy == .selected || hierarchy == .unselected
+		let shape = RoundedRectangle(
+			cornerRadius: isFilter ? DesignSystem.Radius.small : DesignSystem.Radius.card
+		)
+		let fill = backgroundColor
+		let foreground = foregroundColor
+
 		configuration.label
 			.font(DesignSystem.Typography.display(.subheadline))
 			.textCase(.uppercase)
 			.multilineTextAlignment(.center)
-			.foregroundStyle(DesignSystem.Palette.ink)
+			.foregroundStyle(foreground)
 			.padding(.horizontal, DesignSystem.Spacing.regular)
 			.padding(.vertical, DesignSystem.Spacing.compact)
 			.frame(minHeight: DesignSystem.Size.minimumTapTarget)
-			.background(DesignSystem.Palette.gold, in: Capsule())
+			.background(fill, in: shape)
 			.overlay {
-				Capsule().strokeBorder(
-					DesignSystem.Palette.ink,
+				shape.strokeBorder(
+					outlineColor,
 					lineWidth: DesignSystem.Size.outline
 				)
 			}
 			.opacity(isEnabled ? 1 : 0.5)
 			.offset(y: configuration.isPressed ? DesignSystem.Size.outline : .zero)
+			.onChange(of: configuration.isPressed) { _, isPressed in
+				guard isPressed, isEnabled else { return }
+				HapticFeedback.buttonPress(hierarchy.haptic)
+			}
+	}
+
+	private var backgroundColor: Color {
+		switch hierarchy {
+			case .primary: DesignSystem.Palette.gold
+			case .secondary: DesignSystem.Palette.paper
+			case .tertiary: .clear
+			case .destructive: DesignSystem.Palette.destructive
+			case .selected: DesignSystem.Palette.gold
+			case .unselected: DesignSystem.Palette.banner
+		}
+	}
+
+	private var foregroundColor: Color {
+		switch hierarchy {
+			case .primary, .secondary, .selected: DesignSystem.Palette.ink
+			case .tertiary, .unselected: DesignSystem.Palette.onBanner
+			case .destructive: DesignSystem.Palette.paper
+		}
+	}
+
+	private var outlineColor: Color {
+		switch hierarchy {
+			case .tertiary, .unselected: DesignSystem.Palette.onBanner
+			default: DesignSystem.Palette.ink
+		}
+	}
+}
+
+struct EditorialFilterStyle: ButtonStyle {
+	let isSelected: Bool
+
+	func makeBody(configuration: Configuration) -> some View {
+		EditorialButtonStyle(hierarchy: isSelected ? .selected : .unselected)
+			.makeBody(configuration: configuration)
+	}
+}
+
+struct EditorialActionStyle: ButtonStyle {
+	func makeBody(configuration: Configuration) -> some View {
+		EditorialButtonStyle(hierarchy: .primary)
+			.makeBody(configuration: configuration)
+	}
+}
+
+struct EditorialPlainButtonStyle: ButtonStyle {
+	let haptic: ButtonHapticLevel
+
+	@Environment(\.isEnabled)
+	private var isEnabled
+
+	func makeBody(configuration: Configuration) -> some View {
+		configuration.label
+			.opacity(configuration.isPressed ? 0.7 : 1)
+			.onChange(of: configuration.isPressed) { _, isPressed in
+				guard isPressed, isEnabled else { return }
+				HapticFeedback.buttonPress(haptic)
+			}
 	}
 }
 
@@ -96,10 +158,12 @@ extension View {
 		listStyle(.plain)
 			.scrollContentBackground(.hidden)
 			.editorialCanvas()
+			.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
 	}
 
 	func editorialForm() -> some View {
 		scrollContentBackground(.hidden)
 			.editorialCanvas()
+			.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
 	}
 }

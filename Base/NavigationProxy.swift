@@ -30,6 +30,10 @@ extension NavigationProxy {
 		coordinator?.openReader(article)
 	}
 
+	func chooseArticleOpenMode(for article: Article) {
+		coordinator?.chooseArticleOpenMode(for: article)
+	}
+
 	func openExternally(_ article: Article) {
 		coordinator?.openExternally(article)
 	}

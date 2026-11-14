@@ -13,7 +13,11 @@ struct ArticleActionHandler {
 			case .copy:
 				navigation.copy(article)
 			case .open:
-				navigation.open(article)
+				if let mode = state.preferences.articleOpenMode {
+					open(article, using: mode)
+				} else {
+					navigation.chooseArticleOpenMode(for: article)
+				}
 			case .openReader:
 				navigation.openReader(article)
 			case .openExternally:
@@ -24,6 +28,18 @@ struct ArticleActionHandler {
 				Task {
 					await state.toggleSaved(article)
 				}
+		}
+	}
+
+	private func open(
+		_ article: Article,
+		using mode: ArticleOpenMode
+	) {
+		switch mode {
+			case .original:
+				navigation.open(article)
+			case .reader:
+				navigation.openReader(article)
 		}
 	}
 }

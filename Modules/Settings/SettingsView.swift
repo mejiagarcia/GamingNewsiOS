@@ -18,6 +18,14 @@ struct SettingsView: View {
 		Form {
 			Section("settings.content") {
 				Picker(
+					"settings.articleOpening",
+					selection: binding(\.articleOpenMode)
+				) {
+					Text("settings.articleOpening.ask").tag(nil as ArticleOpenMode?)
+					Text("article.openMode.reader").tag(ArticleOpenMode.reader as ArticleOpenMode?)
+					Text("article.openMode.original").tag(ArticleOpenMode.original as ArticleOpenMode?)
+				}
+				Picker(
 					"settings.language",
 					selection: binding(\.language)
 				) {

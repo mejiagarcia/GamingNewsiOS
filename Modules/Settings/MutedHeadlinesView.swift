@@ -51,9 +51,10 @@ struct MutedHeadlinesView: View {
 							}
 							.frame(maxWidth: .infinity, alignment: .leading)
 						}
-						.buttonStyle(.plain)
+						.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
 						.swipeActions {
 							Button("common.delete", role: .destructive) { ruleToDelete = rule }
+								.buttonStyle(EditorialButtonStyle(hierarchy: .destructive))
 						}
 					}
 				}
@@ -106,6 +107,7 @@ struct MutedHeadlinesView: View {
 				Task { await state.updatePreferences(preferences) }
 				self.ruleToDelete = nil
 			}
+			.buttonStyle(EditorialButtonStyle(hierarchy: .destructive))
 		} message: {
 			Text("mute.delete.message")
 		}
@@ -237,9 +239,11 @@ private struct MutedHeadlineRuleEditor: View {
 		.toolbar {
 			ToolbarItem(placement: .cancellationAction) {
 				Button("common.cancel", action: onCancel)
+					.buttonStyle(EditorialButtonStyle(hierarchy: .tertiary))
 			}
 			ToolbarItem(placement: .confirmationAction) {
 				Button("common.save") { onSave(makeRule()) }
+					.buttonStyle(EditorialActionStyle())
 					.disabled(!isValid)
 			}
 		}

@@ -5,6 +5,8 @@
 "settings.title" = "Settings";
 "settings.content" = "Content";
 "settings.language" = "Content language";
+"settings.articleOpening" = "Article opening";
+"settings.articleOpening.ask" = "Ask each time";
 "settings.sources" = "Sources";
 "settings.display" = "Display";
 "settings.appearance" = "Appearance";
@@ -28,6 +30,10 @@
 "article.copy" = "Copy link";
 "article.external" = "Open in browser";
 "article.reader" = "Open in Reader Mode";
+"article.openMode.title" = "How do you want to read articles?";
+"article.openMode.description" = "You can change this later in Settings.";
+"article.openMode.reader" = "Reader Mode";
+"article.openMode.original" = "Original article";
 "feed.stale" = "Some sources could not refresh. Showing earlier articles.";
 "feed.partial" = "Some sources could not be loaded.";
 "feed.retry" = "Try again";

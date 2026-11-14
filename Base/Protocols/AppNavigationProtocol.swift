@@ -6,6 +6,7 @@ protocol AppNavigationProtocol: AnyObject {
 	func copy(_ article: Article)
 	func open(_ article: Article)
 	func openReader(_ article: Article)
+	func chooseArticleOpenMode(for article: Article)
 	func openExternally(_ article: Article)
 	func share(_ article: Article)
 	func showSettings()

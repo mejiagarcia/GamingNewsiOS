@@ -43,6 +43,7 @@ struct ReaderView: View {
 			}
 		}
 		.editorialCanvas()
+		.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
 		.navigationTitle("reader.title")
 		.navigationBarTitleDisplayMode(.inline)
 		.toolbar {
@@ -53,11 +54,13 @@ struct ReaderView: View {
 					} label: {
 						Label("article.share", systemImage: "square.and.arrow.up")
 					}
+					.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
 					Button {
 						navigation.copy(model.article)
 					} label: {
 						Label("article.copy", systemImage: "doc.on.doc")
 					}
+					.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
 				} label: {
 					Image(systemName: "ellipsis.circle")
 				}

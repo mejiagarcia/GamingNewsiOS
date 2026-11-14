@@ -72,6 +72,7 @@ struct SavedView: View {
 					"settings.title",
 					systemImage: "gearshape"
 				) { navigation.showSettings() }
+				.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
 			}
 		}
 		.task(

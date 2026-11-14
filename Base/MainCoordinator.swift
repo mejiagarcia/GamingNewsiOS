@@ -14,6 +14,7 @@ final class MainCoordinator: AppNavigationProtocol {
 	// MARK: - Private Variables
 
 	private lazy var navigation = NavigationProxy(coordinator: self)
+	private weak var articleOpenModeSheet: UIViewController?
 	private var presentingController: UIViewController? {
 		selectedNavigation?.visibleViewController
 	}
@@ -65,6 +66,23 @@ extension MainCoordinator {
 			UIHostingController(rootView: screen),
 			animated: true
 		)
+	}
+
+	func chooseArticleOpenMode(for article: Article) {
+		let controller = UIHostingController(
+			rootView: ArticleOpenModeSheet { [weak self] mode in
+				self?.selectArticleOpenMode(mode, for: article)
+			}
+		)
+		controller.modalPresentationStyle = .pageSheet
+
+		if let sheet = controller.sheetPresentationController {
+			sheet.detents = [.medium()]
+			sheet.prefersGrabberVisible = true
+		}
+
+		articleOpenModeSheet = controller
+		presentingController?.present(controller, animated: true)
 	}
 
 	func openExternally(_ article: Article) {
@@ -222,6 +240,39 @@ extension MainCoordinator {
 		Task {
 			await state.start()
 			applyAppearance()
+		}
+	}
+}
+
+// MARK: - Private Methods
+
+private extension MainCoordinator {
+	func selectArticleOpenMode(
+		_ mode: ArticleOpenMode,
+		for article: Article
+	) {
+		guard let sheet = articleOpenModeSheet else { return }
+		articleOpenModeSheet = nil
+
+		Task {
+			var preferences = state.preferences
+			preferences.articleOpenMode = mode
+			await state.updatePreferences(preferences)
+			sheet.dismiss(animated: true) { [weak self] in
+				self?.open(article, using: mode)
+			}
+		}
+	}
+
+	func open(
+		_ article: Article,
+		using mode: ArticleOpenMode
+	) {
+		switch mode {
+			case .original:
+				open(article)
+			case .reader:
+				openReader(article)
 		}
 	}
 }

@@ -4,6 +4,7 @@ enum DesignSystem: Sendable {
 	enum Palette: Sendable {
 		static let banner = Color("EditorialBanner")
 		static let canvas = Color("EditorialCanvas")
+		static let destructive = Color("EditorialDestructive")
 		static let gold = Color("EditorialGold")
 		static let ink = Color("EditorialInk")
 		static let onBanner = Color("EditorialOnBanner")

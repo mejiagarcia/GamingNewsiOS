@@ -5,6 +5,8 @@
 "settings.title" = "Ajustes";
 "settings.content" = "Contenido";
 "settings.language" = "Idioma del contenido";
+"settings.articleOpening" = "Apertura de artículos";
+"settings.articleOpening.ask" = "Preguntar cada vez";
 "settings.sources" = "Fuentes";
 "settings.display" = "Pantalla";
 "settings.appearance" = "Apariencia";
@@ -28,6 +30,10 @@
 "article.copy" = "Copiar enlace";
 "article.external" = "Abrir en el navegador";
 "article.reader" = "Abrir en modo lectura";
+"article.openMode.title" = "¿Cómo quieres leer los artículos?";
+"article.openMode.description" = "Puedes cambiar esta opción más tarde en Ajustes.";
+"article.openMode.reader" = "Modo lectura";
+"article.openMode.original" = "Artículo original";
 "feed.stale" = "No se pudieron actualizar algunas fuentes. Se muestran artículos anteriores.";
 "feed.partial" = "No se pudieron cargar algunas fuentes.";
 "feed.retry" = "Reintentar";

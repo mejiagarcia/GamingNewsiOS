@@ -66,11 +66,13 @@ struct ReleasesView: View {
 				Button("settings.title", systemImage: "gearshape") {
 					navigation.showSettings()
 				}
+				.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
 			}
 			ToolbarItem(placement: .topBarTrailing) {
 				Button("releases.refresh", systemImage: "arrow.clockwise") {
 					Task { await model.refresh() }
 				}
+				.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
 				.disabled(model.isRefreshing)
 			}
 		}
@@ -108,7 +110,7 @@ private struct ReleaseRow: View {
 		Group {
 			if let gameURL = release.gameURL {
 				Link(destination: gameURL) { content }
-					.buttonStyle(.plain)
+					.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
 			} else {
 				content
 			}

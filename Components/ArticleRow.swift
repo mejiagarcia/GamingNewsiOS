@@ -75,7 +75,7 @@ struct ArticleRow: View {
 				}
 				.contentShape(Rectangle())
 			}
-			.buttonStyle(.plain)
+			.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
 			.accessibilityHint(Text("article.open.hint"))
 			Menu {
 				Button { onAction(.toggleSaved) } label: {
@@ -84,6 +84,7 @@ struct ArticleRow: View {
 						systemImage: isSaved ? "bookmark.slash" : "bookmark"
 					)
 				}
+				.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
 				.disabled(isUpdating)
 				Button { onAction(.share) } label: {
 					Label(
@@ -91,24 +92,28 @@ struct ArticleRow: View {
 						systemImage: "square.and.arrow.up"
 					)
 				}
+				.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
 				Button { onAction(.copy) } label: {
 					Label(
 						"article.copy",
 						systemImage: "doc.on.doc"
 					)
 				}
+				.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
 				Button { onAction(.openExternally) } label: {
 					Label(
 						"article.external",
 						systemImage: "safari"
 					)
 				}
+				.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
 				Button { onAction(.openReader) } label: {
 					Label(
 						"article.reader",
 						systemImage: "doc.text"
 					)
 				}
+				.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
 			} label: {
 				Image(systemName: isSaved ? "bookmark.fill" : "ellipsis")
 					.frame(
