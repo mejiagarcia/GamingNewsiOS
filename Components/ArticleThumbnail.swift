@@ -5,6 +5,7 @@ struct ArticleThumbnail: View {
 	// MARK: - Internal Constants
 
 	let url: URL
+	var fillsWidth = false
 
 	// MARK: - Private Variables
 
@@ -25,9 +26,10 @@ struct ArticleThumbnail: View {
 			}
 		}
 		.frame(
-			width: DesignSystem.Size.thumbnailWidth,
+			width: fillsWidth ? nil : DesignSystem.Size.thumbnailWidth,
 			height: DesignSystem.Size.thumbnailHeight
 		)
+		.frame(maxWidth: fillsWidth ? .infinity : nil)
 		.clipped()
 		.clipShape(.rect(cornerRadius: DesignSystem.Radius.small))
 		.accessibilityHidden(true)

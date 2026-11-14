@@ -163,24 +163,17 @@ struct FeedView: View {
 						.editorialCardRow()
 					}
 				}
-				ForEach(model.articles) { article in
-					ArticleRow(
-						article: article,
-						isSaved: state.isSaved(article),
-						showImages: state.preferences.showImages,
-						isUpdating: state.isUpdating,
-						isMuted: model.mutedArticleIDs.contains(article.id),
-						onAction: { action in
-							ArticleActionHandler(
-								state: state,
-								navigation: navigation
-							).handle(
-								action,
-								article: article
-							)
+				ForEach(0..<((model.articles.count + 1) / 2), id: \.self) { row in
+					HStack(alignment: .top, spacing: DesignSystem.Spacing.regular) {
+						articleCard(at: row * 2)
+						if row * 2 + 1 < model.articles.count {
+							articleCard(at: row * 2 + 1)
+						} else {
+							Color.clear.frame(maxWidth: .infinity)
 						}
-					)
-					.editorialCardRow()
+					}
+					.listRowBackground(Color.clear)
+					.listRowSeparator(.hidden)
 				}
 			}
 		}
@@ -236,6 +229,27 @@ struct FeedView: View {
 	private var shouldShowNotificationBanner: Bool {
 		!isNotificationBannerDismissed
 			&& [.notDetermined, .denied].contains(notifications.authorizationStatus)
+	}
+
+	private func articleCard(at index: Int) -> some View {
+		let article = model.articles[index]
+
+		return ArticleRow(
+			article: article,
+			isSaved: state.isSaved(article),
+			showImages: state.preferences.showImages,
+			isUpdating: state.isUpdating,
+			isMuted: model.mutedArticleIDs.contains(article.id),
+			layout: .newspaper(featured: index.isMultiple(of: 5)),
+			onAction: { action in
+				ArticleActionHandler(
+					state: state,
+					navigation: navigation
+				).handle(action, article: article)
+			}
+		)
+		.frame(maxWidth: .infinity, alignment: .topLeading)
+		.editorialCard()
 	}
 
 	private var notificationBanner: some View {
