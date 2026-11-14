@@ -44,26 +44,27 @@ struct ReaderView: View {
 		}
 		.editorialCanvas()
 		.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
-		.navigationTitle("reader.title")
-		.navigationBarTitleDisplayMode(.inline)
-		.toolbar {
-			ToolbarItem(placement: .topBarTrailing) {
+		.safeAreaInset(edge: .top, spacing: .zero) {
+			EditorialHeader(title: "reader.title", onBack: navigation.goBack) {
 				Menu {
 					Button {
 						navigation.share(model.article)
 					} label: {
-						Label("article.share", systemImage: "square.and.arrow.up")
+						EditorialLabel(title: "article.share", glyph: .share)
 					}
 					.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
 					Button {
 						navigation.copy(model.article)
 					} label: {
-						Label("article.copy", systemImage: "doc.on.doc")
+						EditorialLabel(title: "article.copy", glyph: .copy)
 					}
 					.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
 				} label: {
-					Image(systemName: "ellipsis.circle")
+					EditorialGlyph.more.view
+						.frame(width: DesignSystem.Size.minimumTapTarget, height: DesignSystem.Size.minimumTapTarget)
+						.contentShape(Rectangle())
 				}
+				.tint(DesignSystem.Palette.onBanner)
 				.accessibilityLabel(Text("reader.actions"))
 			}
 		}
@@ -130,7 +131,7 @@ private struct ReaderElementView: View {
 							.foregroundStyle(.secondary)
 					}
 				} else {
-					Label("reader.imageHidden", systemImage: "photo")
+					EditorialLabel(title: "reader.imageHidden", glyph: .image)
 						.font(.subheadline)
 						.foregroundStyle(.secondary)
 						.frame(maxWidth: .infinity, alignment: .leading)
@@ -178,7 +179,7 @@ private struct ReaderErrorView: View {
 
 	var body: some View {
 		ContentUnavailableView {
-			Label("reader.failed", systemImage: "doc.text.magnifyingglass")
+			EditorialLabel(title: "reader.failed", glyph: .reader)
 		} description: {
 			Text("reader.failed.description")
 		} actions: {

@@ -15,7 +15,7 @@ struct SourceSettingsView: View {
 				FeedLanguage.allCases,
 				id: \.self
 			) { language in
-				Section(language == .en ? "language.english" : "language.spanish") {
+				EditorialSettingsSection(title: language == .en ? "language.english" : "language.spanish") {
 					ForEach(NewsCategory.allCases) { category in
 						let sources = state.sources.filter {
 							$0.language == language && $0.kind == .news && $0.category == category
@@ -27,7 +27,7 @@ struct SourceSettingsView: View {
 									title: category.title
 								)
 							} label: {
-								Text(category.title)
+								EditorialLabel(title: category.title, glyph: .arrow)
 							}
 						}
 					}
@@ -39,10 +39,11 @@ struct SourceSettingsView: View {
 								title: "tab.reviews"
 							)
 						} label: {
-							Text("tab.reviews")
+							EditorialLabel(title: "tab.reviews", glyph: .arrow)
 						}
 					}
 				}
+				.buttonStyle(EditorialButtonStyle(hierarchy: .secondary))
 			}
 			Section {
 				Button("settings.restoreSources") {
@@ -50,13 +51,19 @@ struct SourceSettingsView: View {
 					preferences.disabledSourceIDs.removeAll()
 					Task { await state.updatePreferences(preferences) }
 				}
+				.buttonStyle(EditorialButtonStyle(hierarchy: .secondary))
 				.disabled(state.preferences.disabledSourceIDs.isEmpty)
+				.editorialCardRow()
 			}
 		}
 		.disabled(!state.storageAvailable || state.isUpdating)
-		.editorialForm()
+		.editorialSettingsPage()
 		.onAppear { AnalyticsService.screen("source_settings") }
-		.navigationTitle(Text("settings.sources"))
+		.safeAreaInset(edge: .top, spacing: .zero) {
+			EditorialHeader(title: "settings.sources", onBack: navigation.goBack) {
+				EmptyView()
+			}
+		}
 		.alert(
 			"error.title",
 			isPresented: Binding(

@@ -5,6 +5,7 @@ struct MutedHeadlinesView: View {
 	// MARK: - Internal Constants
 
 	let state: AppState
+	let onBack: () -> Void
 
 	// MARK: - Private Variables
 
@@ -15,7 +16,7 @@ struct MutedHeadlinesView: View {
 
 	var body: some View {
 		List {
-			Section {
+			EditorialSettingsSection(title: "tab.reviews") {
 				Text("mute.explanation")
 				Toggle(
 					"mute.applyToReviews",
@@ -29,14 +30,16 @@ struct MutedHeadlinesView: View {
 					)
 				)
 				.disabled(state.isUpdating || !state.storageAvailable)
-			} footer: {
 				Text("mute.applyToReviews.footer")
+					.font(.caption)
+					.foregroundStyle(.secondary)
 			}
 
 			Section {
 				if state.preferences.mutedHeadlineRules.isEmpty {
 					Text("mute.empty")
 						.foregroundStyle(.secondary)
+						.editorialCardRow()
 				} else {
 					ForEach(state.preferences.mutedHeadlineRules) { rule in
 						Button {
@@ -52,6 +55,7 @@ struct MutedHeadlinesView: View {
 							.frame(maxWidth: .infinity, alignment: .leading)
 						}
 						.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
+						.editorialCardRow()
 						.swipeActions {
 							Button("common.delete", role: .destructive) { ruleToDelete = rule }
 								.buttonStyle(EditorialButtonStyle(hierarchy: .destructive))
@@ -60,9 +64,8 @@ struct MutedHeadlinesView: View {
 				}
 			}
 		}
-		.editorialForm()
+		.editorialSettingsPage()
 		.disabled(state.isUpdating || !state.storageAvailable)
-		.navigationTitle(Text("settings.mutedHeadlines"))
 		.alert(
 			"error.title",
 			isPresented: Binding(
@@ -74,23 +77,25 @@ struct MutedHeadlinesView: View {
 		} message: {
 			Text(verbatim: state.errorMessage ?? "")
 		}
-		.toolbar {
-			ToolbarItem(placement: .topBarTrailing) {
-				Button("common.add", systemImage: "plus") {
+		.safeAreaInset(edge: .top, spacing: .zero) {
+			EditorialHeader(title: "settings.mutedHeadlines", onBack: onBack) {
+				Button {
 					editor = MutedHeadlineRule(text: "")
+				} label: {
+					EditorialGlyph.add.view
 				}
+				.buttonStyle(EditorialActionStyle())
+				.accessibilityLabel(Text("common.add"))
 				.disabled(state.isUpdating || !state.storageAvailable)
 			}
 		}
 		.sheet(item: $editor) { rule in
-			NavigationStack {
-				MutedHeadlineRuleEditor(
-					rule: rule,
-					existingRules: state.preferences.mutedHeadlineRules,
-					onSave: save,
-					onCancel: { editor = nil }
-				)
-			}
+			MutedHeadlineRuleEditor(
+				rule: rule,
+				existingRules: state.preferences.mutedHeadlineRules,
+				onSave: save,
+				onCancel: { editor = nil }
+			)
 		}
 		.confirmationDialog(
 			Text("mute.delete.title"),
@@ -201,9 +206,9 @@ private struct MutedHeadlineRuleEditor: View {
 	// MARK: - View
 
 	var body: some View {
-		Form {
-			Section("mute.rule.text.section") {
-				TextField("mute.rule.text", text: $text)
+		List {
+			EditorialSettingsSection(title: "mute.rule.text.section") {
+				EditorialField(prompt: "mute.rule.text", text: $text)
 					.textInputAutocapitalization(.never)
 					.autocorrectionDisabled()
 				if isDuplicate {
@@ -213,15 +218,13 @@ private struct MutedHeadlineRuleEditor: View {
 					Text("mute.error.wholeWord").foregroundStyle(Color.accentColor)
 				}
 			}
-			Section("mute.rule.match.section") {
-				Picker("mute.rule.match", selection: $matchMode) {
-					Text("mute.match.contains").tag(HeadlineMatchMode.contains)
-					Text("mute.match.wholeWord").tag(HeadlineMatchMode.wholeWord)
-					Text("mute.match.exactPhrase").tag(HeadlineMatchMode.exactPhrase)
-				}
+			EditorialSettingsSection(title: "mute.rule.match.section") {
+				EditorialChoice(title: "mute.match.contains", value: .contains, selection: $matchMode)
+				EditorialChoice(title: "mute.match.wholeWord", value: .wholeWord, selection: $matchMode)
+				EditorialChoice(title: "mute.match.exactPhrase", value: .exactPhrase, selection: $matchMode)
 				Toggle("mute.rule.caseSensitive", isOn: $caseSensitive)
 			}
-			Section("mute.rule.scope.section") {
+			EditorialSettingsSection(title: "mute.rule.scope.section") {
 				Toggle("mute.scope.everywhere", isOn: $appliesEverywhere)
 				if !appliesEverywhere {
 					ForEach(NewsCategory.allCases) { category in
@@ -233,15 +236,15 @@ private struct MutedHeadlineRuleEditor: View {
 				}
 			}
 		}
-		.editorialForm()
-		.navigationTitle(originalExists ? Text("mute.rule.edit") : Text("mute.rule.add"))
-		.navigationBarTitleDisplayMode(.inline)
-		.toolbar {
-			ToolbarItem(placement: .cancellationAction) {
-				Button("common.cancel", action: onCancel)
-					.buttonStyle(EditorialButtonStyle(hierarchy: .tertiary))
-			}
-			ToolbarItem(placement: .confirmationAction) {
+		.editorialSettingsPage()
+		.safeAreaInset(edge: .top, spacing: .zero) {
+			EditorialHeader(title: originalExists ? "mute.rule.edit" : "mute.rule.add") {
+				Button(action: onCancel) {
+					EditorialGlyph.close.view
+				}
+				.buttonStyle(EditorialButtonStyle(hierarchy: .tertiary))
+				.accessibilityLabel(Text("common.cancel"))
+
 				Button("common.save") { onSave(makeRule()) }
 					.buttonStyle(EditorialActionStyle())
 					.disabled(!isValid)

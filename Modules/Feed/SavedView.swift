@@ -22,17 +22,17 @@ struct SavedView: View {
 
 	var body: some View {
 		List {
-			EditorialMasthead(title: "tab.saved") {
-				EmptyView()
+			EditorialFilterStrip {
+				EditorialField(prompt: "search.prompt", text: $query, isSearch: true)
+					.padding(DesignSystem.Spacing.regular)
 			}
 
 			if !state.isReady {
 				ProgressView().frame(maxWidth: .infinity).padding()
 			} else if articles.isEmpty {
-				ContentUnavailableView(
-					query.isEmpty ? "saved.empty" : "search.empty",
-					systemImage: "bookmark"
-				)
+				ContentUnavailableView {
+					EditorialLabel(title: query.isEmpty ? "saved.empty" : "search.empty", glyph: .saved)
+				}
 			} else {
 				ForEach(articles) { article in
 					ArticleRow(
@@ -56,23 +56,20 @@ struct SavedView: View {
 		}
 		.editorialList()
 		.onAppear { AnalyticsService.screen("saved") }
-		.navigationBarTitleDisplayMode(.inline)
-		.searchable(
-			text: $query,
-			prompt: Text("search.prompt")
-		)
-		.onSubmit(of: .search) {
+		.onSubmit(of: .text) {
 			if !query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
 				AnalyticsService.log(.searchSubmitted)
 			}
 		}
-		.toolbar {
-			ToolbarItem(placement: .topBarTrailing) {
-				Button(
-					"settings.title",
-					systemImage: "gearshape"
-				) { navigation.showSettings() }
-				.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
+		.safeAreaInset(edge: .top, spacing: .zero) {
+			EditorialHeader(title: "tab.saved") {
+				Button {
+					navigation.showSettings()
+				} label: {
+					EditorialGlyph.filters.view
+				}
+				.buttonStyle(EditorialButtonStyle(hierarchy: .tertiary))
+				.accessibilityLabel(Text("settings.title"))
 			}
 		}
 		.task(

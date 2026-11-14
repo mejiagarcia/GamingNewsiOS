@@ -4,7 +4,7 @@ A native iPhone app for keeping up with video game news and reviews. It is the i
 
 ## iOS design
 
-News, Reviews, Releases, and Saved use condensed mastheads, warm paper surfaces, and outlined cards with offset shadows. Red filter tiles turn gold when selected. Reader Mode and Settings use the same light and dark palette. The visual refresh is implemented in source and awaits on-device verification.
+News, Reviews, Releases, and Saved use condensed mastheads, warm paper surfaces, and outlined cards with offset shadows. Red filter tiles turn gold when selected. Search fields, article actions, Reader Mode, the article-opening sheet, and all Settings pages share the same light and dark design. Settings uses outlined cards, explicit choices, and custom switches. A pinned red header carries page titles, back controls, and screen actions. The app draws its own icons for tabs, navigation, and content actions. System-owned browser, share, and permission interfaces use platform styling. The custom header supports edge-swipe back on pushed screens. Search uses a gold offset shadow and a visible focus outline. The latest navigation and search changes await on-device verification.
 
 ## Feature comparison
 

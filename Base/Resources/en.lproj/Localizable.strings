@@ -109,3 +109,10 @@
 "reader.openBrowser" = "Open in browser";
 "reader.imageHidden" = "Image hidden by your image settings";
 "reader.actions" = "Reader actions";
+
+"field.clear" = "Clear text";
+"toggle.on" = "On";
+"toggle.off" = "Off";
+"releases.search.prompt" = "Search games";
+
+"navigation.back" = "Back";

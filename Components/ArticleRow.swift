@@ -79,43 +79,28 @@ struct ArticleRow: View {
 			.accessibilityHint(Text("article.open.hint"))
 			Menu {
 				Button { onAction(.toggleSaved) } label: {
-					Label(
-						isSaved ? "article.remove" : "article.save",
-						systemImage: isSaved ? "bookmark.slash" : "bookmark"
-					)
+					EditorialLabel(title: isSaved ? "article.remove" : "article.save", glyph: .saved)
 				}
 				.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
 				.disabled(isUpdating)
 				Button { onAction(.share) } label: {
-					Label(
-						"article.share",
-						systemImage: "square.and.arrow.up"
-					)
+					EditorialLabel(title: "article.share", glyph: .share)
 				}
 				.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
 				Button { onAction(.copy) } label: {
-					Label(
-						"article.copy",
-						systemImage: "doc.on.doc"
-					)
+					EditorialLabel(title: "article.copy", glyph: .copy)
 				}
 				.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
 				Button { onAction(.openExternally) } label: {
-					Label(
-						"article.external",
-						systemImage: "safari"
-					)
+					EditorialLabel(title: "article.external", glyph: .external)
 				}
 				.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
 				Button { onAction(.openReader) } label: {
-					Label(
-						"article.reader",
-						systemImage: "doc.text"
-					)
+					EditorialLabel(title: "article.reader", glyph: .reader)
 				}
 				.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
 			} label: {
-				Image(systemName: isSaved ? "bookmark.fill" : "ellipsis")
+				(isSaved ? EditorialGlyph.saved : EditorialGlyph.more).view
 					.frame(
 						width: DesignSystem.Size.minimumTapTarget,
 						height: DesignSystem.Size.minimumTapTarget

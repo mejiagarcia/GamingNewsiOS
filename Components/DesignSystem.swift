@@ -26,6 +26,7 @@ enum DesignSystem: Sendable {
 
 	enum Size: Sendable {
 		static let cardOffset: CGFloat = 4
+		static let glyph: CGFloat = 24
 		static let minimumTapTarget: CGFloat = 44
 		static let outline: CGFloat = 2
 		static let releaseThumbnailHeight: CGFloat = 112

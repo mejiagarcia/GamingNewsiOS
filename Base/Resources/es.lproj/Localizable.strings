@@ -109,3 +109,10 @@
 "reader.openBrowser" = "Abrir en el navegador";
 "reader.imageHidden" = "Imagen oculta según tus ajustes de imágenes";
 "reader.actions" = "Acciones del lector";
+
+"field.clear" = "Borrar texto";
+"toggle.on" = "Activado";
+"toggle.off" = "Desactivado";
+"releases.search.prompt" = "Buscar juegos";
+
+"navigation.back" = "Volver";

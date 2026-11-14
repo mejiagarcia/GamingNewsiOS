@@ -15,38 +15,35 @@ struct SettingsView: View {
 	// MARK: - View
 
 	var body: some View {
-		Form {
-			Section("settings.content") {
-				Picker(
-					"settings.articleOpening",
-					selection: binding(\.articleOpenMode)
-				) {
-					Text("settings.articleOpening.ask").tag(nil as ArticleOpenMode?)
-					Text("article.openMode.reader").tag(ArticleOpenMode.reader as ArticleOpenMode?)
-					Text("article.openMode.original").tag(ArticleOpenMode.original as ArticleOpenMode?)
+		List {
+
+			EditorialSettingsSection(title: "settings.articleOpening") {
+				EditorialChoice(title: "settings.articleOpening.ask", value: nil, selection: binding(\.articleOpenMode))
+				EditorialChoice(title: "article.openMode.reader", value: .reader, selection: binding(\.articleOpenMode))
+				EditorialChoice(title: "article.openMode.original", value: .original, selection: binding(\.articleOpenMode))
+			}
+			.disabled(!state.storageAvailable || state.isUpdating)
+			EditorialSettingsSection(title: "settings.language") {
+				ForEach(ContentLanguage.allCases) { language in
+					EditorialChoice(title: language.title, value: language, selection: binding(\.language))
 				}
-				Picker(
-					"settings.language",
-					selection: binding(\.language)
-				) {
-					ForEach(ContentLanguage.allCases) { language in Text(language.title).tag(language) }
-				}
+			}
+			.disabled(!state.storageAvailable || state.isUpdating)
+			EditorialSettingsSection(title: "settings.content") {
 				Button {
 					navigation.showSources()
 				} label: {
-					Label(
-						"settings.sources",
-						systemImage: "line.3.horizontal.decrease.circle"
-					)
+					EditorialLabel(title: "settings.sources", glyph: .filters)
 				}
 				Button {
 					navigation.showMutedHeadlines()
 				} label: {
-					Label("settings.mutedHeadlines", systemImage: "speaker.slash")
+					EditorialLabel(title: "settings.mutedHeadlines", glyph: .mute)
 				}
 			}
+			.buttonStyle(EditorialButtonStyle(hierarchy: .secondary))
 			.disabled(!state.storageAvailable || state.isUpdating)
-			Section("settings.notifications") {
+			EditorialSettingsSection(title: "settings.notifications") {
 				Button {
 					Task {
 						do {
@@ -62,14 +59,13 @@ struct SettingsView: View {
 						Text(notificationStatus).font(.caption).foregroundStyle(.secondary)
 					}
 				}
+				.buttonStyle(EditorialButtonStyle(hierarchy: .secondary))
 				.disabled(notifications.isUpdating)
 			}
-			Section("settings.display") {
-				Picker(
-					"settings.appearance",
-					selection: binding(\.appearance)
-				) {
-					ForEach(AppAppearance.allCases) { appearance in Text(appearance.title).tag(appearance) }
+			EditorialSettingsSection(title: "settings.display") {
+				Text("settings.appearance")
+				ForEach(AppAppearance.allCases) { appearance in
+					EditorialChoice(title: appearance.title, value: appearance, selection: binding(\.appearance))
 				}
 				Toggle(
 					"settings.images",
@@ -78,10 +74,14 @@ struct SettingsView: View {
 			}
 			.disabled(!state.storageAvailable || state.isUpdating)
 		}
-		.editorialForm()
+		.editorialSettingsPage()
 		.onAppear { AnalyticsService.screen("settings") }
 		.task { await notifications.refresh() }
-		.navigationTitle(Text("settings.title"))
+		.safeAreaInset(edge: .top, spacing: .zero) {
+			EditorialHeader(title: "settings.title", onBack: navigation.goBack) {
+				EmptyView()
+			}
+		}
 		.alert(
 			"error.title",
 			isPresented: Binding(

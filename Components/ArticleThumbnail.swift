@@ -18,7 +18,7 @@ struct ArticleThumbnail: View {
 			if let image {
 				Image(uiImage: image).resizable().scaledToFill()
 			} else {
-				Image(systemName: "newspaper").foregroundStyle(.secondary).frame(
+				EditorialGlyph.news.view.foregroundStyle(.secondary).frame(
 					maxWidth: .infinity,
 					maxHeight: .infinity
 				).background(Color("ArticlePlaceholder"))

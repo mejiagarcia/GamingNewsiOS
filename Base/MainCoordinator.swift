@@ -46,6 +46,10 @@ extension MainCoordinator {
 		HapticFeedback.success()
 	}
 
+	func goBack() {
+		selectedNavigation?.popViewController(animated: true)
+	}
+
 	func open(_ article: Article) {
 		AnalyticsService.log(.articleOpened)
 		presentingController?.present(
@@ -77,7 +81,7 @@ extension MainCoordinator {
 		controller.modalPresentationStyle = .pageSheet
 
 		if let sheet = controller.sheetPresentationController {
-			sheet.detents = [.medium()]
+			sheet.detents = [.medium(), .large()]
 			sheet.prefersGrabberVisible = true
 		}
 
@@ -136,6 +140,7 @@ extension MainCoordinator {
 			UIHostingController(
 				rootView: SourceListView(
 					state: state,
+					onBack: navigation.goBack,
 					sources: sources,
 					title: title
 				)
@@ -158,7 +163,7 @@ extension MainCoordinator {
 
 	func showMutedHeadlines() {
 		selectedNavigation?.pushViewController(
-			UIHostingController(rootView: MutedHeadlinesView(state: state)),
+			UIHostingController(rootView: MutedHeadlinesView(state: state, onBack: navigation.goBack)),
 			animated: true
 		)
 	}
@@ -173,7 +178,7 @@ extension MainCoordinator {
 			repository: state.feeds
 		)
 
-		let controllers: [(UIViewController, String, String)] = [
+		let controllers: [(UIViewController, String, EditorialGlyph)] = [
 				(
 					UIHostingController(
 						rootView: FeedView(
@@ -183,7 +188,7 @@ extension MainCoordinator {
 						)
 					),
 					String(localized: "tab.news"),
-					"newspaper"
+					.news
 				),
 				(
 					UIHostingController(
@@ -194,7 +199,7 @@ extension MainCoordinator {
 						)
 					),
 					String(localized: "tab.reviews"),
-					"star.bubble"
+					.reviews
 				),
 				(
 					UIHostingController(
@@ -206,7 +211,7 @@ extension MainCoordinator {
 						)
 					),
 					String(localized: "tab.releases"),
-					"calendar"
+					.calendar
 				),
 				(
 					UIHostingController(
@@ -216,16 +221,15 @@ extension MainCoordinator {
 						)
 					),
 					String(localized: "tab.saved"),
-					"bookmark"
+					.saved
 				)
 			]
 
 		tabs.viewControllers = controllers.map { controller, title, image in
-			let navigation = UINavigationController(rootViewController: controller)
-			styleNavigationBar(navigation.navigationBar)
+			let navigation = EditorialNavigationController(rootViewController: controller)
 			navigation.tabBarItem = UITabBarItem(
 				title: title,
-				image: UIImage(systemName: image),
+				image: image.tabImage(),
 				selectedImage: nil
 			)
 
@@ -287,17 +291,6 @@ extension MainCoordinator {
 			case .light: window.overrideUserInterfaceStyle = .light
 			case .dark: window.overrideUserInterfaceStyle = .dark
 		}
-	}
-
-	private func styleNavigationBar(_ bar: UINavigationBar) {
-		let appearance = UINavigationBarAppearance()
-		appearance.configureWithOpaqueBackground()
-		appearance.backgroundColor = UIColor(named: "EditorialCanvas")
-		appearance.shadowColor = UIColor(named: "EditorialOutline")
-
-		bar.standardAppearance = appearance
-		bar.scrollEdgeAppearance = appearance
-		bar.compactAppearance = appearance
 	}
 
 	private func styleTabBar(_ bar: UITabBar) {

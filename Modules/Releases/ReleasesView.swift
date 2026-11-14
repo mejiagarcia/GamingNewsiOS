@@ -7,7 +7,9 @@ struct ReleasesView: View {
 
 	var body: some View {
 		List {
-			EditorialMasthead(title: "tab.releases") {
+			EditorialFilterStrip {
+				EditorialField(prompt: "releases.search.prompt", text: $model.query, isSearch: true)
+					.padding(DesignSystem.Spacing.regular)
 				ScrollView(.horizontal) {
 					HStack(spacing: DesignSystem.Spacing.regular) {
 						platformButton(name: String(localized: "releases.allPlatforms"), id: nil)
@@ -24,7 +26,7 @@ struct ReleasesView: View {
 			if let errorKey = model.errorKey {
 				Section {
 					ContentUnavailableView {
-						Label("releases.failed", systemImage: "wifi.exclamationmark")
+						EditorialLabel(title: "releases.failed", glyph: .warning)
 					} description: {
 						Text(LocalizedStringKey(errorKey))
 					} actions: {
@@ -38,10 +40,9 @@ struct ReleasesView: View {
 			if model.isLoading && model.releases.isEmpty {
 				ProgressView().frame(maxWidth: .infinity).padding()
 			} else if model.releases.isEmpty, model.errorKey == nil {
-				ContentUnavailableView(
-					model.query.isEmpty ? "releases.empty" : "search.empty",
-					systemImage: "calendar"
-				)
+				ContentUnavailableView {
+					EditorialLabel(title: model.query.isEmpty ? "releases.empty" : "search.empty", glyph: .calendar)
+				}
 			} else if !model.releases.isEmpty {
 				ForEach(model.releases) { release in
 					ReleaseRow(release: release)
@@ -59,20 +60,22 @@ struct ReleasesView: View {
 			}
 		}
 		.editorialList()
-		.navigationBarTitleDisplayMode(.inline)
-		.searchable(text: $model.query, prompt: Text("search.prompt"))
-		.toolbar {
-			ToolbarItem(placement: .topBarTrailing) {
-				Button("settings.title", systemImage: "gearshape") {
+		.safeAreaInset(edge: .top, spacing: .zero) {
+			EditorialHeader(title: "tab.releases") {
+				Button {
 					navigation.showSettings()
+				} label: {
+					EditorialGlyph.filters.view
 				}
-				.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
-			}
-			ToolbarItem(placement: .topBarTrailing) {
-				Button("releases.refresh", systemImage: "arrow.clockwise") {
+				.buttonStyle(EditorialButtonStyle(hierarchy: .tertiary))
+				.accessibilityLabel(Text("settings.title"))
+				Button {
 					Task { await model.refresh() }
+				} label: {
+					EditorialGlyph.refresh.view
 				}
-				.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
+				.buttonStyle(EditorialButtonStyle(hierarchy: .tertiary))
+				.accessibilityLabel(Text("releases.refresh"))
 				.disabled(model.isRefreshing)
 			}
 		}
@@ -126,7 +129,7 @@ private struct ReleaseRow: View {
 			AsyncImage(url: release.coverURL) { image in
 				image.resizable().scaledToFill()
 			} placeholder: {
-				Image(systemName: "gamecontroller.fill")
+				EditorialGlyph.game.view
 					.foregroundStyle(.secondary)
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
 					.background(Color("ArticlePlaceholder"))

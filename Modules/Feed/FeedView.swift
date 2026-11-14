@@ -43,7 +43,9 @@ struct FeedView: View {
 
 	var body: some View {
 		List {
-			EditorialMasthead(title: model.kind == .news ? "tab.news" : "tab.reviews") {
+			EditorialFilterStrip {
+				EditorialField(prompt: "search.prompt", text: $model.query, isSearch: true)
+					.padding(DesignSystem.Spacing.regular)
 				if model.kind == .news {
 					ScrollView(.horizontal) {
 						HStack(spacing: DesignSystem.Spacing.regular) {
@@ -68,9 +70,9 @@ struct FeedView: View {
 			}
 			if model.partialFailure {
 				VStack(alignment: .leading, spacing: DesignSystem.Spacing.regular) {
-					Label(
-						model.stale ? "feed.stale" : "feed.partial",
-						systemImage: "exclamationmark.triangle"
+					EditorialLabel(
+						title: model.stale ? "feed.stale" : "feed.partial",
+						glyph: .warning
 					)
 					.font(.subheadline).foregroundStyle(.secondary)
 					Button("feed.retry") {
@@ -90,10 +92,7 @@ struct FeedView: View {
 				ProgressView().frame(maxWidth: .infinity).padding()
 			} else if model.noSources {
 				ContentUnavailableView {
-					Label(
-						"feed.noSources",
-						systemImage: "line.3.horizontal.decrease.circle"
-					)
+					EditorialLabel(title: "feed.noSources", glyph: .filters)
 				} description: {
 					Text("feed.noSources.description")
 				} actions: {
@@ -102,10 +101,7 @@ struct FeedView: View {
 				}
 			} else if model.failed {
 				ContentUnavailableView {
-					Label(
-						"feed.failed",
-						systemImage: "wifi.exclamationmark"
-					)
+					EditorialLabel(title: "feed.failed", glyph: .warning)
 				} description: {
 					Text("feed.failed.description")
 				} actions: {
@@ -121,7 +117,7 @@ struct FeedView: View {
 				}
 			} else if model.loaded && model.articles.isEmpty && model.mutedCount > 0 {
 				ContentUnavailableView {
-					Label("mute.allMuted.title", systemImage: "speaker.slash")
+					EditorialLabel(title: "mute.allMuted.title", glyph: .mute)
 				} description: {
 					Text("mute.allMuted.message")
 				} actions: {
@@ -133,10 +129,9 @@ struct FeedView: View {
 						.buttonStyle(EditorialActionStyle())
 				}
 			} else if model.loaded && model.articles.isEmpty {
-				ContentUnavailableView(
-					model.query.isEmpty ? "feed.empty" : "search.empty",
-					systemImage: "newspaper"
-				)
+				ContentUnavailableView {
+					EditorialLabel(title: model.query.isEmpty ? "feed.empty" : "search.empty", glyph: .news)
+				}
 			} else {
 				if model.mutedCount > 0 {
 					Section {
@@ -182,21 +177,18 @@ struct FeedView: View {
 		}
 		.editorialList()
 		.onAppear { AnalyticsService.screen(model.kind == .news ? "news" : "reviews") }
-		.navigationBarTitleDisplayMode(.inline)
-		.searchable(
-			text: $model.query,
-			prompt: Text("search.prompt")
-		)
-		.toolbar {
-			ToolbarItem(placement: .topBarTrailing) {
-				Button(
-					"settings.title",
-					systemImage: "gearshape"
-				) { navigation.showSettings() }
-				.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
+		.safeAreaInset(edge: .top, spacing: .zero) {
+			EditorialHeader(title: model.kind == .news ? "tab.news" : "tab.reviews") {
+				Button {
+					navigation.showSettings()
+				} label: {
+					EditorialGlyph.filters.view
+				}
+				.buttonStyle(EditorialButtonStyle(hierarchy: .tertiary))
+				.accessibilityLabel(Text("settings.title"))
 			}
 		}
-		.onSubmit(of: .search) {
+		.onSubmit(of: .text) {
 			if !model.query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
 				AnalyticsService.log(.searchSubmitted)
 			}

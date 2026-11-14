@@ -90,15 +90,17 @@ struct EditorialButtonStyle: ButtonStyle {
 
 	private var foregroundColor: Color {
 		switch hierarchy {
-			case .primary, .secondary, .selected: DesignSystem.Palette.ink
+			case .primary, .selected: DesignSystem.Palette.ink
+			case .secondary: .primary
 			case .tertiary, .unselected: DesignSystem.Palette.onBanner
-			case .destructive: DesignSystem.Palette.paper
+			case .destructive: DesignSystem.Palette.onBanner
 		}
 	}
 
 	private var outlineColor: Color {
 		switch hierarchy {
 			case .tertiary, .unselected: DesignSystem.Palette.onBanner
+			case .secondary: DesignSystem.Palette.outline
 			default: DesignSystem.Palette.ink
 		}
 	}
@@ -159,11 +161,11 @@ extension View {
 			.scrollContentBackground(.hidden)
 			.editorialCanvas()
 			.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
+			.scrollDismissesKeyboard(.interactively)
 	}
 
-	func editorialForm() -> some View {
-		scrollContentBackground(.hidden)
-			.editorialCanvas()
-			.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
+	func editorialSettingsPage() -> some View {
+		editorialList()
+			.toggleStyle(EditorialToggleStyle())
 	}
 }

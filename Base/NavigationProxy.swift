@@ -22,6 +22,10 @@ extension NavigationProxy {
 		coordinator?.copy(article)
 	}
 
+	func goBack() {
+		coordinator?.goBack()
+	}
+
 	func open(_ article: Article) {
 		coordinator?.open(article)
 	}

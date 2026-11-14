@@ -4,6 +4,7 @@ import SwiftUI
 protocol AppNavigationProtocol: AnyObject {
 
 	func copy(_ article: Article)
+	func goBack()
 	func open(_ article: Article)
 	func openReader(_ article: Article)
 	func chooseArticleOpenMode(for article: Article)
