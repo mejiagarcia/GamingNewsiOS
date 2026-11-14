@@ -166,6 +166,18 @@ extension MainCoordinator {
 				),
 				(
 					UIHostingController(
+						rootView: ReleasesView(
+							model: ReleasesViewModel(
+								repository: LiveIGDBReleasesRepository()
+							),
+							navigation: navigation
+						)
+					),
+					String(localized: "tab.releases"),
+					"calendar"
+				),
+				(
+					UIHostingController(
 						rootView: SavedView(
 							state: state,
 							navigation: navigation

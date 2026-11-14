@@ -8,6 +8,7 @@ enum DesignSystem: Sendable {
 
 	enum Size: Sendable {
 		static let minimumTapTarget: CGFloat = 44
+		static let releaseThumbnailHeight: CGFloat = 112
 		static let thumbnailHeight: CGFloat = 72
 		static let thumbnailWidth: CGFloat = 88
 	}

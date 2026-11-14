@@ -1,6 +1,7 @@
 "tab.news" = "News";
 "tab.reviews" = "Reviews";
 "tab.saved" = "Saved";
+"tab.releases" = "Releases";
 "settings.title" = "Settings";
 "settings.content" = "Content";
 "settings.language" = "Content language";
@@ -86,3 +87,10 @@
 "common.delete" = "Delete";
 "common.cancel" = "Cancel";
 "common.save" = "Save";
+"releases.allPlatforms" = "All";
+"releases.empty" = "No upcoming releases found";
+"releases.failed" = "Couldn’t load upcoming releases";
+"releases.credentialsMissing" = "Add your IGDB client ID and secret to the app’s build settings to load releases.";
+"releases.loadFailed" = "Check your connection and try again.";
+"releases.refresh" = "Refresh upcoming releases";
+"releases.dateUnknown" = "Release date unavailable";

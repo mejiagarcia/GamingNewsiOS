@@ -1,6 +1,7 @@
 "tab.news" = "Noticias";
 "tab.reviews" = "Análisis";
 "tab.saved" = "Guardados";
+"tab.releases" = "Lanzamientos";
 "settings.title" = "Ajustes";
 "settings.content" = "Contenido";
 "settings.language" = "Idioma del contenido";
@@ -86,3 +87,10 @@
 "common.delete" = "Eliminar";
 "common.cancel" = "Cancelar";
 "common.save" = "Guardar";
+"releases.allPlatforms" = "Todas";
+"releases.empty" = "No hay próximos lanzamientos";
+"releases.failed" = "No se pudieron cargar los próximos lanzamientos";
+"releases.credentialsMissing" = "Añade el ID y el secreto de IGDB en los ajustes de compilación para cargar los lanzamientos.";
+"releases.loadFailed" = "Comprueba tu conexión e inténtalo de nuevo.";
+"releases.refresh" = "Actualizar próximos lanzamientos";
+"releases.dateUnknown" = "Fecha de lanzamiento no disponible";
