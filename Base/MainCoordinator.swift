@@ -8,7 +8,7 @@ final class MainCoordinator: AppNavigationProtocol {
 	// MARK: - Private Constants
 
 	private let state: AppState
-	private let tabs = UITabBarController()
+	private let tabs = EditorialTabController()
 	private let window: UIWindow
 
 	// MARK: - Private Variables
@@ -67,7 +67,7 @@ extension MainCoordinator {
 			onOpenInBrowser: { [weak self] in self?.open(article) }
 		)
 		selectedNavigation?.pushViewController(
-			UIHostingController(rootView: screen),
+			tabs.host(screen),
 			animated: true
 		)
 	}
@@ -127,7 +127,7 @@ extension MainCoordinator {
 		)
 
 		selectedNavigation?.pushViewController(
-			UIHostingController(rootView: screen),
+			tabs.host(screen),
 			animated: true
 		)
 	}
@@ -137,8 +137,8 @@ extension MainCoordinator {
 		title: LocalizedStringKey
 	) {
 		selectedNavigation?.pushViewController(
-			UIHostingController(
-				rootView: SourceListView(
+			tabs.host(
+				SourceListView(
 					state: state,
 					onBack: navigation.goBack,
 					sources: sources,
@@ -151,8 +151,8 @@ extension MainCoordinator {
 
 	func showSources() {
 		selectedNavigation?.pushViewController(
-			UIHostingController(
-				rootView: SourceSettingsView(
+			tabs.host(
+				SourceSettingsView(
 					state: state,
 					navigation: navigation
 				)
@@ -163,7 +163,7 @@ extension MainCoordinator {
 
 	func showMutedHeadlines() {
 		selectedNavigation?.pushViewController(
-			UIHostingController(rootView: MutedHeadlinesView(state: state, onBack: navigation.goBack)),
+			tabs.host(MutedHeadlinesView(state: state, onBack: navigation.goBack)),
 			animated: true
 		)
 	}
@@ -178,65 +178,39 @@ extension MainCoordinator {
 			repository: state.feeds
 		)
 
-		let controllers: [(UIViewController, String, EditorialGlyph)] = [
-				(
-					UIHostingController(
-						rootView: FeedView(
-							model: news,
-							state: state,
-							navigation: navigation
-						)
-					),
-					String(localized: "tab.news"),
-					.news
-				),
-				(
-					UIHostingController(
-						rootView: FeedView(
-							model: reviews,
-							state: state,
-							navigation: navigation
-						)
-					),
-					String(localized: "tab.reviews"),
-					.reviews
-				),
-				(
-					UIHostingController(
-						rootView: ReleasesView(
-							model: ReleasesViewModel(
-								repository: LiveIGDBReleasesRepository()
-							),
-							navigation: navigation
-						)
-					),
-					String(localized: "tab.releases"),
-					.calendar
-				),
-				(
-					UIHostingController(
-						rootView: SavedView(
-							state: state,
-							navigation: navigation
-						)
-					),
-					String(localized: "tab.saved"),
-					.saved
+		let controllers: [EditorialTab: UIViewController] = [
+			.news: tabs.host(
+				FeedView(
+					model: news,
+					state: state,
+					navigation: navigation
 				)
-			]
+			),
+			.reviews: tabs.host(
+				FeedView(
+					model: reviews,
+					state: state,
+					navigation: navigation
+				)
+			),
+			.releases: tabs.host(
+				ReleasesView(
+					model: ReleasesViewModel(repository: LiveIGDBReleasesRepository()),
+					navigation: navigation
+				)
+			),
+			.saved: tabs.host(
+				SavedView(
+					state: state,
+					navigation: navigation
+				)
+			),
+		]
 
-		tabs.viewControllers = controllers.map { controller, title, image in
-			let navigation = EditorialNavigationController(rootViewController: controller)
-			navigation.tabBarItem = UITabBarItem(
-				title: title,
-				image: image.tabImage(),
-				selectedImage: nil
-			)
-
-			return navigation
+		tabs.viewControllers = EditorialTab.allCases.compactMap { tab in
+			controllers[tab].map { EditorialNavigationController(rootViewController: $0) }
 		}
 
-		styleTabBar(tabs.tabBar)
 		window.tintColor = UIColor(named: "AccentColor")
 		window.rootViewController = tabs
 		window.makeKeyAndVisible()
@@ -291,31 +265,5 @@ extension MainCoordinator {
 			case .light: window.overrideUserInterfaceStyle = .light
 			case .dark: window.overrideUserInterfaceStyle = .dark
 		}
-	}
-
-	private func styleTabBar(_ bar: UITabBar) {
-		let appearance = UITabBarAppearance()
-		appearance.configureWithOpaqueBackground()
-		appearance.backgroundColor = UIColor(named: "EditorialInk")
-		appearance.shadowColor = UIColor(named: "EditorialOutline")
-
-		let normalColor = UIColor(named: "EditorialOnBanner") ?? .label
-		let selectedColor = UIColor(named: "EditorialGold") ?? normalColor
-		let layouts = [
-			appearance.stackedLayoutAppearance,
-			appearance.inlineLayoutAppearance,
-			appearance.compactInlineLayoutAppearance,
-		]
-
-		for layout in layouts {
-			layout.normal.iconColor = normalColor
-			layout.normal.titleTextAttributes = [.foregroundColor: normalColor]
-			layout.selected.iconColor = selectedColor
-			layout.selected.titleTextAttributes = [.foregroundColor: selectedColor]
-		}
-
-		bar.standardAppearance = appearance
-		bar.scrollEdgeAppearance = appearance
-		bar.tintColor = UIColor(named: "EditorialGold")
 	}
 }

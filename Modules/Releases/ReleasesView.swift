@@ -60,7 +60,7 @@ struct ReleasesView: View {
 			}
 		}
 		.editorialList()
-		.safeAreaInset(edge: .top, spacing: .zero) {
+		.editorialScrollingHeader {
 			EditorialHeader(title: "tab.releases") {
 				Button {
 					navigation.showSettings()

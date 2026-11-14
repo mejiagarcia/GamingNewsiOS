@@ -177,7 +177,7 @@ struct FeedView: View {
 		}
 		.editorialList()
 		.onAppear { AnalyticsService.screen(model.kind == .news ? "news" : "reviews") }
-		.safeAreaInset(edge: .top, spacing: .zero) {
+		.editorialScrollingHeader {
 			EditorialHeader(title: model.kind == .news ? "tab.news" : "tab.reviews") {
 				Button {
 					navigation.showSettings()

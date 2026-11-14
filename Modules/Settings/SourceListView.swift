@@ -34,7 +34,7 @@ struct SourceListView: View {
 		.disabled(!state.storageAvailable || state.isUpdating)
 		.editorialSettingsPage()
 		.onAppear { AnalyticsService.screen("source_list") }
-		.safeAreaInset(edge: .top, spacing: .zero) {
+		.editorialScrollingHeader {
 			EditorialHeader(title: title, onBack: onBack) {
 				EmptyView()
 			}

@@ -77,7 +77,7 @@ struct SettingsView: View {
 		.editorialSettingsPage()
 		.onAppear { AnalyticsService.screen("settings") }
 		.task { await notifications.refresh() }
-		.safeAreaInset(edge: .top, spacing: .zero) {
+		.editorialScrollingHeader {
 			EditorialHeader(title: "settings.title", onBack: navigation.goBack) {
 				EmptyView()
 			}

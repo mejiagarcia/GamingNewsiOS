@@ -44,7 +44,7 @@ struct ReaderView: View {
 		}
 		.editorialCanvas()
 		.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
-		.safeAreaInset(edge: .top, spacing: .zero) {
+		.editorialScrollingHeader {
 			EditorialHeader(title: "reader.title", onBack: navigation.goBack) {
 				Menu {
 					Button {
@@ -98,6 +98,7 @@ private struct ReaderContentView: View {
 			.padding(.horizontal, DesignSystem.Spacing.regular)
 			.padding(.vertical, DesignSystem.Spacing.large)
 		}
+		.modifier(EditorialTabScroll())
 	}
 }
 

@@ -61,7 +61,7 @@ struct SavedView: View {
 				AnalyticsService.log(.searchSubmitted)
 			}
 		}
-		.safeAreaInset(edge: .top, spacing: .zero) {
+		.editorialScrollingHeader {
 			EditorialHeader(title: "tab.saved") {
 				Button {
 					navigation.showSettings()

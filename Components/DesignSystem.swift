@@ -26,10 +26,13 @@ enum DesignSystem: Sendable {
 
 	enum Size: Sendable {
 		static let cardOffset: CGFloat = 4
+		static let expandedTabHeight: CGFloat = 50
+		static let expandedTabWidth: CGFloat = 58
 		static let glyph: CGFloat = 24
 		static let minimumTapTarget: CGFloat = 44
 		static let outline: CGFloat = 2
 		static let releaseThumbnailHeight: CGFloat = 112
+		static let tabScrollThreshold: CGFloat = 16
 		static let thumbnailHeight: CGFloat = 72
 		static let thumbnailWidth: CGFloat = 88
 	}

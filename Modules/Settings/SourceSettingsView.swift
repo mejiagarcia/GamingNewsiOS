@@ -59,7 +59,7 @@ struct SourceSettingsView: View {
 		.disabled(!state.storageAvailable || state.isUpdating)
 		.editorialSettingsPage()
 		.onAppear { AnalyticsService.screen("source_settings") }
-		.safeAreaInset(edge: .top, spacing: .zero) {
+		.editorialScrollingHeader {
 			EditorialHeader(title: "settings.sources", onBack: navigation.goBack) {
 				EmptyView()
 			}

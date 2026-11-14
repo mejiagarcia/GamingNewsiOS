@@ -1,5 +1,4 @@
 import SwiftUI
-import UIKit
 
 enum EditorialGlyph: Sendable {
 	case add, arrow, back, calendar, check, close, copy, external, filters, game
@@ -10,17 +9,6 @@ enum EditorialGlyph: Sendable {
 			.stroke(style: StrokeStyle(lineWidth: DesignSystem.Size.outline, lineCap: .round, lineJoin: .round))
 			.frame(width: DesignSystem.Size.glyph, height: DesignSystem.Size.glyph)
 			.accessibilityHidden(true)
-	}
-
-	func tabImage() -> UIImage {
-		let size = CGSize(width: DesignSystem.Size.glyph, height: DesignSystem.Size.glyph)
-		return UIGraphicsImageRenderer(size: size).image { context in
-			context.cgContext.setLineWidth(DesignSystem.Size.outline)
-			context.cgContext.setLineJoin(.round)
-			context.cgContext.setLineCap(.round)
-			context.cgContext.addPath(GlyphShape(glyph: self).path(in: CGRect(origin: .zero, size: size)).cgPath)
-			context.cgContext.strokePath()
-		}.withRenderingMode(.alwaysTemplate)
 	}
 }
 

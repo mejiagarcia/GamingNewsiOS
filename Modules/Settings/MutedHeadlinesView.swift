@@ -77,7 +77,7 @@ struct MutedHeadlinesView: View {
 		} message: {
 			Text(verbatim: state.errorMessage ?? "")
 		}
-		.safeAreaInset(edge: .top, spacing: .zero) {
+		.editorialScrollingHeader {
 			EditorialHeader(title: "settings.mutedHeadlines", onBack: onBack) {
 				Button {
 					editor = MutedHeadlineRule(text: "")
@@ -237,7 +237,7 @@ private struct MutedHeadlineRuleEditor: View {
 			}
 		}
 		.editorialSettingsPage()
-		.safeAreaInset(edge: .top, spacing: .zero) {
+		.editorialScrollingHeader {
 			EditorialHeader(title: originalExists ? "mute.rule.edit" : "mute.rule.add") {
 				Button(action: onCancel) {
 					EditorialGlyph.close.view

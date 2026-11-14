@@ -162,6 +162,7 @@ extension View {
 			.editorialCanvas()
 			.buttonStyle(EditorialPlainButtonStyle(haptic: .light))
 			.scrollDismissesKeyboard(.interactively)
+			.modifier(EditorialTabScroll())
 	}
 
 	func editorialSettingsPage() -> some View {
