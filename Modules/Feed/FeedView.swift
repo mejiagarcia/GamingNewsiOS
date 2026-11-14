@@ -13,6 +13,19 @@ struct FeedView: View {
 
 	// MARK: - Private Properties
 
+	@ViewBuilder
+	private var mutedArticleActions: some View {
+		Button(model.revealsMutedHeadlines ? "mute.hideAgain" : "mute.showHidden") {
+			Task { await model.toggleRevealedMutedHeadlines() }
+		}
+		.buttonStyle(EditorialActionStyle())
+
+		Button("mute.manage") {
+			navigation.showMutedHeadlines()
+		}
+		.buttonStyle(EditorialActionStyle())
+	}
+
 	private var request: FeedRequest {
 		FeedRequest(
 			context: FeedContext(
@@ -30,28 +43,31 @@ struct FeedView: View {
 
 	var body: some View {
 		List {
-			if model.kind == .news {
-				Section {
+			EditorialMasthead(title: model.kind == .news ? "tab.news" : "tab.reviews") {
+				if model.kind == .news {
 					ScrollView(.horizontal) {
-						HStack {
+						HStack(spacing: DesignSystem.Spacing.regular) {
 							ForEach(NewsCategory.allCases) { category in
+								let selected = model.category == category
+
 								Button(category.title) {
-									if model.category != category {
+									if !selected {
 										model.category = category
 										AnalyticsService.log(.categoryChanged)
 									}
 								}
-									.buttonStyle(.bordered)
-									.tint(model.category == category ? .accentColor : .secondary)
-									.accessibilityAddTraits(model.category == category ? .isSelected : [])
+								.buttonStyle(EditorialFilterStyle(isSelected: selected))
+								.accessibilityAddTraits(selected ? .isSelected : [])
 							}
 						}
+						.padding(.horizontal, DesignSystem.Spacing.large)
 					}
 					.scrollIndicators(.hidden)
+					.padding(.vertical, DesignSystem.Spacing.regular)
 				}
 			}
 			if model.partialFailure {
-				Section {
+				VStack(alignment: .leading, spacing: DesignSystem.Spacing.regular) {
 					Label(
 						model.stale ? "feed.stale" : "feed.partial",
 						systemImage: "exclamationmark.triangle"
@@ -65,7 +81,10 @@ struct FeedView: View {
 							)
 						}
 					}
+					.buttonStyle(EditorialActionStyle())
 				}
+				.frame(maxWidth: .infinity, alignment: .leading)
+				.editorialCardRow()
 			}
 			if model.isLoading && model.articles.isEmpty {
 				ProgressView().frame(maxWidth: .infinity).padding()
@@ -79,6 +98,7 @@ struct FeedView: View {
 					Text("feed.noSources.description")
 				} actions: {
 					Button("settings.title") { navigation.showSettings() }
+						.buttonStyle(EditorialActionStyle())
 				}
 			} else if model.failed {
 				ContentUnavailableView {
@@ -97,6 +117,7 @@ struct FeedView: View {
 							)
 						}
 					}
+					.buttonStyle(EditorialActionStyle())
 				}
 			} else if model.loaded && model.articles.isEmpty && model.mutedCount > 0 {
 				ContentUnavailableView {
@@ -107,7 +128,9 @@ struct FeedView: View {
 					Button("mute.showHidden") {
 						Task { await model.toggleRevealedMutedHeadlines() }
 					}
+					.buttonStyle(EditorialActionStyle())
 					Button("mute.manage") { navigation.showMutedHeadlines() }
+						.buttonStyle(EditorialActionStyle())
 				}
 			} else if model.loaded && model.articles.isEmpty {
 				ContentUnavailableView(
@@ -117,20 +140,23 @@ struct FeedView: View {
 			} else {
 				if model.mutedCount > 0 {
 					Section {
-						HStack {
+						VStack(alignment: .leading, spacing: DesignSystem.Spacing.compact) {
 							Text(verbatim: String.localizedStringWithFormat(
 								String(localized: model.mutedCount == 1 ? "mute.hiddenCount.one" : "mute.hiddenCount.other"),
 								model.mutedCount
 							))
 								.font(.subheadline)
-							Spacer()
-							Button(model.revealsMutedHeadlines ? "mute.hideAgain" : "mute.showHidden") {
-								Task { await model.toggleRevealedMutedHeadlines() }
+							ViewThatFits(in: .horizontal) {
+								HStack(spacing: DesignSystem.Spacing.compact) {
+									mutedArticleActions
+								}
+								VStack(alignment: .leading, spacing: DesignSystem.Spacing.compact) {
+									mutedArticleActions
+								}
 							}
-							.buttonStyle(.borderless)
-							Button("mute.manage") { navigation.showMutedHeadlines() }
-								.buttonStyle(.borderless)
 						}
+						.frame(maxWidth: .infinity, alignment: .leading)
+						.editorialCardRow()
 					}
 				}
 				ForEach(model.articles) { article in
@@ -150,11 +176,13 @@ struct FeedView: View {
 							)
 						}
 					)
+					.editorialCardRow()
 				}
 			}
 		}
+		.editorialList()
 		.onAppear { AnalyticsService.screen(model.kind == .news ? "news" : "reviews") }
-		.navigationTitle(model.kind == .news ? Text("tab.news") : Text("tab.reviews"))
+		.navigationBarTitleDisplayMode(.inline)
 		.searchable(
 			text: $model.query,
 			prompt: Text("search.prompt")

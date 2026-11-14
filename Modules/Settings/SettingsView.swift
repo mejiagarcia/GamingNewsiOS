@@ -70,6 +70,7 @@ struct SettingsView: View {
 			}
 			.disabled(!state.storageAvailable || state.isUpdating)
 		}
+		.editorialForm()
 		.onAppear { AnalyticsService.screen("settings") }
 		.task { await notifications.refresh() }
 		.navigationTitle(Text("settings.title"))

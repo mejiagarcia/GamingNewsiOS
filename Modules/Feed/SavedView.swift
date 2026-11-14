@@ -22,6 +22,10 @@ struct SavedView: View {
 
 	var body: some View {
 		List {
+			EditorialMasthead(title: "tab.saved") {
+				EmptyView()
+			}
+
 			if !state.isReady {
 				ProgressView().frame(maxWidth: .infinity).padding()
 			} else if articles.isEmpty {
@@ -46,11 +50,13 @@ struct SavedView: View {
 							)
 						}
 					)
+					.editorialCardRow()
 				}
 			}
 		}
+		.editorialList()
 		.onAppear { AnalyticsService.screen("saved") }
-		.navigationTitle(Text("tab.saved"))
+		.navigationBarTitleDisplayMode(.inline)
 		.searchable(
 			text: $query,
 			prompt: Text("search.prompt")

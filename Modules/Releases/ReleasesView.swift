@@ -7,19 +7,19 @@ struct ReleasesView: View {
 
 	var body: some View {
 		List {
-			Section {
+			EditorialMasthead(title: "tab.releases") {
 				ScrollView(.horizontal) {
-					HStack {
+					HStack(spacing: DesignSystem.Spacing.regular) {
 						platformButton(name: String(localized: "releases.allPlatforms"), id: nil)
 						ForEach(GamePlatform.supported) { platform in
 							platformButton(name: platform.name, id: platform.id)
 						}
 					}
+					.padding(.horizontal, DesignSystem.Spacing.large)
 				}
 				.scrollIndicators(.hidden)
+				.padding(.vertical, DesignSystem.Spacing.regular)
 			}
-			.listRowInsets(EdgeInsets())
-			.listRowBackground(Color.clear)
 
 			if let errorKey = model.errorKey {
 				Section {
@@ -31,6 +31,7 @@ struct ReleasesView: View {
 						Button("feed.retry") {
 							Task { await model.refresh() }
 						}
+						.buttonStyle(EditorialActionStyle())
 					}
 				}
 			}
@@ -44,7 +45,7 @@ struct ReleasesView: View {
 			} else if !model.releases.isEmpty {
 				ForEach(model.releases) { release in
 					ReleaseRow(release: release)
-						.listRowSeparator(.hidden)
+						.editorialCardRow()
 						.onAppear {
 							guard release.id == model.releases.last?.id else {
 								return
@@ -57,8 +58,8 @@ struct ReleasesView: View {
 				}
 			}
 		}
-		.listStyle(.plain)
-		.navigationTitle("tab.releases")
+		.editorialList()
+		.navigationBarTitleDisplayMode(.inline)
 		.searchable(text: $model.query, prompt: Text("search.prompt"))
 		.toolbar {
 			ToolbarItem(placement: .topBarTrailing) {
@@ -92,14 +93,16 @@ private extension ReleasesView {
 				model.platformIDs = []
 			}
 		}
-			.buttonStyle(.bordered)
-			.tint(selected ? Color.accentColor : Color.secondary)
+			.buttonStyle(EditorialFilterStyle(isSelected: selected))
 			.accessibilityAddTraits(selected ? .isSelected : [])
 	}
 }
 
 private struct ReleaseRow: View {
 	let release: GameRelease
+
+	@Environment(\.dynamicTypeSize)
+	private var dynamicTypeSize
 
 	var body: some View {
 		Group {
@@ -113,7 +116,11 @@ private struct ReleaseRow: View {
 	}
 
 	private var content: some View {
-		HStack(alignment: .top, spacing: DesignSystem.Spacing.regular) {
+		let layout = dynamicTypeSize.isAccessibilitySize
+			? AnyLayout(VStackLayout(alignment: .leading, spacing: DesignSystem.Spacing.regular))
+			: AnyLayout(HStackLayout(alignment: .top, spacing: DesignSystem.Spacing.regular))
+
+		return layout {
 			AsyncImage(url: release.coverURL) { image in
 				image.resizable().scaledToFill()
 			} placeholder: {
@@ -130,9 +137,11 @@ private struct ReleaseRow: View {
 			.accessibilityHidden(true)
 
 			VStack(alignment: .leading, spacing: DesignSystem.Spacing.compact) {
-				Text(release.name)
-					.font(.headline)
+				Text(verbatim: release.name)
+					.font(DesignSystem.Typography.display(.title2))
 					.foregroundStyle(.primary)
+					.accessibilityAddTraits(.isHeader)
+					.fixedSize(horizontal: false, vertical: true)
 				Text(release.platforms.joined(separator: " · "))
 					.font(.subheadline)
 					.foregroundStyle(.secondary)

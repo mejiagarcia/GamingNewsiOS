@@ -59,6 +59,7 @@ struct MutedHeadlinesView: View {
 				}
 			}
 		}
+		.editorialForm()
 		.disabled(state.isUpdating || !state.storageAvailable)
 		.navigationTitle(Text("settings.mutedHeadlines"))
 		.alert(
@@ -204,10 +205,10 @@ private struct MutedHeadlineRuleEditor: View {
 					.textInputAutocapitalization(.never)
 					.autocorrectionDisabled()
 				if isDuplicate {
-					Text("mute.error.duplicate").foregroundStyle(.red)
+					Text("mute.error.duplicate").foregroundStyle(Color.accentColor)
 				}
 				if matchMode == .wholeWord && normalizedText.contains(where: \.isWhitespace) {
-					Text("mute.error.wholeWord").foregroundStyle(.red)
+					Text("mute.error.wholeWord").foregroundStyle(Color.accentColor)
 				}
 			}
 			Section("mute.rule.match.section") {
@@ -225,11 +226,12 @@ private struct MutedHeadlineRuleEditor: View {
 						Toggle(category.title, isOn: categoryBinding(category))
 					}
 					if categories.isEmpty {
-						Text("mute.error.scope").foregroundStyle(.red)
+						Text("mute.error.scope").foregroundStyle(Color.accentColor)
 					}
 				}
 			}
 		}
+		.editorialForm()
 		.navigationTitle(originalExists ? Text("mute.rule.edit") : Text("mute.rule.add"))
 		.navigationBarTitleDisplayMode(.inline)
 		.toolbar {
