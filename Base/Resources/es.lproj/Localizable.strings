@@ -52,6 +52,10 @@
 "common.ok" = "Aceptar";
 "error.sources" = "No se pudo cargar el catálogo de fuentes.";
 "settings.notifications" = "Notificaciones";
+"notifications.banner.title" = "No te pierdas nada";
+"notifications.banner.message" = "Recibe solo noticias sobre videojuegos. Nunca enviamos anuncios ni mensajes promocionales.";
+"notifications.banner.action" = "Activar notificaciones de noticias";
+"notifications.banner.settings" = "Abrir ajustes de notificaciones";
 "notifications.enable" = "Toca para activar las notificaciones";
 "notifications.denied" = "Las notificaciones están desactivadas. Abre Ajustes para activarlas.";
 "notifications.enabled" = "Las notificaciones están activadas. Toca para gestionarlas.";
@@ -93,6 +97,7 @@
 "common.add" = "Añadir";
 "common.delete" = "Eliminar";
 "common.cancel" = "Cancelar";
+"common.dismiss" = "Cerrar";
 "common.save" = "Guardar";
 "releases.allPlatforms" = "Todas";
 "releases.empty" = "No hay próximos lanzamientos";

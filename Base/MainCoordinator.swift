@@ -182,6 +182,7 @@ extension MainCoordinator {
 			.news: tabs.host(
 				FeedView(
 					model: news,
+					notifications: PushNotificationService.shared,
 					state: state,
 					navigation: navigation
 				)
@@ -189,6 +190,7 @@ extension MainCoordinator {
 			.reviews: tabs.host(
 				FeedView(
 					model: reviews,
+					notifications: PushNotificationService.shared,
 					state: state,
 					navigation: navigation
 				)

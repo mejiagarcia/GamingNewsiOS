@@ -1,4 +1,5 @@
 import SwiftUI
+import UserNotifications
 
 // MARK: - News and reviews
 
@@ -8,8 +9,12 @@ struct FeedView: View {
 
 	@Bindable
 	var model: FeedViewModel
+	@Bindable
+	var notifications: PushNotificationService
 	let state: AppState
 	let navigation: any AppNavigationProtocol
+	@State
+	private var isNotificationBannerDismissed = false
 
 	// MARK: - Private Properties
 
@@ -67,6 +72,10 @@ struct FeedView: View {
 					.scrollIndicators(.hidden)
 					.padding(.vertical, DesignSystem.Spacing.regular)
 				}
+			}
+			if model.kind == .news && shouldShowNotificationBanner {
+				notificationBanner
+					.editorialCardRow()
 			}
 			if model.partialFailure {
 				VStack(alignment: .leading, spacing: DesignSystem.Spacing.regular) {
@@ -207,6 +216,7 @@ struct FeedView: View {
 			)
 		) { if state.isReady { await model.load(request) } }
 		.task(id: model.query) { await model.applySearch() }
+		.task { await notifications.refresh() }
 		.alert(
 			"error.title",
 			isPresented: Binding(
@@ -221,6 +231,68 @@ struct FeedView: View {
 		} message: {
 			Text(verbatim: state.errorMessage ?? "")
 		}
+	}
+
+	private var shouldShowNotificationBanner: Bool {
+		!isNotificationBannerDismissed
+			&& [.notDetermined, .denied].contains(notifications.authorizationStatus)
+	}
+
+	private var notificationBanner: some View {
+		VStack(alignment: .leading, spacing: DesignSystem.Spacing.regular) {
+			HStack(alignment: .top, spacing: DesignSystem.Spacing.regular) {
+				Image(systemName: "bell.badge.fill")
+					.font(.title2)
+					.foregroundStyle(DesignSystem.Palette.gold)
+					.frame(width: DesignSystem.Size.glyph)
+				VStack(alignment: .leading, spacing: DesignSystem.Spacing.compact) {
+					Text("notifications.banner.title")
+						.font(DesignSystem.Typography.display(.headline))
+						.foregroundStyle(DesignSystem.Palette.onBanner)
+					Text("notifications.banner.message")
+						.font(.subheadline)
+						.foregroundStyle(DesignSystem.Palette.onBanner)
+				}
+				Spacer(minLength: .zero)
+				Button {
+					isNotificationBannerDismissed = true
+				} label: {
+					Image(systemName: "xmark")
+						.font(.caption.weight(.bold))
+						.foregroundStyle(DesignSystem.Palette.onBanner)
+						.frame(
+							width: DesignSystem.Size.minimumTapTarget,
+							height: DesignSystem.Size.minimumTapTarget
+						)
+				}
+				.accessibilityLabel(Text("common.dismiss"))
+				.buttonStyle(EditorialPlainButtonStyle(haptic: .selection))
+			}
+			Button {
+				Task {
+					do {
+						try await notifications.requestOrOpenSettings()
+					} catch {
+						state.errorMessage = String(localized: "error.notifications")
+					}
+				}
+			} label: {
+				Text(
+					notifications.authorizationStatus == .denied
+						? "notifications.banner.settings"
+						: "notifications.banner.action"
+				)
+					.frame(maxWidth: .infinity)
+			}
+			.buttonStyle(EditorialButtonStyle(hierarchy: .primary))
+			.disabled(notifications.isUpdating)
+		}
+		.padding(DesignSystem.Spacing.regular)
+		.background(
+			DesignSystem.Palette.banner,
+			in: RoundedRectangle(cornerRadius: DesignSystem.Radius.card)
+		)
+		.accessibilityElement(children: .contain)
 	}
 }
 

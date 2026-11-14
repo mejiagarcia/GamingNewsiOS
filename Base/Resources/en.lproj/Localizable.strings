@@ -52,6 +52,10 @@
 "common.ok" = "OK";
 "error.sources" = "The source catalog could not be loaded.";
 "settings.notifications" = "Notifications";
+"notifications.banner.title" = "Stay in the loop";
+"notifications.banner.message" = "Get notifications about gaming news only. No ads or promotional messages, ever.";
+"notifications.banner.action" = "Enable news notifications";
+"notifications.banner.settings" = "Open notification settings";
 "notifications.enable" = "Tap to enable notifications";
 "notifications.denied" = "Notifications are off. Open Settings to enable them.";
 "notifications.enabled" = "Notifications are on. Tap to manage.";
@@ -93,6 +97,7 @@
 "common.add" = "Add";
 "common.delete" = "Delete";
 "common.cancel" = "Cancel";
+"common.dismiss" = "Dismiss";
 "common.save" = "Save";
 "releases.allPlatforms" = "All";
 "releases.empty" = "No upcoming releases found";

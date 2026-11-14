@@ -22,6 +22,7 @@ News, Reviews, Releases, and Saved use condensed mastheads, warm paper surfaces,
 | Light/dark appearance and image settings | ✅ | ✅ |
 | Firebase Analytics | ✅ | ✅ |
 | Firebase Cloud Messaging | ⚙️ | ⚙️ |
+| Home-feed prompt for gaming-news notifications (no advertising) | ✅ | — |
 | Mute unwanted headlines | ✅ | ✅ |
 | Upcoming game releases | ✅ | ✅ |
 | Follow games and receive release reminders | — | ✅ |
@@ -36,7 +37,7 @@ Tapping an article asks once whether to open it in Reader Mode or on the origina
 
 The iOS Releases tab loads and caches IGDB release records, with platform filters, game-name search, pagination, and exact or approximate dates. The feature has been built and verified with IGDB credentials configured in the target build settings. Each local build must provide `GAMING_NEWS_IGDB_CLIENT_ID` and `GAMING_NEWS_IGDB_CLIENT_SECRET`; they are read from the generated app Info.plist and are not committed. Following games for release reminders and the daily news reminder are separate features and are not yet available on iOS.
 
-The Android notification-topic controls are currently hidden. On iOS, notification permission is requested from Settings.
+On iOS, the News feed shows a dismissible prompt when notification permission is missing, and users can enable it there or open system Settings after denying the prompt. The app presents notifications as gaming-news-only, with no advertising or promotional messages. Firebase Cloud Messaging is present in the app, but actual remote notification delivery and the content sent are externally configured and have not been verified. Android notification-topic controls are currently hidden.
 
 Interactive buttons use a shared hierarchy: primary, secondary, tertiary, selected filters, and destructive actions. Their visual treatment and haptic intensity are centralized; standard screen buttons inherit secondary-level feedback, while prominent actions, filters, and destructive actions opt into their roles. Haptics fire on press and are implemented locally with UIKit feedback generators.
 
