@@ -21,6 +21,7 @@ General:
 
 Coding:
 
+- Follow the [SwiftUI and Architecture Review Guide](docs/BEST_PRACTICES_REVIEW.md) for collection rendering, presentation mapping, and architecture reviews.
 - You are NOT allowd to force unwrap an optional variable or constant.
 - You should always act as a senior engineer that prioritize SIMPLICITY over COMPLEXITY.
 - Structure nontrivial files in logical blocks or groups using // MARK: where the separation improves readability; omit unnecessary marks in small or undivided types.

@@ -1,6 +1,15 @@
 import Foundation
 import Observation
 
+nonisolated struct FeedArticleItem: Identifiable, Sendable {
+	let article: Article
+	let isFeatured: Bool
+
+	var id: String {
+		article.id
+	}
+}
+
 @MainActor
 @Observable
 final class FeedViewModel {
@@ -24,6 +33,7 @@ final class FeedViewModel {
 	// MARK: - Internal Variables
 
 	var articles: [Article] = []
+	var articleItems: [FeedArticleItem] = []
 	var category: NewsCategory = .all
 	var failed = false
 	var isLoading = false
@@ -74,6 +84,12 @@ extension FeedViewModel {
 		}
 
 		articles = result.articles
+		articleItems = result.articles.enumerated().map { index, article in
+			FeedArticleItem(
+				article: article,
+				isFeatured: index.isMultiple(of: 5)
+			}
+		}
 		mutedArticleIDs = result.mutedArticleIDs
 		mutedCount = result.mutedArticleIDs.count
 	}
@@ -90,6 +106,7 @@ extension FeedViewModel {
 			filterID = UUID()
 			snapshot = nil
 			articles = []
+			articleItems = []
 			mutedCount = 0
 			mutedArticleIDs = []
 			revealsMutedHeadlines = false

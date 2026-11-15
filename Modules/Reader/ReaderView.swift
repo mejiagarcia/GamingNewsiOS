@@ -139,15 +139,15 @@ private struct ReaderElementView: View {
 				}
 			case .bulletList(let items):
 				VStack(alignment: .leading, spacing: DesignSystem.Spacing.compact) {
-					ForEach(items.indices, id: \.self) { index in
-						Text("• \(items[index])").frame(maxWidth: .infinity, alignment: .leading)
+					ForEach(items) { item in
+						Text("• \(item.text)").frame(maxWidth: .infinity, alignment: .leading)
 					}
 				}
 				.font(.body)
 			case .orderedList(let items):
 				VStack(alignment: .leading, spacing: DesignSystem.Spacing.compact) {
-					ForEach(items.indices, id: \.self) { index in
-						Text("\(index + 1). \(items[index])")
+					ForEach(items) { item in
+						Text("\(item.id + 1). \(item.text)")
 							.frame(maxWidth: .infinity, alignment: .leading)
 					}
 				}

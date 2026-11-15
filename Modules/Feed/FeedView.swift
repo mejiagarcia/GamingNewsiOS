@@ -164,8 +164,8 @@ struct FeedView: View {
 					}
 				}
 				NewspaperLayout(spacing: DesignSystem.Spacing.regular) {
-					ForEach(Array(model.articles.enumerated()), id: \.element.id) { index, article in
-						articleCard(article, at: index)
+					ForEach(model.articleItems) { item in
+						articleCard(item)
 					}
 				}
 					.listRowBackground(Color.clear)
@@ -226,14 +226,16 @@ struct FeedView: View {
 			&& [.notDetermined, .denied].contains(notifications.authorizationStatus)
 	}
 
-	private func articleCard(_ article: Article, at index: Int) -> some View {
+	private func articleCard(_ item: FeedArticleItem) -> some View {
+		let article = item.article
+
 		return ArticleRow(
 			article: article,
 			isSaved: state.isSaved(article),
 			showImages: state.preferences.showImages,
 			isUpdating: state.isUpdating,
 			isMuted: model.mutedArticleIDs.contains(article.id),
-			layout: .newspaper(featured: index.isMultiple(of: 5)),
+			layout: .newspaper(featured: item.isFeatured),
 			onAction: { action in
 				ArticleActionHandler(
 					state: state,
@@ -328,8 +330,8 @@ private struct NewspaperLayout: Layout {
 		let columnWidth = (bounds.width - spacing) / 2
 		let placements = placements(for: subviews, columnWidth: columnWidth)
 
-		for (index, placement) in placements.enumerated() {
-			subviews[index].place(
+		for (subview, placement) in zip(subviews, placements) {
+			subview.place(
 				at: CGPoint(x: bounds.minX + placement.origin.x, y: bounds.minY + placement.origin.y),
 				proposal: ProposedViewSize(width: columnWidth, height: placement.size.height)
 			)

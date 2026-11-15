@@ -128,7 +128,12 @@ private extension LiveArticleReaderRepository {
 					to: &output
 				)
 			case "ul", "ol":
-				let items = try element.select("li").array().map { try $0.text() }
+				let items = try element.select("li").array().enumerated().map { index, item in
+					ReaderListItem(
+						id: index,
+						text: try item.text()
+					)
+				}
 				if !items.isEmpty {
 					output.append(ReaderElement(
 						id: id,

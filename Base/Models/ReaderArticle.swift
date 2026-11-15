@@ -6,13 +6,18 @@ nonisolated struct ReaderArticle: Sendable {
 	let elements: [ReaderElement]
 }
 
+nonisolated struct ReaderListItem: Identifiable, Sendable {
+	let id: Int
+	let text: String
+}
+
 nonisolated struct ReaderElement: Identifiable, Sendable {
 	enum Content: Sendable {
 		case heading(level: Int, text: String)
 		case paragraph(String)
 		case image(url: URL, caption: String?)
-		case bulletList([String])
-		case orderedList([String])
+		case bulletList([ReaderListItem])
+		case orderedList([ReaderListItem])
 		case quote(String)
 		case divider
 	}
