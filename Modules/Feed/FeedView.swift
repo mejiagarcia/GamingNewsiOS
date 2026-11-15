@@ -163,18 +163,13 @@ struct FeedView: View {
 						.editorialCardRow()
 					}
 				}
-				ForEach(0..<((model.articles.count + 1) / 2), id: \.self) { row in
-					HStack(alignment: .top, spacing: DesignSystem.Spacing.regular) {
-						articleCard(at: row * 2)
-						if row * 2 + 1 < model.articles.count {
-							articleCard(at: row * 2 + 1)
-						} else {
-							Color.clear.frame(maxWidth: .infinity)
-						}
+				NewspaperLayout(spacing: DesignSystem.Spacing.regular) {
+					ForEach(model.articles.indices, id: \.self) { index in
+						articleCard(at: index)
 					}
+				}
 					.listRowBackground(Color.clear)
 					.listRowSeparator(.hidden)
-				}
 			}
 		}
 		.editorialList()
@@ -307,6 +302,61 @@ struct FeedView: View {
 			in: RoundedRectangle(cornerRadius: DesignSystem.Radius.card)
 		)
 		.accessibilityElement(children: .contain)
+	}
+}
+
+private struct NewspaperLayout: Layout {
+	let spacing: CGFloat
+
+	func sizeThatFits(
+		proposal: ProposedViewSize,
+		subviews: Subviews,
+		cache: inout ()
+	) -> CGSize {
+		let width = proposal.width ?? .zero
+		let columnWidth = (width - spacing) / 2
+		let placements = placements(for: subviews, columnWidth: columnWidth)
+		let height = placements.map { $0.origin.y + $0.size.height }.max() ?? .zero
+
+		return CGSize(width: width, height: height)
+	}
+
+	func placeSubviews(
+		in bounds: CGRect,
+		proposal: ProposedViewSize,
+		subviews: Subviews,
+		cache: inout ()
+	) {
+		let columnWidth = (bounds.width - spacing) / 2
+		let placements = placements(for: subviews, columnWidth: columnWidth)
+
+		for (index, placement) in placements.enumerated() {
+			subviews[index].place(
+				at: CGPoint(x: bounds.minX + placement.origin.x, y: bounds.minY + placement.origin.y),
+				proposal: ProposedViewSize(width: columnWidth, height: placement.size.height)
+			)
+		}
+	}
+
+	private func placements(for subviews: Subviews, columnWidth: CGFloat) -> [Placement] {
+		var columnHeights = [CGFloat.zero, CGFloat.zero]
+		var result: [Placement] = []
+
+		for subview in subviews {
+			let column = columnHeights[0] <= columnHeights[1] ? 0 : 1
+			let size = subview.sizeThatFits(ProposedViewSize(width: columnWidth, height: nil))
+			let x = column == 0 ? CGFloat.zero : columnWidth + spacing
+
+			result.append(Placement(origin: CGPoint(x: x, y: columnHeights[column]), size: size))
+			columnHeights[column] += size.height + spacing
+		}
+
+		return result
+	}
+
+	private struct Placement {
+		let origin: CGPoint
+		let size: CGSize
 	}
 }
 
