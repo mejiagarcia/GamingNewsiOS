@@ -81,7 +81,7 @@
         "CODE_SIGN_ENTITLEMENTS": "GamingNews.entitlements",
         "CODE_SIGN_STYLE": "Automatic",
         "CURRENT_PROJECT_VERSION": "2",
-        "DEVELOPMENT_TEAM": "J75TA62D6V",
+        "DEVELOPMENT_TEAM": "",
         "ENABLE_APP_SANDBOX": "YES",
         "ENABLE_PREVIEWS": "NO",
         "ENABLE_USER_SELECTED_FILES": "readonly",

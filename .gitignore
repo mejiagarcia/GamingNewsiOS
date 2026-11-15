@@ -40,5 +40,9 @@ Pods
 /Pods
 
 GoogleService-Info.plist
+.env
+
+.appstoreconnect
+.appstoreconnect/
 
 # End of https://www.gitignore.io/api/xcode

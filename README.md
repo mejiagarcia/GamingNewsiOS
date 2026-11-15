@@ -43,6 +43,10 @@ Interactive buttons use a shared hierarchy: primary, secondary, tertiary, select
 
 The iOS app is under development. Saved article details are stored on the device; publisher pages require an internet connection.
 
+## TestFlight release
+
+Open the project in Xcode and build for the simulator without configuring signing. For a physical device, use **Signing & Capabilities** to select your Apple development team; Xcode handles the development profile automatically. These personal settings stay local to Xcode. For TestFlight, copy `.env.example` to `.env` and fill in the App Store Connect API key ID, issuer ID, `.p8` key path, and App Store provisioning profile path. The `.env` file is ignored by Git. The release script overrides automatic signing, reads the team ID and provisioning profile UUID from the configured `.mobileprovision` file, then signs and archives manually. Install its matching Apple Distribution certificate in your keychain. Run `./Scripts/upload_testflight.sh` from the repository root to increment the app's `CURRENT_PROJECT_VERSION`, export an IPA, and upload it to TestFlight. After a successful upload, the script creates a commit containing only the build-number change and an annotated tag in the form `v1.0.0-build.2`; other staged and unstaged changes are excluded. Add `--verbose` for detailed Xcode and upload logs. Set `GAMING_NEWS_IGDB_CLIENT_ID` and `GAMING_NEWS_IGDB_CLIENT_SECRET` in `.env` if you want IGDB releases enabled in the uploaded build. The archive and exported IPA are kept under `build/TestFlight/`.
+
 ## Built with
 
 Swift 6, SwiftUI, UIKit, and Firebase · iOS 18.0+ · iPhone

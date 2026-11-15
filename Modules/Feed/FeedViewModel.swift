@@ -88,7 +88,7 @@ extension FeedViewModel {
 			FeedArticleItem(
 				article: article,
 				isFeatured: index.isMultiple(of: 5)
-			}
+			)
 		}
 		mutedArticleIDs = result.mutedArticleIDs
 		mutedCount = result.mutedArticleIDs.count
