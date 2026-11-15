@@ -164,8 +164,8 @@ struct FeedView: View {
 					}
 				}
 				NewspaperLayout(spacing: DesignSystem.Spacing.regular) {
-					ForEach(model.articles.indices, id: \.self) { index in
-						articleCard(at: index)
+					ForEach(Array(model.articles.enumerated()), id: \.element.id) { index, article in
+						articleCard(article, at: index)
 					}
 				}
 					.listRowBackground(Color.clear)
@@ -226,9 +226,7 @@ struct FeedView: View {
 			&& [.notDetermined, .denied].contains(notifications.authorizationStatus)
 	}
 
-	private func articleCard(at index: Int) -> some View {
-		let article = model.articles[index]
-
+	private func articleCard(_ article: Article, at index: Int) -> some View {
 		return ArticleRow(
 			article: article,
 			isSaved: state.isSaved(article),

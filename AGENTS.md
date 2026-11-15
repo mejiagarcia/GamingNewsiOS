@@ -30,6 +30,7 @@ Coding:
 - You are an expert on threading, Tasks, and all threading strategies. You always consider that the UI must never be blocked on the main thread.
 - You make EVERY protocol, struct, or anything that can be Sendable, Sendable.
 - Every class must be final if needed, use proper access modifiers.
+- In every collection loop, iterate over the elements directly and use each element's stable ID. Never iterate over indices or use an index to subscript the collection from inside the loop; collection changes can make that index stale and crash. If a row needs positional presentation, derive it without indexing the source collection or pass an immutable element-plus-position snapshot with stable element identity.
 
 UI:
 
